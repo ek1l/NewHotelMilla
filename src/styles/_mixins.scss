@@ -1,0 +1,30 @@
+@mixin flexDefault {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@mixin flexBetween {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@mixin flexArround {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+@mixin flexBootom {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+@mixin flexStart {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+@mixin flexEnd {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}

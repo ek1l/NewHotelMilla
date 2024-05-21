@@ -1,0 +1,92 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+.header {
+  @include flexDefault;
+  flex-direction: column;
+  background: $color-white;
+  width: 100%;
+  height: 100%;
+  .colorOrange {
+    background: $color-orange;
+    height: 13px;
+    width: 100%;
+  }
+  .container {
+    @include flexDefault;
+    flex-direction: column;
+    width: 1295px;
+    max-width: 100%;
+    .topHeader {
+      @include flexBetween;
+
+      width: 100%;
+      .imgAndInfo {
+        @include flexDefault;
+        gap: 100px;
+
+        .info {
+          color: $color-text;
+          font-weight: 500;
+          font-size: 14px;
+        }
+      }
+      .times {
+        @include flexDefault;
+        gap: 30px;
+        .img {
+          object-fit: cover;
+        }
+        .imgUefa {
+          width: 34px;
+          height: 29px;
+        }
+      }
+    }
+    .colorGray {
+      background: $color-text;
+      height: 1px;
+      width: 100%;
+      margin-bottom: 20px;
+      margin-top: 20px;
+    }
+    .bottomHeader {
+      @include flexBetween;
+      width: 100%;
+      padding-bottom: 20px;
+      .nav {
+        .ul {
+          @include flexDefault;
+          gap: 30px;
+          .navLink {
+            color: $color-text;
+            font-weight: 600;
+            font-size: 16px;
+            transition: 0.3s;
+            &:hover {
+              color: $color-text-hover;
+            }
+          }
+        }
+      }
+      .select {
+        font-size: 12px;
+        font-weight: 600;
+        background: $color-text;
+        width: 53px;
+        height: 24px;
+        color: $color-green;
+        @include flexDefault;
+        background-image: url('../../assets/img/arrowInputSelect.png');
+        object-fit: contain;
+        padding: 5px;
+        background-size: 10px;
+        background-repeat: no-repeat;
+        background-position: 30px;
+        border-radius: 5px;
+        &::-ms-expand {
+          display: none;
+        }
+      }
+    }
+  }
+}
