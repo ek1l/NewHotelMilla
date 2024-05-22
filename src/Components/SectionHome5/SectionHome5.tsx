@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import styles from './SectionHome5.module.scss';
 import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/store';
-import CardHotelHome from '../CardHotelHome/CardHotelHome';
-import styles from './SectionHome2.module.scss';
 import { getAllhotels } from '../../redux/reducers/getAllHotels';
+import CardHotelSimple from '../CardHotelSimple/CardHotelSimple';
 
-const SectionHome2 = () => {
+const SectionHome5 = () => {
   const dispatch = useAppDispatch();
   const { data } = useAppSelector((state) => state.getAllhotelsSlice);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -13,7 +13,7 @@ const SectionHome2 = () => {
     dispatch(getAllhotels());
   }, [dispatch]);
   const filteredHotels = data.filter(
-    (hotel: any) => Number(hotel.rating.rating.replace('Sterren', '')) > 1,
+    (hotel: any) => Number(hotel.rating.rating.replace('Sterren', '')) === 5,
   );
   useEffect(() => {
     const interval = setInterval(() => {
@@ -33,23 +33,20 @@ const SectionHome2 = () => {
     <section className={`${styles.section}`}>
       <div className={styles.containerSection2}>
         <div className={styles.textAndDescription}>
-          <h1 className={styles.title}>Super deals</h1>
+          <h1 className={styles.title}>Best locations</h1>
           <p className={styles.description}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua
+            Our best locations for your trainingcamps
           </p>
         </div>
         <div className={`${styles.carrossel}`}>
           {groupedHotels.length > 0 && (
             <div className={`${styles.carouselInner}`}>
               {groupedHotels[currentIndex].map((hotel: any) => (
-                <CardHotelHome
+                <CardHotelSimple
                   name={hotel.name}
-                  stars={Number(hotel.rating.rating.replace('Sterren', ''))}
                   city={hotel.city.name}
                   country={hotel.city.country.name}
-                  filtersDay={hotel.travelTime[0].travelTime}
-                  filtersCondition={hotel.condition[0].condition}
+                  stars={Number(hotel.rating.rating.replace('Sterren', ''))}
                   imagem={hotel.images[0].path}
                   key={hotel.id}
                 />
@@ -73,4 +70,4 @@ const SectionHome2 = () => {
   );
 };
 
-export default SectionHome2;
+export default SectionHome5;
