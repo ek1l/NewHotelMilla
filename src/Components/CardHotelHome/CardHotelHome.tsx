@@ -4,7 +4,7 @@ import styles from './CardHotelHome.module.scss';
 import IMGHotelCardHomeTeste from '../../assets/testeIMG/hotelCardHomeTeste.webp';
 import IMGStarHome from '../../assets/img/starHotel.png';
 import IMGBallDescription from '../../assets/img/ballDescription.png';
-const CardHotelHome = (/*{
+const CardHotelHome = ({
   name,
   stars,
   description1,
@@ -12,19 +12,11 @@ const CardHotelHome = (/*{
   description3,
   city,
   country,
-  filters,
-}: {
-  name: string;
-  stars: number;
-  description1: string;
-  description2: string;
-  description3: string;
-  city: string;
-  country: string;
-  filters: string;
-} */) => {
-  const filstersArr = ['Days', 'Condition'];
-  const star = 5;
+  filtersDay,
+  filtersCondition,
+}: any) => {
+  const filstersArr = [`${filtersDay}`, `${filtersCondition}`];
+
   return (
     <div className={styles.containerCardHome}>
       <div className={styles.imgContainer}>
@@ -37,16 +29,16 @@ const CardHotelHome = (/*{
       <div className={styles.infos}>
         <div className={styles.containerInfos}>
           <div className={styles.titleAndStars}>
-            <h1 className={styles.titleNameHotel}>Hotel Name</h1>
-            {Array(star)
+            <h1 className={styles.titleNameHotel}>{name}</h1>
+            {Array(stars)
               .fill(0)
               .map((_, __) => (
                 <img src={IMGStarHome} alt="star" />
               ))}
           </div>
           <div className={styles.cityAndCountry}>
-            <span className={styles.cityCountrySpan}>City, </span>
-            <span className={styles.cityCountrySpan}> Country</span>
+            <span className={styles.cityCountrySpan}>{city}, </span>
+            <span className={styles.cityCountrySpan}> {country}</span>
           </div>
           <div className={styles.descriptionsContainer}>
             <p className={styles.description}>

@@ -1,13 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import getAllCountrySlice from './reducers/getAllCountry';
-import getAllHotelsSlice from './reducers/getAllHotels';
+import getAllhotelsSlice from './reducers/getAllHotels';
 import getAllSportsSlice from './reducers/getAllSports';
 
 const store = configureStore({
   reducer: {
     getAllCountrySlice: getAllCountrySlice,
-    getAllHotelsSlice: getAllHotelsSlice,
+    getAllhotelsSlice: getAllhotelsSlice,
     getAllSportsSlice: getAllSportsSlice,
   },
 });
