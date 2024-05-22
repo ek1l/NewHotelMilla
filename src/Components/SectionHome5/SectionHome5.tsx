@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/store';
 import { getAllhotels } from '../../redux/reducers/getAllHotels';
 import CardHotelSimple from '../CardHotelSimple/CardHotelSimple';
-
+import IMGSetaButton from '../../assets/img/arrowSearch.png';
 const SectionHome5 = () => {
   const dispatch = useAppDispatch();
   const { data } = useAppSelector((state) => state.getAllhotelsSlice);
@@ -33,7 +33,13 @@ const SectionHome5 = () => {
     <section className={`${styles.section}`}>
       <div className={styles.containerSection2}>
         <div className={styles.textAndDescription}>
-          <h1 className={styles.title}>Best locations</h1>
+          <div className={styles.titleAndButton}>
+            <h1 className={styles.title}>Best locations</h1>
+            <button className={styles.button}>
+              Search
+              <img src={IMGSetaButton} alt="Arrow button" />
+            </button>
+          </div>
           <p className={styles.description}>
             Our best locations for your trainingcamps
           </p>

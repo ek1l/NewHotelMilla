@@ -7,6 +7,7 @@
   margin-top: 100px;
   margin-bottom: 100px;
   .containerSection2 {
+    position: relative;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
@@ -15,42 +16,17 @@
     width: 1295px;
     max-width: 100%;
     height: 100%;
-
     .textAndDescription {
       display: flex;
       align-items: flex-start;
       justify-content: flex-start;
       flex-direction: column;
       gap: 20px;
-      width: 100%;
-      .titleAndButton {
-        width: 100%;
-        @include flexBetween;
-        .title {
-          color: $color-green;
-          font-weight: 600;
-          font-size: 32px;
-        }
-        .button {
-          @include flexBetween;
-          width: 150px;
-          height: 40px;
-          padding: 10px;
-          border-radius: 10px;
-          color: $color-white;
-          background: transparent;
-          font-size: 14px;
-          font-weight: 400;
-          outline: none;
-          border: 2px solid $color-white;
-          cursor: pointer;
-          transition: 0.3s;
-          &:hover {
-            background: $color-text-hover;
-            border: 2px solid $color-text-hover;
-            color: $color-white;
-          }
-        }
+
+      .title {
+        color: $color-green;
+        font-weight: 600;
+        font-size: 32px;
       }
 
       .description {
@@ -59,26 +35,25 @@
         font-size: 12px;
       }
     }
-
     .carrossel {
       @include flexDefault;
       gap: 20px;
       width: 100%;
       height: 100%;
       flex-direction: column;
-
       .carouselInner {
         @include flexDefault;
         gap: 30px;
         width: 100%;
       }
     }
-
     .carouselIndicators {
       @include flexDefault;
+      position: absolute;
+      bottom: 0;
       width: 100%;
+      height: 30px;
       gap: 10px;
-      margin-top: 20px;
       .indicator {
         width: 36px;
         height: 8px;

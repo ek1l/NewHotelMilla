@@ -1,0 +1,42 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+.section {
+  @include flexDefault;
+  flex-direction: column;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  .containerSection {
+    position: relative;
+    width: 1295px;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    .newsText {
+      width: 100%;
+      height: 100%;
+      .news1,
+      .news2 {
+        .newsTitle {
+          position: absolute;
+          color: $color-green;
+          font-size: 130px;
+          font-weight: bold;
+          z-index: -1;
+        }
+      }
+      .cardsNewsContainer {
+        @include flexArround;
+        height: 550px;
+        max-height: 100%;
+        width: 100%;
+        max-width: 100%;
+      }
+      .news2 {
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        width: 100%;
+      }
+    }
+  }
+}
