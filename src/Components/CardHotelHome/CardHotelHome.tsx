@@ -18,7 +18,7 @@ const CardHotelHome = ({
   const filstersArr = [`${filtersDay}`, `${filtersCondition}`];
 
   return (
-    <div className={styles.containerCardHome}>
+    <div className={`${styles.containerCardHome} animationCarroussel`}>
       <div className={styles.imgContainer}>
         <img
           className={styles.imgHotel}

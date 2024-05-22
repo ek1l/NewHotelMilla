@@ -25,11 +25,38 @@ img {
   width: 100%;
   height: 100%;
   padding: 10px;
-
 }
 
 select {
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
+}
+
+body::-webkit-scrollbar {
+  width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: $color-text;
+  border-radius: 20px;
+  border: 1px solid $color-white;
+}
+.animationCarroussel {
+  animation: carrousselSmooth 1s ease 0s 1 normal forwards;
+}
+@keyframes carrousselSmooth {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
