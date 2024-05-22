@@ -13,6 +13,7 @@ const CardHotelHome = ({
   city,
   country,
   filtersDay,
+  imagem,
   filtersCondition,
 }: any) => {
   const filstersArr = [`${filtersDay}`, `${filtersCondition}`];
@@ -22,7 +23,7 @@ const CardHotelHome = ({
       <div className={styles.imgContainer}>
         <img
           className={styles.imgHotel}
-          src={IMGHotelCardHomeTeste}
+          src={`${import.meta.env.VITE_APP_API_IMAGE}/${imagem}`}
           alt="Photo hotel"
         />
       </div>

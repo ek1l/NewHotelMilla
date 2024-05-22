@@ -13,14 +13,14 @@ const SectionHome2 = () => {
     dispatch(getAllhotels());
   }, [dispatch]);
   const filteredHotels = data.filter(
-    (hotel: any) => Number(hotel.rating.rating.replace('Sterren', '')) === 3,
+    (hotel: any) => Number(hotel.rating.rating.replace('Sterren', '')) === 5,
   );
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex(
         (prevIndex) => (prevIndex + 1) % Math.ceil(filteredHotels.length / 3),
       );
-    }, 3000);
+    }, 4000);
     return () => clearInterval(interval);
   }, [filteredHotels.length]);
 
@@ -50,6 +50,7 @@ const SectionHome2 = () => {
                   country={hotel.city.country.name}
                   filtersDay={hotel.travelTime[0].travelTime}
                   filtersCondition={hotel.condition[0].condition}
+                  imagem={hotel.images[0].path}
                   key={hotel.id}
                 />
               ))}

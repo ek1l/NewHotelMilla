@@ -24,8 +24,9 @@
     .imgHotel {
       border-top-left-radius: 30px;
       border-top-right-radius: 30px;
-      object-fit: contain;
+      object-fit: cover;
       width: 100%;
+      height: 227px;
     }
   }
   .infos {
