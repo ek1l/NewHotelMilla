@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import styles from './CardHotelHome.module.scss';
-import IMGHotelCardHomeTeste from '../../assets/testeIMG/hotelCardHomeTeste.webp';
 import IMGStarHome from '../../assets/img/starHotel.png';
 import IMGBallDescription from '../../assets/img/ballDescription.png';
 const CardHotelHome = ({

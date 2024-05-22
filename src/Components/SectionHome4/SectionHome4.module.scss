@@ -1,0 +1,42 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.section {
+  @include flexDefault;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  .containerSection {
+    @include flexBetween;
+    width: 1295px;
+    .containerTextAndDescription {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      height: 309px;
+      .titleAndDescriptionAndButton {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+        width: 550px;
+        height: 132px;
+        gap: 44px;
+        .title {
+          font-size: 32px;
+          font-weight: 600;
+          color: $color-green;
+        }
+        .descriptionContainer {
+          height: 100%;
+          width: 100%;
+          .description {
+            font-size: 16px;
+            line-height: 20px;
+            font-weight: 400;
+            color: $color-white;
+          }
+        }
+      }
+    }
+  }
+}
