@@ -1,0 +1,107 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.containerNotifyEmail {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 999999999999999;
+  position: fixed;
+  width: 100%;
+  min-height: 100vh;
+  .notifyEmail {
+    @include flexDefault;
+    width: 1246px;
+    height: 186px;
+    max-width: 100%;
+    max-height: 100%;
+    background: $color-blue-light;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    position: relative;
+    .closeModalContainer {
+      width: 33px;
+      height: 33px;
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 50%;
+      background: $color-green;
+      position: absolute;
+      right: 0;
+      top: 0;
+      transition: 0.3s;
+      &:hover {
+        transform: scale(1.1);
+      }
+      .buttonClosed {
+        width: 100%;
+        height: 100%;
+        outline: none;
+        background: none;
+        color: $color-text;
+        border: none;
+        cursor: pointer;
+        font-weight: 500;
+        font-size: 25px;
+      }
+    }
+    .titleAndInput {
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 1117px;
+      height: 100px;
+      max-width: 100%;
+      max-height: 100%;
+      .title {
+        color: $color-green;
+        font-weight: 600;
+        font-size: 20px;
+      }
+      .buttonAndInput {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        position: relative;
+        width: 100%;
+        height: 50%;
+
+        .input {
+          background: $color-white;
+          color: $color-text;
+          padding: 10px;
+          border-radius: 10px;
+          outline: none;
+          border: none;
+          width: 100%;
+          height: 100%;
+          font-weight: 400;
+          font-size: 14px;
+        }
+        .button {
+          position: absolute;
+          outline: none;
+          border: none;
+          background: $color-text;
+          column-rule-color: $color-white;
+          width: 171px;
+          height: 41px;
+          font-size: 12px;
+          font-weight: 500;
+          border-radius: 10px;
+          cursor: pointer;
+          transition: 0.3s;
+          margin-right: 5px;
+          &:hover {
+            background: $color-text-hover;
+          }
+          &:disabled {
+            cursor: not-allowed;
+            background: $color-text-hover;
+          }
+        }
+      }
+    }
+  }
+}

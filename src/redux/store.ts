@@ -5,6 +5,7 @@ import getAllhotelsSlice from './reducers/getAllHotels';
 import getAllSportsSlice from './reducers/getAllSports';
 import getAllnewsSlice from './reducers/getAllNews';
 import sendEmailMailChimpSlice from './reducers/sendEmail';
+import notifyEmailSendSlice from './reducers/notifyEmailSend';
 
 const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ const store = configureStore({
     getAllSportsSlice: getAllSportsSlice,
     getAllnewsSlice: getAllnewsSlice,
     sendEmailMailChimpSlice: sendEmailMailChimpSlice,
+    notifyEmailSendSlice: notifyEmailSendSlice,
   },
 });
 
