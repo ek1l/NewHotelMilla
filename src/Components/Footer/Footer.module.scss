@@ -1,0 +1,201 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background: $color-blue-footer-background;
+  width: 100%;
+  height: 502px;
+  max-height: 100%;
+  border-left: 2px solid $color-white;
+  border-right: 2px solid $color-white;
+  border-top: 2px solid $color-white;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  .containerFooter {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    flex-direction: column;
+    width: 1285px;
+    max-width: 100%;
+    height: 418px;
+    max-height: 100%;
+    .containerInformacoes {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      width: 100%;
+
+      .logoAndDescription {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+        width: 297px;
+        height: 155px;
+        gap: 20px;
+        .logo {
+          object-fit: contain;
+        }
+        .description {
+          color: $color-white;
+          font-weight: 500;
+          font-size: 12px;
+          line-height: 15px;
+        }
+      }
+      .contact {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+        gap: 20px;
+        .titleContact {
+          color: $color-green;
+          font-weight: 600;
+          font-size: 16px;
+        }
+        .infoContact {
+          color: $color-white;
+          font-weight: 400;
+          font-size: 16px;
+        }
+      }
+      .about {
+        width: 70px;
+        height: 177px;
+        max-width: 100%;
+        max-height: 100%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+        gap: 20px;
+        .titleAbout {
+          color: $color-green;
+          font-weight: 600;
+          font-size: 16px;
+        }
+        .ul {
+          display: flex;
+          align-items: flex-start;
+          justify-content: flex-start;
+          flex-direction: column;
+          gap: 20px;
+          .li {
+            .link {
+              color: $color-white;
+              font-weight: 400;
+              font-size: 16px;
+            }
+          }
+        }
+      }
+      .getUpdatedAndMailSend {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+        width: 339px;
+        height: 167px;
+        max-width: 100%;
+        max-height: 100%;
+        gap: 20px;
+        .getUpdatedTitle {
+          color: $color-green;
+          font-size: 16px;
+          font-weight: 600;
+        }
+        .form {
+          @include flexDefault;
+          width: 339px;
+          height: 50px;
+          max-width: 100%;
+          max-height: 100%;
+          position: relative;
+          .inputEmail {
+            height: 100%;
+            width: 100%;
+            padding: 5px;
+            color: $color-text;
+            font-weight: 400;
+            font-size: 14px;
+            outline: none;
+            border: 2px solid $color-text;
+            background: $color-white;
+            border-radius: 10px;
+          }
+          .button {
+            position: absolute;
+            left: 230px;
+            outline: none;
+            border: none;
+            background: $color-text;
+            color: $color-white;
+            width: 106px;
+            height: 41px;
+            border-radius: 10px;
+            font-weight: 500;
+            font-size: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+            &:hover {
+              background: $color-text-hover;
+            }
+          }
+        }
+        .bolaContainer {
+          display: flex;
+          align-items: flex-start;
+          justify-content: flex-start;
+          gap: 20px;
+          width: 100%;
+          .bola {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: $color-text;
+            transition: 0.3s;
+            &:hover {
+              box-shadow: rgba(211, 191, 191, 0.25) 0px 54px 55px,
+                rgba(250, 248, 248, 0.12) 0px -12px 30px,
+                rgba(0, 0, 0, 0.12) 0px 4px 6px,
+                rgba(247, 245, 245, 0.17) 0px 12px 13px,
+                rgba(0, 0, 0, 0.09) 0px -3px 5px;
+              background: $color-text-hover;
+            }
+          }
+        }
+      }
+    }
+    .filtersHotel {
+      @include flexDefault;
+      flex-direction: column;
+      width: 100%;
+      .filtersContainer {
+        @include flexArround;
+        width: 625px;
+        height: 129px;
+        max-width: 100%;
+        max-height: 100%;
+        .linkFilter {
+          color: $color-green;
+          font-weight: 600;
+          font-size: 16px;
+        }
+      }
+      .privacyAndTermsAndReserved {
+        @include flexDefault;
+        width: 625px;
+        max-width: 100%;
+        .privacy {
+          color: $color-white;
+          font-weight: 500;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
