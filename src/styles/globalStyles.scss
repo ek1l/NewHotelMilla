@@ -60,3 +60,11 @@ body::-webkit-scrollbar-thumb {
     transform: translateX(0);
   }
 }
+
+.error {
+  color: red;
+  font-weight: 600;
+  font-size: 13px;
+  text-align: center;
+  width: 100%;
+}

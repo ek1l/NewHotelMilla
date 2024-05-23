@@ -1,0 +1,42 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.flexInput {
+  @include flexDefault;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+  .label {
+    @include flexStart;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+    .labelInput {
+      color: $cor-blue;
+      font-weight: 400;
+      font-size: 15px;
+      font-family: 'Inter';
+    }
+    .input {
+      outline: none;
+      border: none;
+      width: 100%;
+      background: $cor-fundo;
+      padding: 5px;
+      border-radius: 5px;
+      color: $cor-blue;
+      font-size: 15px;
+      font-weight: 500;
+      transition: 0.3s;
+      &::placeholder {
+        color: $cor-blue;
+      }
+      &:focus {
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      }
+    }
+  }
+  .error {
+    color: red;
+  }
+}

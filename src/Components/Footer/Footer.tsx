@@ -1,7 +1,46 @@
 import styles from './Footer.module.scss';
 import IMGLogoFooter from '../../assets/img/logoFooter.png';
 import { Link } from 'react-router-dom';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { EmailSend } from '../../interfaces/emailSendInterface';
+import { emailSendSchema } from '../../schemas/emailSend';
+import { toast } from 'react-toastify';
+import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../../redux/store';
+import { sendEmailMailChimp } from '../../redux/reducers/sendEmail';
 const Footer = () => {
+  const notify = () => toast.success('Email successfully sent!');
+  const notifyError = () => toast.error('Email Invalid!');
+  const notifyErrorSend = () => toast.error('Email not sent!');
+  const dispatch = useAppDispatch();
+  const { loading } = useAppSelector((state) => state.sendEmailMailChimpSlice);
+  const {
+    handleSubmit,
+    register,
+    reset,
+    formState: { errors },
+  } = useForm<EmailSend>({
+    resolver: zodResolver(emailSendSchema),
+  });
+
+  const submit = async (formData: EmailSend) => {
+    const response = await dispatch(sendEmailMailChimp(formData));
+    if (response.type === 'sendEmailMailChimp/fulfilled') {
+      notify();
+      reset();
+      return;
+    } else {
+      notifyErrorSend();
+      reset();
+      return;
+    }
+  };
+  useEffect(() => {
+    if (errors.email) {
+      notifyError();
+    }
+  }, [errors]);
   return (
     <footer className={styles.footer}>
       <div className={styles.containerFooter}>
@@ -54,15 +93,23 @@ const Footer = () => {
           </div>
           <div className={styles.getUpdatedAndMailSend}>
             <h1 className={styles.getUpdatedTitle}>Get updated</h1>
-            <form className={styles.form}>
+            <form className={styles.form} onSubmit={handleSubmit(submit)}>
               <input
+                {...register('email')}
                 type="text"
                 placeholder="Enter your email"
                 className={styles.inputEmail}
               />
-              <button type="submit" className={styles.button}>
-                Subscribe
-              </button>
+
+              {loading ? (
+                <button disabled type="submit" className={styles.button}>
+                  Loading...
+                </button>
+              ) : (
+                <button type="submit" className={styles.button}>
+                  Subscribe
+                </button>
+              )}
             </form>
             <div className={styles.bolaContainer}>
               <div className={styles.bola}></div>
