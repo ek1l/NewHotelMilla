@@ -1,0 +1,54 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+.containerBackgroundFundo {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+
+  .imgBackground {
+    @include flexDefault;
+    position: relative;
+    width: 1920px;
+    object-fit: contain;
+    height: 1080px !important;
+    object-fit: cover !important;
+    background-repeat: no-repeat !important;
+    background-size: 100%;
+  }
+  .containerSearchAndTimes {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    flex-direction: column;
+    width: 1255px;
+    height: 70%;
+    bottom: 0;
+    position: static;
+
+    .times {
+      @include flexArround;
+      width: 100%;
+      padding: 10px;
+      .img {
+        filter: grayscale(100%);
+        transition: 0.3s;
+        &:hover {
+          filter: grayscale(0%);
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+}
+
+.filtro {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 46, 0.74);
+  pointer-events: none;
+}

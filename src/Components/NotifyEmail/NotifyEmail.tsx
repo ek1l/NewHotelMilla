@@ -1,15 +1,18 @@
-import { useEffect } from 'react';
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useEffect, useRef } from 'react';
+import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import { useAppDispatch, useAppSelector } from '../../redux/store';
-import styles from './NotifyEmail.module.scss';
 import { EmailSend } from '../../interfaces/emailSendInterface';
 import { emailSendSchema } from '../../schemas/emailSend';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
 import { sendEmailMailChimp } from '../../redux/reducers/sendEmail';
-import { toast } from 'react-toastify';
 import { notifyEmailSend } from '../../redux/reducers/notifyEmailSend';
+import styles from './NotifyEmail.module.scss';
 
 const NotifyEmail = () => {
+  const notifyRef = useRef(null); // Referência ao elemento do notify
   const notify = () => toast.success('Email successfully sent!');
   const notifyError = () => toast.error('Email Invalid!');
   const notifyErrorSend = () => toast.error('Email not sent!');
@@ -23,27 +26,53 @@ const NotifyEmail = () => {
   } = useForm<EmailSend>({
     resolver: zodResolver(emailSendSchema),
   });
+
   const submit = async (formData: EmailSend) => {
     const response = await dispatch(sendEmailMailChimp(formData));
     if (response.type === 'sendEmailMailChimp/fulfilled') {
       notify();
       reset();
       dispatch(notifyEmailSend());
-      return;
     } else {
       notifyErrorSend();
       reset();
-      return;
     }
   };
+
   const closeModalSendEmail = () => dispatch(notifyEmailSend());
+
+  useEffect(() => {
+    const handleClickOutside = (event: any) => {
+      // @ts-ignore
+      if (notifyRef.current && !notifyRef.current.contains(event.target)) {
+        dispatch(notifyEmailSend());
+      }
+    };
+
+    const handleScroll = () => {
+      dispatch(notifyEmailSend());
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [dispatch]);
+
   useEffect(() => {
     if (errors.email) {
       notifyError();
     }
   }, [errors]);
+
   return (
-    <div className={`${styles.containerNotifyEmail} animationNotifySendEmail`}>
+    <div
+      ref={notifyRef} // Adicione a referência ao elemento do notify
+      className={`${styles.containerNotifyEmail} animationNotifySendEmail`}
+    >
       <div className={styles.notifyEmail}>
         <div className={styles.closeModalContainer}>
           <button className={styles.buttonClosed} onClick={closeModalSendEmail}>

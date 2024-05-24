@@ -5,10 +5,10 @@
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  z-index: 999999999999999;
-  position: fixed;
+  height: 100%;
   width: 100%;
-  min-height: 100vh;
+  z-index: 1;
+  position: fixed;
   .notifyEmail {
     @include flexDefault;
     width: 1246px;

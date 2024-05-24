@@ -1,0 +1,91 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+.header {
+  @include flexDefault;
+  width: 100%;
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  z-index: 999;
+  .containerHeader {
+    @include flexArround;
+    width: 80%;
+    height: 100%;
+    .ul {
+      @include flexBetween;
+      width: 586px;
+      height: 100%;
+      max-width: 100%;
+      .li {
+        .link {
+          color: $color-white;
+          font-size: 16px;
+          font-weight: 600;
+          transition: 0.3s;
+          &:hover {
+            color: $color-green;
+          }
+        }
+      }
+    }
+    .inputSearchContainer {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      position: relative;
+      width: 275px;
+      height: 38px;
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 10px;
+      .inputSearch {
+        z-index: 999;
+        outline: none;
+        border: 2px solid $color-white;
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: 500;
+        padding: 10px;
+        color: $color-white;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+      }
+      .ico {
+        position: absolute;
+        z-index: 10000;
+        margin-right: 10px;
+        cursor: pointer;
+        transition: 0.3s;
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+    .select {
+      font-size: 12px;
+      font-weight: 600;
+      background: $color-text;
+      width: 48px;
+      height: 48px;
+      max-width: 100%;
+      max-height: 100%;
+      color: $color-green;
+      @include flexDefault;
+      background-image: url('../../assets/img/arrowInputSelect.png');
+      object-fit: contain;
+      padding: 10px;
+      background-size: 10px;
+      background-repeat: no-repeat;
+      background-position: 30px;
+      border-radius: 50%;
+      &::-ms-expand {
+        display: none;
+      }
+    }
+  }
+}

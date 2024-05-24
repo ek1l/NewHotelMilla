@@ -1,0 +1,28 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+.section {
+  @include flexDefault;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  .sectionContainer {
+    @include flexDefault;
+    gap: 20px;
+    flex-direction: column;
+    text-align: center;
+    width: 567px;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    .title {
+      font-size: 32px;
+      font-weight: 600;
+      color: $color-green;
+    }
+    .description {
+      font-size: 14px;
+      font-weight: 500;
+      color: $color-white;
+      line-height: 17px;
+    }
+  }
+}
