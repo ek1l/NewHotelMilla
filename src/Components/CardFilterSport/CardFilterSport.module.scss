@@ -1,0 +1,64 @@
+@import '../../styles/variables';
+
+.card {
+  display: flex;
+
+  .label {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+
+    span {
+      font-size: 14px !important;
+      color: $color-white !important;
+      font-weight: 400;
+    }
+
+    input {
+      /* Esconder o checkbox padrão */
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+
+      /* Substituto estilizado */
+      & + span {
+        position: relative;
+        height: 17px; /* Ajuste conforme necessário */
+        width: 17px; /* Ajuste conforme necessário */
+        background-color: $color-white;
+        border: 2px solid $color-white;
+        border-radius: 5px; /* Adicionando border-radius */
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 10px;
+      }
+
+      /* Fundo verde quando marcado */
+      &:checked + span {
+        background-color: $color-green;
+        border-color: $color-green;
+      }
+
+      &:checked + span::after {
+        content: '';
+        position: absolute;
+        display: block;
+        left: 3px; /* Ajuste conforme necessário */
+        top: 0px; /* Ajuste conforme necessário */
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        transform: rotate(45deg);
+      }
+    }
+
+    &.checked {
+      input {
+        &:checked + span {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

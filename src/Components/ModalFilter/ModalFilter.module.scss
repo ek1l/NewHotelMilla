@@ -1,0 +1,58 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.modalFilter {
+  background-color: $color-blue-weight;
+  height: 100%;
+  padding: 50px;
+  overflow: scroll;
+  position: absolute;
+  top: 57%;
+  z-index: 999999999;
+  width: 97%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  .botaoClose {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    button {
+      @include flexDefault;
+      height: 32px;
+      width: 32px;
+      background: $color-green-weight;
+      border-radius: 50%;
+      border: none;
+      border: none;
+      font-weight: 700;
+      font-size: 20px;
+      color: $color-blue-weight;
+    }
+  }
+  .filterbyText {
+    h2 {
+      color: white;
+      font-weight: 700;
+      font-size: 35px;
+    }
+  }
+  .containerFilter {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    .filter {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+      flex-wrap: wrap;
+      h2 {
+        color: white;
+        font-weight: 700;
+      }
+    }
+  }
+}

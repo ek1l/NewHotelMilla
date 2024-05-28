@@ -8,7 +8,12 @@ import sendEmailMailChimpSlice from './reducers/sendEmail';
 import notifyEmailSendSlice from './reducers/notifyEmailSend';
 import getAllPhotosGallerySlice from './reducers/getAllPhotosGallery';
 import getAllPlayersSlice from './reducers/getAllPlayers';
-
+import getTextparamsSlice from './reducers/queryParamsSearchHotelsStateGlobal';
+import getAllFacilitiesSlice from './reducers/getAllFacilities';
+import getAllConditionSlice from './reducers/getAllCondition';
+import getAllTravelTimeSlice from './reducers/getAllNewTravelTime';
+import getAllRatingsSlice from './reducers/getAllRating';
+import changeIdiomaSlice from './reducers/idioma';
 const store = configureStore({
   reducer: {
     getAllCountrySlice: getAllCountrySlice,
@@ -19,6 +24,12 @@ const store = configureStore({
     getAllPhotosGallerySlice: getAllPhotosGallerySlice,
     notifyEmailSendSlice: notifyEmailSendSlice,
     getAllPlayersSlice: getAllPlayersSlice,
+    getTextparamsSlice: getTextparamsSlice,
+    getAllFacilitiesSlice: getAllFacilitiesSlice,
+    getAllConditionSlice: getAllConditionSlice,
+    getAllTravelTimeSlice: getAllTravelTimeSlice,
+    getAllRatingsSlice: getAllRatingsSlice,
+    changeIdiomaSlice: changeIdiomaSlice,
   },
 });
 

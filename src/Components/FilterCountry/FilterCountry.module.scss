@@ -1,0 +1,95 @@
+@import '../../styles/variables';
+
+.containerFilterCountry {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .label1,
+  .label2 {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+
+    span {
+      font-weight: 400;
+      font-size: 14px !important;
+      color: $color-white !important;
+    }
+
+    input {
+      /* Esconder o checkbox padrão */
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+
+      /* Substituto estilizado */
+      & + span::before {
+        content: '';
+        display: inline-block;
+        width: 17px; /* Ajuste conforme necessário */
+        height: 17px; /* Ajuste conforme necessário */
+        background-color: $color-white;
+        border: 2px solid $color-white;
+        border-radius: 5px; /* Adicionando border-radius */
+        margin-right: 10px;
+        vertical-align: middle;
+      }
+
+      /* Fundo verde quando marcado */
+      &:checked + span::before {
+        background-color: $color-green;
+        border-color: $color-green;
+      }
+
+      &:checked + span::before {
+        position: relative;
+      }
+
+      &:checked + span::before::after {
+        content: '';
+        position: absolute;
+        display: block;
+        left: 3px; /* Ajuste conforme necessário */
+        top: 0px; /* Ajuste conforme necessário */
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        transform: rotate(45deg);
+      }
+    }
+
+    &.checked {
+      input {
+        &:checked + span {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .label2 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 20px;
+  }
+}
+
+.envolve {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.nameFilter {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+}
+
+.nameFilter {
+  margin-bottom: 15px;
+}

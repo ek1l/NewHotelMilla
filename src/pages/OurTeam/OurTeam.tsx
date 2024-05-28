@@ -1,4 +1,3 @@
-import HeaderOurTeam from '../../Components/HeaderOurTeam/HeaderOurTeam';
 import SectionHome5 from '../../Components/SectionHome5/SectionHome5';
 import SectionHome6 from '../../Components/SectionHome6/SectionHome6';
 import SectionHome7 from '../../Components/SectionHome7/SectionHome7';
@@ -9,7 +8,6 @@ import styles from './OurTeam.module.scss';
 const OurTeam = () => {
   return (
     <main className={styles.main}>
-      <HeaderOurTeam />
       <SectionOurTeam1 />
       <SectionOurTeam2 />
       <SectionOurTeam3 />
