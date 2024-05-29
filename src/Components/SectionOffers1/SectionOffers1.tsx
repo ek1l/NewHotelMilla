@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import styles from './SectionOffers.module.scss';
 import SearchIMG from '../../assets/img/searchInputOurTeam.png';
 import CardHotel from '../CardHotel/CardHotel';
@@ -12,12 +13,86 @@ import FilterCountry from '../FilterCountry/FilterCountry';
 import { getAllFacilities } from '../../redux/reducers/getAllFacilities';
 import { getAllCondition } from '../../redux/reducers/getAllCondition';
 import { getAllTravelTime } from '../../redux/reducers/getAllNewTravelTime';
-import { getAllhotels } from '../../redux/reducers/getAllHotels';
+import {
+  getAllhotels,
+  getAllhotelsParams,
+} from '../../redux/reducers/getAllHotels';
+import IMGRunning from '../../assets/img/runningGreen.png';
+import IMGCity from '../../assets/img/cityGreen.png';
+import IMGCountry from '../../assets/img/countryGreen.png';
 import ModalFilter from '../ModalFilter/ModalFilter';
 import { getAllRatings } from '../../redux/reducers/getAllRating';
 
 const SectionOffers1 = () => {
   const dispatch = useAppDispatch();
+  const { data: sportData } = useAppSelector(
+    (state) => state.getAllSportsSlice,
+  );
+  const { data: countryData } = useAppSelector(
+    (state) => state.getAllCountrySlice,
+  );
+
+  const [selectedCountry, setSelectedCountry] = useState('');
+  const [selectedCountryId, setSelectedCountryId] = useState('');
+  const [selectedCityId, setSelectedCityId] = useState('');
+  const [selectedSportId, setSelectedSportId] = useState('');
+  const [citiesByCountry, setCitiesByCountry] = useState([]);
+
+  const handleCountryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    if (selectedCityId === '0') {
+      dispatch(getAllhotels());
+    }
+    const selectedCountry = e.target.value;
+    setSelectedCountry(selectedCountry);
+    const selectedCountryData = countryData.find(
+      (country) => country.name === selectedCountry,
+    );
+    if (selectedCountryData) {
+      // @ts-ignore
+      setSelectedCountryId(selectedCountryData.id);
+      // @ts-ignore
+      setCitiesByCountry(selectedCountryData.cities);
+    } else {
+      setSelectedCountryId('');
+      setCitiesByCountry([]);
+    }
+    setSelectedCityId(''); // Reset the city selection when country changes
+  };
+
+  const handleCityChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedCityId = e.target.value;
+    setSelectedCityId(selectedCityId);
+    if (selectedCityId === '0') {
+      dispatch(getAllhotels());
+    }
+  };
+
+  const handleSportChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedSportId = e.target.value;
+    setSelectedSportId(selectedSportId);
+    if (selectedSportId === '0') {
+      dispatch(getAllhotels());
+    }
+  };
+
+  const handleSubmit = useCallback(() => {
+    const queryParams = `sport=${selectedSportId}&country=${selectedCountryId}&city=${selectedCityId}`;
+    if (!selectedCountryId && !selectedCityId && !selectedSportId) {
+      dispatch(getAllhotels());
+    } else {
+      dispatch(getAllhotelsParams(queryParams));
+    }
+  }, [dispatch, selectedCountryId, selectedCityId, selectedSportId]);
+
+  useEffect(() => {
+    handleSubmit();
+  }, [selectedCountryId, selectedCityId, selectedSportId, handleSubmit]);
+
+  useEffect(() => {
+    dispatch(getAllSports());
+    dispatch(getAllCountry());
+  }, [dispatch]);
+
   const { dutch } = useAppSelector((state) => state.changeIdiomaSlice);
   const { data } = useAppSelector(
     (state: { getAllSportsSlice: any }) => state.getAllSportsSlice,
@@ -25,9 +100,7 @@ const SectionOffers1 = () => {
   const { data: facilitiesData } = useAppSelector(
     (state: { getAllFacilitiesSlice: any }) => state.getAllFacilitiesSlice,
   );
-  const { data: countryData } = useAppSelector(
-    (state: { getAllCountrySlice: any }) => state.getAllCountrySlice,
-  );
+
   const { data: conditionsData } = useAppSelector(
     (state: { getAllConditionSlice: any }) => state.getAllConditionSlice,
   );
@@ -146,7 +219,72 @@ const SectionOffers1 = () => {
         </button>
       </div>
       <div className={styles.containerSection}>
-        <div className={styles.containerInputsFilterSelect}></div>
+        <div className={styles.containerInputsFilterSelect}>
+          <label className={styles.label}>
+            <span className={styles.span}>
+              <img src={IMGRunning} alt="running ico" /> Sport
+            </span>
+            <select
+              name="Sport"
+              onChange={handleSportChange}
+              value={selectedSportId}
+              className={styles.select}
+            >
+              <option value="0">Select a sport</option>
+              {sportData.length > 0
+                ? sportData.map((sport) => (
+                    <option key={sport.id} value={sport.id}>
+                      {sport.sport}
+                    </option>
+                  ))
+                : null}
+            </select>
+          </label>
+
+          <label className={styles.label}>
+            <span className={styles.span}>
+              <img src={IMGCountry} alt="country ico" /> Country
+            </span>
+            <select
+              name="Country"
+              onChange={handleCountryChange}
+              value={selectedCountry}
+              className={styles.select}
+            >
+              <option value="0">Select a country</option>
+              {countryData.length > 0
+                ? countryData.map((country) => (
+                    <option key={country.id} value={country.name}>
+                      {country.name}
+                    </option>
+                  ))
+                : 'No data'}
+            </select>
+          </label>
+
+          <label className={styles.label}>
+            <span className={styles.span}>
+              <img src={IMGCity} alt="city ico" /> City
+            </span>
+            <select
+              name="City"
+              disabled={!selectedCountry}
+              onChange={handleCityChange}
+              value={selectedCityId}
+              className={styles.select}
+            >
+              {citiesByCountry.length > 0 ? (
+                citiesByCountry.map((city: any) => (
+                  <option key={city.id} value={city.id}>
+                    {city.name}
+                  </option>
+                ))
+              ) : (
+                <option value="0">Select a country first</option>
+              )}
+            </select>
+          </label>
+        </div>
         <div className={styles.hotelsAndFilters}>
           {hotelData.length > 0 ? (
             <div className={styles.container}>
@@ -185,7 +323,7 @@ const SectionOffers1 = () => {
               </div>
             </div>
           ) : (
-            <h1>Loading...</h1>
+            <h1 className='loadingText'>Loading...</h1>
           )}
           {data.length > 0 ? (
             <div className={styles.filter}>
