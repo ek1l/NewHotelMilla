@@ -14,6 +14,7 @@ import getAllConditionSlice from './reducers/getAllCondition';
 import getAllTravelTimeSlice from './reducers/getAllNewTravelTime';
 import getAllRatingsSlice from './reducers/getAllRating';
 import changeIdiomaSlice from './reducers/idioma';
+import getOneHotelSlice from './reducers/getOneHotel';
 const store = configureStore({
   reducer: {
     getAllCountrySlice: getAllCountrySlice,
@@ -30,6 +31,7 @@ const store = configureStore({
     getAllTravelTimeSlice: getAllTravelTimeSlice,
     getAllRatingsSlice: getAllRatingsSlice,
     changeIdiomaSlice: changeIdiomaSlice,
+    getOneHotelSlice: getOneHotelSlice,
   },
 });
 

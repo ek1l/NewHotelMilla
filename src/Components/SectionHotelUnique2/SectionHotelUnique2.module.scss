@@ -1,0 +1,199 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+.section {
+  @include flexDefault;
+  flex-direction: column;
+
+  margin-bottom: 100px;
+  .containerSection {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    width: 1295px;
+    max-width: 100%;
+    height: 100%;
+    .containerEsquerdo {
+      width: 823px;
+      max-width: 100%;
+      height: 100%;
+      gap: 30px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-direction: column;
+      .commentContainer {
+        @include flexDefault;
+        width: 100%;
+        height: 223px;
+        border-radius: 20px;
+        border: 2px solid $color-white;
+        padding: 5px;
+        .infoComment {
+          display: flex;
+          align-items: flex-start;
+          justify-content: flex-start;
+          flex-direction: column;
+          gap: 20px;
+          width: 80%;
+          height: 80%;
+          .photoAndComment {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            gap: 20px;
+            .img {
+              border-radius: 50%;
+              width: 110px;
+              height: 110px;
+              object-fit: cover;
+              max-width: 100%;
+              max-height: 100%;
+            }
+            .comment {
+              font-weight: 400;
+              font-size: 16px;
+              line-height: 20px;
+              color: $color-white;
+            }
+          }
+          .nameAuthor {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            .name {
+              font-size: 16px;
+              font-weight: 600;
+              color: $color-green;
+            }
+          }
+        }
+      }
+      .containerFilters {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 20px;
+        flex-wrap: wrap;
+        .filters {
+          width: 143px;
+          max-width: 100%;
+          height: 32px;
+          font-size: 10px;
+          font-weight: 400;
+          color: $color-text;
+          background: $color-green;
+          border-radius: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: default;
+          transition: 0.3s;
+
+          &:hover {
+            background: $color-green-hover;
+          }
+        }
+      }
+
+      .containerDescriptions {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+    .containerDireito {
+      width: 431px;
+      max-width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-direction: column;
+      gap: 20px;
+
+      .cardUniqueHotel {
+        @include flexDefault;
+        flex-direction: column;
+        width: 100%;
+        height: 533px;
+        background: $color-blue-light;
+        border-radius: 20px;
+        .card {
+          display: flex;
+          align-items: flex-start;
+          justify-content: flex-start;
+          flex-direction: column;
+          gap: 20px;
+          width: 90%;
+          height: 90%;
+          border-radius: 20px;
+          .titleCard {
+            color: $color-green;
+            font-weight: 900;
+            font-size: 30px;
+            line-height: 36px;
+          }
+          .DaysAndConditionSpan {
+            color: $color-white;
+            font-size: 16px;
+            font-weight: 500;
+          }
+          .descriptionCard {
+            color: $color-white;
+            font-size: 24px;
+            font-weight: 800;
+          }
+
+          .textAndBallGreen {
+            width: 100%;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            gap: 10px;
+            margin-top: 20px;
+            .ball {
+              width: 15px;
+              height: 15px;
+              background: $color-green;
+              border-radius: 50%;
+            }
+            .text {
+              color: $color-white;
+              font-size: 12px;
+              font-weight: 500;
+            }
+          }
+          .buttonAsk {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: flex-end;
+            .button {
+              width: 100%;
+              height: 50px;
+              outline: none;
+              border: none;
+              background: $color-green;
+              color: $color-text;
+              border-radius: 10px;
+              font-size: 16px;
+              font-weight: 700;
+            }
+          }
+        }
+      }
+      .imgVideo {
+        width: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+}

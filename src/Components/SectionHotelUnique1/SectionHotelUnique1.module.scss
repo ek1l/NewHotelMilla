@@ -1,0 +1,126 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.section {
+  @include flexDefault;
+  margin-top: 40px;
+  margin-bottom: 100px;
+
+  .containerSection {
+    @include flexDefault;
+    flex-direction: column;
+    width: 1295px;
+    max-width: 100%;
+    height: 100%;
+    gap: 20px;
+    .offersAndHotelNameAndStarAndCityAndCountry {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-direction: column;
+      gap: 20px;
+
+      .link {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-weight: 400;
+        font-size: 14px;
+        color: $color-green;
+
+        .arrowBack {
+          transform: rotate(90deg);
+          object-fit: contain;
+        }
+      }
+
+      .hotelNameAndStars {
+        @include flexDefault;
+        gap: 20px;
+
+        .hotelName {
+          color: $color-white;
+          font-weight: 600;
+          font-size: 20px;
+        }
+
+        .stars {
+          object-fit: contain;
+        }
+      }
+
+      .cityAndCountry {
+        @include flexDefault;
+        gap: 20px;
+
+        .cityAndCountrySpan {
+          color: $color-white;
+          font-weight: 400;
+          font-size: 14px;
+        }
+      }
+    }
+    .carroussel {
+      position: relative;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      .arrow {
+        position: absolute;
+        bottom: 50%;
+        transform: translateY(-50%);
+        background: $color-text;
+        border-radius: 50%;
+        border: none;
+        width: 40px;
+        height: 43px;
+        cursor: pointer;
+        transition: 0.3s;
+        &:hover {
+          background: $color-text-hover;
+        }
+      }
+
+      .arrow:first-of-type {
+        left: 10px;
+      }
+
+      .arrow:last-of-type {
+        right: 10px;
+      }
+
+      .imageContainer {
+        width: 100%;
+        height: 606px;
+
+        .imgCarroussel {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .thumbnails {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        .thumbnail {
+          width: 159px;
+          height: 117px;
+          border-radius: 20px;
+          object-fit: cover;
+          cursor: pointer;
+          opacity: 0.5;
+          transition: opacity 0.3s;
+          &.active {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
