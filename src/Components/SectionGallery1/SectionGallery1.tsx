@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/store';
 import styles from './SectionGallery1.module.scss';
 import { getAllPhotosGallery } from '../../redux/reducers/getAllPhotosGallery';
+import { getIdPhoto } from '../../redux/reducers/getOnePhotoGallery';
+import { useNavigate } from 'react-router-dom';
 
 const SectionGallery1 = () => {
   const dispatch = useAppDispatch();
@@ -57,9 +59,12 @@ const SectionGallery1 = () => {
     });
     return { fotos, videos };
   };
-
+  const navigate = useNavigate();
   const { fotos, videos } = separarMedia(data);
-
+  const getIdPhotoFunction = (id: any) => {
+    dispatch(getIdPhoto(id));
+    navigate(`/gallery/${id}`);
+  };
   return (
     <section className={styles.section}>
       {data.length > 0 ? (
@@ -70,7 +75,11 @@ const SectionGallery1 = () => {
           <div className={styles.containerPhotosAndVideos}>
             {fotos.map((item: any, index: number) => (
               <>
-                <div key={index} className={styles.itemContainer}>
+                <div
+                  onClick={() => getIdPhotoFunction(item.id)}
+                  key={index}
+                  className={styles.itemContainer}
+                >
                   <img
                     className={styles.img}
                     src={`${import.meta.env.VITE_APP_API_IMAGE}/${item.path}`}

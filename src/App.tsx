@@ -13,6 +13,7 @@ const HotelUnique = lazy(() => import('./pages/hotelUnique/HotelUnique'));
 const News = lazy(() => import('./pages/News/News'));
 const NewsUnique = lazy(() => import('./pages/NewsUnique/NewsUnique'));
 const Gallery = lazy(() => import('./pages/Gallery/Gallery'));
+const GalleryUnique = lazy(() => import('./pages/GalleryUnique/GalleryUnique'));
 
 const App = () => {
   const { active } = useAppSelector((state) => state.notifyEmailSendSlice);
@@ -42,6 +43,7 @@ const App = () => {
             <Route path="/news" element={<News />} />
             <Route path="/news/:id" element={<NewsUnique />} />
             <Route path="/gallery" element={<Gallery />} />
+            <Route path="/gallery/:id" element={<GalleryUnique />} />
           </Routes>
           <Footer />
         </Suspense>

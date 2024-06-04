@@ -16,8 +16,7 @@ import getAllRatingsSlice from './reducers/getAllRating';
 import changeIdiomaSlice from './reducers/idioma';
 import getOneHotelSlice from './reducers/getOneHotel';
 import getOneNewsSlice from './reducers/getOneNews';
-
- 
+import getOnePhotoSlice from './reducers/getOnePhotoGallery';
 
 const store = configureStore({
   reducer: {
@@ -37,7 +36,7 @@ const store = configureStore({
     changeIdiomaSlice: changeIdiomaSlice,
     getOneHotelSlice: getOneHotelSlice,
     getOneNewsSlice: getOneNewsSlice,
-    
+    getOnePhotoSlice: getOnePhotoSlice,
   },
 });
 
