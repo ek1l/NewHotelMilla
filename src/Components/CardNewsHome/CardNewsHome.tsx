@@ -2,7 +2,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import styles from './CardNews.module.scss';
 import IMGArrowNews from '../../assets/img/ArrowNews.png';
-const CardNewsHome = ({ title, description, author, date, banner }: any) => {
+import { Link } from 'react-router-dom';
+const CardNewsHome = ({
+  title,
+  description,
+  author,
+  date,
+  banner,
+  id,
+}: any) => {
   const truncarString = (string: string, quantidade: number) => {
     if (string.length <= quantidade) {
       return string;
@@ -19,7 +27,7 @@ const CardNewsHome = ({ title, description, author, date, banner }: any) => {
   const descriptionFormatada = truncarString(description, 240);
   const authorFormatado = truncarString(author, 20);
   return (
-    <div className={styles.cardNewsContainer}>
+    <Link to={`/news/${id}`} className={styles.cardNewsContainer}>
       <div className={styles.imgBackGroundCountainer}>
         <img
           className={styles.img}
@@ -48,7 +56,7 @@ const CardNewsHome = ({ title, description, author, date, banner }: any) => {
           {authorFormatado}, {dataFormatada}
         </span>
       </div>
-    </div>
+    </Link>
   );
 };
 

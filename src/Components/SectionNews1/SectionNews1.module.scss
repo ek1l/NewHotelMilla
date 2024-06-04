@@ -1,0 +1,75 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.section {
+  @include flexDefault;
+  flex-direction: column;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  .containerSection2 {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 20px;
+    width: 1295px;
+    max-width: 100%;
+    height: 100%;
+    .textAndDescription {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-direction: column;
+      gap: 20px;
+
+      .title {
+        color: $color-green;
+        font-weight: 600;
+        font-size: 32px;
+      }
+
+      .description {
+        color: $color-white;
+        font-weight: 400;
+        font-size: 12px;
+      }
+    }
+    .carrossel {
+      @include flexDefault;
+      gap: 20px;
+      width: 100%;
+      height: 100%;
+      flex-direction: column;
+      .carouselInner {
+        @include flexDefault;
+        gap: 30px;
+        width: 100%;
+      }
+    }
+    .carouselIndicators {
+      @include flexDefault;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 30px;
+      gap: 10px;
+      .indicator {
+        width: 36px;
+        height: 8px;
+        border: 2px solid $color-green;
+        background: transparent;
+        border-radius: 50px;
+        cursor: pointer;
+        &.active {
+          box-shadow: rgba(211, 191, 191, 0.25) 0px 54px 55px,
+            rgba(250, 248, 248, 0.12) 0px -12px 30px,
+            rgba(0, 0, 0, 0.12) 0px 4px 6px,
+            rgba(247, 245, 245, 0.17) 0px 12px 13px,
+            rgba(0, 0, 0, 0.09) 0px -3px 5px;
+          background-color: $color-green;
+        }
+      }
+    }
+  }
+}

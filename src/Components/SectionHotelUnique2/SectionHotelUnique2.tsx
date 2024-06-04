@@ -5,7 +5,7 @@ import DescriptionHotelUnique from '../DescriptionHotelUnique/DescriptionHotelUn
 import IMGTesteVideo from '../../assets/testeIMG/testVideoUnique.png';
 const SectionHotelUnique2 = () => {
   const { data }: any = useAppSelector((state) => state.getOneHotelSlice);
-  console.log(data);
+
   return (
     <section className={styles.section}>
       {data.length > 0 ? (

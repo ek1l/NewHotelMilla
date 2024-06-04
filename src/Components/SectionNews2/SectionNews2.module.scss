@@ -1,0 +1,71 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.section {
+  @include flexDefault;
+  flex-direction: column;
+
+  margin-bottom: 100px;
+  .containerSection {
+    @include flexDefault;
+    flex-direction: column;
+    gap: 20px;
+    width: 1295px;
+    max-width: 100%;
+    height: 100%;
+    .titleAndDescription {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-direction: column;
+      gap: 20px;
+      .title {
+        font-weight: 600;
+        color: $color-green;
+        font-size: 32px;
+      }
+      .description {
+        font-size: 12px;
+        font-weight: 400;
+        color: $color-white;
+      }
+    }
+    .containerCardnews {
+      margin-top: 30px;
+      @include flexArround;
+      height: 100%;
+      gap: 20px;
+      max-height: 100%;
+      width: 100%;
+      max-width: 100%;
+      flex-wrap: wrap;
+    }
+    .containerButtonDiv {
+      width: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      .viewMoreButton {
+        width: 150px;
+        height: 40px;
+        background: transparent;
+        color: $color-white;
+        border: 2px solid $color-white;
+        border-radius: 10px;
+        outline: none;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        align-items: center;
+        font-weight: 400;
+        font-size: 14px;
+        cursor: pointer;
+        transition: 0.3s;
+        &:hover {
+          border: 2px solid $color-text;
+        }
+      }
+    }
+  }
+}

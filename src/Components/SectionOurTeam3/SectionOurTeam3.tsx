@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect } from 'react';
 import CardPlayer from '../CardPlayer/CardPlayer';
 import styles from './SectionOurTeam3.module.scss';
@@ -7,7 +8,7 @@ import { getAllPlayers } from '../../redux/reducers/getAllPlayers';
 const SectionOurTeam3 = () => {
   const dispatch = useAppDispatch();
   const { data } = useAppSelector((state) => state.getAllPlayersSlice);
-  console.log(data);
+
   useEffect(() => {
     dispatch(getAllPlayers());
   }, [dispatch]);
@@ -22,7 +23,15 @@ const SectionOurTeam3 = () => {
           </p>
         </div>
         <div className={styles.containerTeam}>
-          <CardPlayer />
+          {data.length > 0
+            ? data.map((player: any) => (
+                <CardPlayer
+                  img={player.photo}
+                  name={player.name}
+                  functionPlayer={player.role}
+                />
+              ))
+            : null}
         </div>
       </div>
     </section>

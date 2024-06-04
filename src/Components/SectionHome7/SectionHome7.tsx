@@ -8,7 +8,6 @@ import { getAllnews } from '../../redux/reducers/getAllNews';
 const SectionHome7 = () => {
   const dispatch = useAppDispatch();
   const { data } = useAppSelector((state) => state.getAllnewsSlice);
-  console.log(data);
   useEffect(() => {
     dispatch(getAllnews());
   }, [dispatch]);
@@ -32,6 +31,7 @@ const SectionHome7 = () => {
                         author={news.author}
                         date={news.createdAt}
                         banner={news.banner}
+                        id={news.id}
                       />
                     ))
                     .reverse()
