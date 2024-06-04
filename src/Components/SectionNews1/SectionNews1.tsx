@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from '../../redux/store';
 import BannerNews from '../BannerNews/BannerNews';
 import { getAllnews } from '../../redux/reducers/getAllNews';
 
-const SectionHome6 = () => {
+const SectionNews1 = () => {
   const dispatch = useAppDispatch();
   const { data }: any = useAppSelector((state) => state.getAllnewsSlice);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -50,4 +50,4 @@ const SectionHome6 = () => {
   );
 };
 
-export default SectionHome6;
+export default SectionNews1;

@@ -4,8 +4,8 @@
 .section {
   @include flexDefault;
   flex-direction: column;
-
   margin-bottom: 100px;
+
   .containerSection {
     @include flexDefault;
     flex-direction: column;

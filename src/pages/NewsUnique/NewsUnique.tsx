@@ -1,20 +1,20 @@
 import { useEffect } from 'react';
+import SectionHome4 from '../../Components/SectionHome4/SectionHome4';
 import SectionHome5 from '../../Components/SectionHome5/SectionHome5';
 import SectionHome6 from '../../Components/SectionHome6/SectionHome6';
 import SectionHome7 from '../../Components/SectionHome7/SectionHome7';
-import SectionOurTeam1 from '../../Components/SectionOurTeam1/SectionOurTeam1';
-import SectionOurTeam2 from '../../Components/SectionOurTeam2/SectionOurTeam2';
-import SectionOurTeam3 from '../../Components/SectionOurTeam3/SectionOurTeam3';
-import styles from './OurTeam.module.scss';
-const OurTeam = () => {
+import SectionNews1 from '../../Components/SectionNews1/SectionNews1';
+import SectionNewsUnique1 from '../../Components/SectionNewsUnique1/SectionNewsUnique1';
+import styles from './NewsUnique.module.scss';
+const NewsUnique = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   return (
     <main className={styles.main}>
-      <SectionOurTeam1 />
-      <SectionOurTeam2 />
-      <SectionOurTeam3 />
+      <SectionNews1 />
+      <SectionNewsUnique1 />
+      <SectionHome4 />
       <SectionHome5 />
       <SectionHome6 />
       <SectionHome7 />
@@ -22,4 +22,4 @@ const OurTeam = () => {
   );
 };
 
-export default OurTeam;
+export default NewsUnique;

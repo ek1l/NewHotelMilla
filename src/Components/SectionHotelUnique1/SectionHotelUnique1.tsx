@@ -17,6 +17,7 @@ const SectionHotelUnique1 = () => {
 
   useEffect(() => {
     dispatch(getOneHotel(String(id)));
+    window.scrollTo(0, 0);
   }, [dispatch, id]);
 
   const handlePrevClick = () => {

@@ -5,6 +5,7 @@ import { ToastContainer } from 'react-toastify';
 import NotifyEmail from './Components/NotifyEmail/NotifyEmail';
 import { useAppSelector } from './redux/store';
 import Header from './Components/Header/Header';
+import NewsUnique from './pages/NewsUnique/NewsUnique';
 
 const Home = lazy(() => import('./pages/home/Home'));
 const OurTeam = lazy(() => import('./pages/OurTeam/OurTeam'));
@@ -38,6 +39,7 @@ const App = () => {
             <Route path="/offers" element={<Offers />} />
             <Route path="/offers/:id" element={<HotelUnique />} />
             <Route path="/news" element={<News />} />
+            <Route path="/news/:id" element={<NewsUnique />} />
           </Routes>
           <Footer />
         </Suspense>
