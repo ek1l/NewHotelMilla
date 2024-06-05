@@ -142,3 +142,7 @@ body::-webkit-scrollbar-thumb {
 .loadingText {
   color: $color-white;
 }
+
+textarea {
+  resize: none;
+}

@@ -5,6 +5,8 @@ import { ToastContainer } from 'react-toastify';
 import NotifyEmail from './Components/NotifyEmail/NotifyEmail';
 import { useAppSelector } from './redux/store';
 import Header from './Components/Header/Header';
+import ModalForm from './Components/ModalForm/ModalForm';
+import OpenModal from './Components/OpenModal/OpenModal';
 
 const Home = lazy(() => import('./pages/home/Home'));
 const OurTeam = lazy(() => import('./pages/OurTeam/OurTeam'));
@@ -17,12 +19,17 @@ const GalleryUnique = lazy(() => import('./pages/GalleryUnique/GalleryUnique'));
 
 const App = () => {
   const { active } = useAppSelector((state) => state.notifyEmailSendSlice);
+  const { toggleModal } = useAppSelector((state) => state.toggleModalSlice);
+
   return (
     <>
       <BrowserRouter>
         <Suspense fallback={<div>Loading...</div>}>
-          <Header />
           {active && <NotifyEmail />}
+          {toggleModal && <ModalForm />}
+          <OpenModal />
+
+          <Header />
           <ToastContainer
             position="top-right"
             autoClose={5000}

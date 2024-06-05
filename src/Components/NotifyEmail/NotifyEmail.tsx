@@ -12,7 +12,7 @@ import { notifyEmailSend } from '../../redux/reducers/notifyEmailSend';
 import styles from './NotifyEmail.module.scss';
 
 const NotifyEmail = () => {
-  const notifyRef = useRef(null); // Referência ao elemento do notify
+  const notifyRef = useRef(null);
   const notify = () => toast.success('Email successfully sent!');
   const notifyError = () => toast.error('Email Invalid!');
   const notifyErrorSend = () => toast.error('Email not sent!');
@@ -70,7 +70,7 @@ const NotifyEmail = () => {
 
   return (
     <div
-      ref={notifyRef} // Adicione a referência ao elemento do notify
+      ref={notifyRef}
       className={`${styles.containerNotifyEmail} animationNotifySendEmail`}
     >
       <div className={styles.notifyEmail}>
