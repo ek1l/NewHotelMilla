@@ -45,7 +45,7 @@ const ModalForm = () => {
     return;
   };
   return (
-    <div className={styles.containerModalForm}>
+    <div className={`${styles.containerModalForm} animationCarroussel`}>
       <div className={styles.closeModal}>
         <button
           onClick={() => dispatch(toggleModalFunction())}
