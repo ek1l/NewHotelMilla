@@ -1,0 +1,19 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+.container {
+  width: 100%;
+  display: flex;
+  .main {
+    @include flexDefault;
+    min-height: 100vh;
+    flex-direction: column;
+    width: 100%;
+    .welcome {
+      h1 {
+        font-weight: 700;
+        font-size: 100px;
+        color: $color-white;
+      }
+    }
+  }
+}

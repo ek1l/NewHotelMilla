@@ -1,0 +1,106 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.main {
+  @include flexDefault;
+  flex-direction: column;
+  gap: 100px;
+  background: $color-white !important;
+  width: 100%;
+  height: 100%;
+  .header {
+    @include flexDefault;
+    width: 100%;
+    height: 60px;
+    h1 {
+      font-size: 40px;
+      font-weight: 700;
+      color: $color-white;
+    }
+  }
+  .containerOptions {
+    @include flexDefault;
+    flex-direction: column;
+    gap: 50px;
+    width: 1000px;
+    .optionAddNew {
+      height: 50px;
+    }
+    .optionEDIT {
+      padding: 10px;
+      height: 100%;
+      .titleEdit {
+        width: 100%;
+        @include flexDefault;
+      }
+      .containerCardsHotels {
+        width: 90%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+        gap: 30px;
+        input {
+          outline: none;
+          border: 2px solid $color-blue-weight;
+          border-radius: 20px;
+          padding: 10px;
+          font-size: 20px;
+          color: $color-blue-weight;
+          background-color: transparent;
+          ::placeholder {
+            color: $color-blue-weight;
+          }
+        }
+      }
+      .pagination {
+        @include flexDefault;
+        gap: 30px;
+        margin-top: 30px;
+        button {
+          padding: 10px;
+          height: 50px;
+          width: 50px;
+          background-color: $color-blue-weight-hover;
+          transition: 0.3s;
+          font-weight: bold;
+          font-size: 20px;
+          border: none;
+          border-radius: 10px;
+          color: white;
+          cursor: pointer;
+          &:hover {
+            background-color: $color-blue-weight;
+          }
+        }
+      }
+    }
+    .optionAddNew {
+      margin-bottom: 100px;
+    }
+    .optionEDIT,
+    .optionAddNew {
+      @include flexDefault;
+      flex-direction: column;
+      border-radius: 20px;
+      cursor: pointer;
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+        rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+        rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+      width: 100%;
+      transition: 0.3s;
+      &:hover {
+        box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+      }
+      h1 {
+        font-weight: 700;
+        font-size: 30px;
+        color: $color-blue-weight;
+        transition: 0.3s;
+        &:hover {
+          color: $color-blue-weight-hover;
+        }
+      }
+    }
+  }
+}

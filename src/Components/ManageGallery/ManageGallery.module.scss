@@ -1,0 +1,73 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+.containerGallery {
+  @include flexDefault;
+  gap: 20px;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  .titleGallery {
+    h1 {
+      font-weight: 700;
+      color: $color-blue-weight;
+      font-size: 40px;
+    }
+  }
+  .form {
+    background: gray;
+    padding: 10px;
+    border-radius: 10px;
+    button {
+      margin-bottom: 20px;
+      width: 100%;
+      height: 50px;
+      padding: 10px;
+      outline: none;
+      border: none;
+      background: whitesmoke;
+      border-radius: 10px;
+      color: $color-blue-weight;
+      font-weight: 700;
+      font-size: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+      &:hover {
+        transform: translate(0, -5px);
+      }
+    }
+  }
+  .containerPhotosGallery {
+    @include flexDefault;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+    height: 100%;
+    .containerButtonDelete {
+      position: relative;
+      .img {
+        width: 300px;
+        height: 300px;
+        object-fit: cover;
+      }
+      button {
+        height: 50px;
+        background: transparent;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        transition: 0.3s;
+        img {
+          left: 0;
+          top: 0;
+          height: 20%;
+          width: 50px;
+          position: absolute;
+          transition: 0.3s;
+          &:hover {
+            transform: scale(1.2);
+          }
+        }
+      }
+    }
+  }
+}

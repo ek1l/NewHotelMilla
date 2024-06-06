@@ -1,0 +1,41 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+.form {
+  @include flexDefault;
+  flex-direction: column;
+  background: rgb(168, 168, 168);
+  padding: 10px;
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+  gap: 30px;
+  border: 2px solid $color-blue-weight;
+  .closeButton {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    width: 70%;
+    button {
+      width: 10%;
+    }
+  }
+  h1 {
+    font-size: 30px;
+  }
+  button {
+    width: 50%;
+    background-color: $color-blue-weight;
+    color: white;
+    height: 40px;
+    cursor: pointer;
+    font-weight: 700;
+    @include flexDefault;
+    font-size: 25px;
+    outline: none;
+    border: none;
+    transition: 0.3s;
+    &:hover {
+      color: rgb(124, 123, 123);
+    }
+  }
+}

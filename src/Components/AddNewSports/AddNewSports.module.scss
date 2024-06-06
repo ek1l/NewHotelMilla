@@ -1,0 +1,83 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+.containerSports {
+  @include flexDefault;
+  gap: 20px;
+  flex-direction: column;
+  width: 400px;
+  max-width: 100%;
+  border-radius: 20px;
+  border: 2px solid $color-blue-weight;
+  padding: 10px;
+  height: 100%;
+  position: relative;
+  h2 {
+    font-weight: 700;
+    border: 2px solid $color-blue-weight;
+    border-radius: 10px;
+    padding: 10px;
+    transition: 0.3s;
+    cursor: pointer;
+    &:hover {
+      background-color: $color-blue-weight;
+      color: white;
+    }
+  }
+  .form {
+    @include flexDefault;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+    .input {
+      width: 100%;
+      padding: 10px;
+      font-size: 20px;
+      color: $color-blue-weight;
+      font-weight: 700;
+      border-radius: 20px;
+      outline: none;
+      border: none;
+      background-color: rgb(184, 184, 184);
+      &::placeholder {
+        color: $color-blue-weight;
+      }
+    }
+    .button {
+      background: rgb(184, 184, 184);
+      outline: none;
+      border: none;
+      padding: 10px;
+      font-weight: bold;
+      border-radius: 10px;
+      color: $color-blue-weight;
+      font-weight: 700;
+      font-size: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+      &:hover {
+        transform: translate(0, -5px);
+      }
+    }
+    .sport {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      span {
+        font-weight: 700;
+        font-size: 20px;
+        color: $color-blue-weight;
+      }
+      button {
+        outline: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        transition: 0.3s;
+        &:hover {
+          transform: translate(0, -5px);
+        }
+      }
+    }
+  }
+}

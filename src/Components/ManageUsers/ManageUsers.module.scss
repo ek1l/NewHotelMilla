@@ -1,0 +1,94 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+.section {
+  @include flexDefault;
+  gap: 50px;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  background: $color-white;
+  h1 {
+    font-weight: 700;
+    font-size: 100px;
+    color: $color-blue-weight;
+  }
+  button {
+    outline: none;
+    border: none;
+    background-color: $color-blue-weight;
+    color: white;
+    padding: 10px;
+    height: 50px;
+    width: 20%;
+    font-weight: 700;
+    font-size: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover {
+      color: rgb(150, 149, 149);
+    }
+  }
+  .addNewFormUserContainer {
+    height: 100%;
+    width: 100%;
+  }
+  .editFormUserContainer {
+    width: 100%;
+    height: 100%;
+  }
+  .usersList {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+    height: 100%;
+    width: 100%;
+    .cardUser {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      width: 100%;
+      gap: 50px;
+      border-radius: 20px;
+      padding: 20px;
+      height: 100%;
+      transition: 0.3s;
+      box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+        rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+      &:hover {
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+          rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+          rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+      }
+      h3 {
+        color: $color-blue-weight;
+        font-weight: 700;
+        font-size: 20px;
+      }
+      .actions {
+        @include flexDefault;
+        gap: 20px;
+        button {
+          outline: none;
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          transition: 0.3s;
+          width: 100%;
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+  }
+}
+
+.errorDelete {
+  color: red;
+  font-weight: bold;
+  font-size: 30px;
+}

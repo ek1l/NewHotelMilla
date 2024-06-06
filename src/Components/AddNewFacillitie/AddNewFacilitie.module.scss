@@ -1,0 +1,130 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.containerCreateNewFacilitie {
+  @include flexDefault;
+  gap: 20px;
+  flex-direction: column;
+  width: 400px;
+  max-width: 100%;
+  border-radius: 20px;
+  border: 2px solid $color-blue-weight;
+  padding: 10px;
+  height: 100%;
+  position: relative;
+  h2 {
+    font-weight: 700;
+    border: 2px solid $color-blue-weight;
+    border-radius: 10px;
+    padding: 10px;
+    transition: 0.3s;
+    cursor: pointer;
+    &:hover {
+      background-color: $color-blue-weight;
+      color: white;
+    }
+  }
+  .form {
+    width: 100%;
+    @include flexDefault;
+    flex-direction: column;
+    gap: 20px;
+    .input,
+    .inputFacilitie {
+      outline: none;
+      border: none;
+      background: rgb(184, 184, 184);
+      color: $color-blue-weight;
+      width: 100%;
+      height: 30px;
+      font-size: 20px;
+      font-weight: 700;
+      padding: 10px;
+      border-radius: 10px;
+      &::placeholder {
+        color: $color-blue-weight;
+      }
+    }
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      span {
+        font-weight: 700;
+        font-size: 20px;
+        color: $color-blue-weight;
+      }
+      .inputFacilitie {
+        height: 100%;
+      }
+    }
+    .button {
+      outline: none;
+      border: none;
+      font-weight: 700;
+      font-size: 20px;
+      color: $color-blue-weight;
+      background-color: rgb(184, 184, 184);
+      padding: 10px;
+      border-radius: 10px;
+      width: 100%;
+      cursor: pointer;
+      transition: 0.3s;
+      &:hover {
+        background-color: rgb(179, 179, 179);
+        transform: translate(0, -5px);
+      }
+    }
+  }
+
+  .containerFacilities {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+    height: 100%;
+    .facilitie {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: 0.3s;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      padding: 10px;
+      border-radius: 10px;
+      &:hover {
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+      }
+      .nameAndIcon {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        img {
+          width: 50px;
+          height: 50px;
+          object-fit: cover;
+          border-radius: 5px;
+        }
+      }
+      .actions {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        .buttonAction {
+          border: none;
+          background: none;
+          cursor: pointer;
+          opacity: 0.6;
+          transition: 0.3s;
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+  .containerEdit {
+    width: 100%;
+    min-height: 100vh;
+    position: absolute;
+  }
+}

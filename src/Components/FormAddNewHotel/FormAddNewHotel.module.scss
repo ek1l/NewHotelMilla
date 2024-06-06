@@ -1,0 +1,213 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  position: fixed;
+  z-index: 9999999999999999999999999;
+  bottom: 0;
+  left: 0;
+  .form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    background-color: #cacaca;
+    .closeButtonContainer {
+      width: 97%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      height: 80px;
+      padding: 10px;
+      button {
+        outline: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+    }
+    .containerForm {
+      @include flexDefault;
+      flex-direction: column;
+      width: 100%;
+      margin: 0 auto;
+      height: 100%;
+      .titleContactUs {
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+
+        h2 {
+          color: $color-black;
+          font-weight: 700;
+          font-size: 40px;
+        }
+      }
+      .containerInputs {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        overflow: scroll;
+        gap: 50px;
+        width: 100%;
+        height: 100%;
+        padding-bottom: 100px;
+        label {
+          span {
+            font-weight: bold;
+          }
+          input {
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+              rgba(0, 0, 0, 0.12) 0px -12px 30px,
+              rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px,
+              rgba(0, 0, 0, 0.09) 0px -3px 5px;
+          }
+        }
+        .textAreaInputsContainer {
+          display: flex;
+          gap: 20px;
+          width: 80%;
+        }
+        .containerFiles {
+          width: 40%;
+          .containerPhotos {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            gap: 20px;
+            width: 100%;
+            flex-wrap: wrap;
+            .selectedImageContainer {
+              @include flexDefault;
+              img {
+                width: 300px;
+                height: 300px;
+                object-fit: cover;
+                opacity: 0.9;
+                transition: 0.3s;
+                border-radius: 30px;
+                box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
+                  rgba(0, 0, 0, 0.23) 0px 6px 6px;
+                &:hover {
+                  opacity: 1;
+                }
+              }
+            }
+          }
+        }
+        .containerButton {
+          width: 100%;
+          padding-bottom: 10px;
+          @include flexDefault;
+          button {
+            outline: none;
+            border: none;
+            background: $color-black;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            border-radius: 20px;
+            padding: 10px;
+            height: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 40%;
+            &:hover {
+              background: $color-blue;
+            }
+          }
+        }
+      }
+    }
+    .select {
+      select {
+        padding: 10px;
+        height: 100%;
+        color: $color-black;
+        border: none;
+        outline: none;
+        background: white;
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+button:disabled {
+  opacity: 0.5;
+  background-color: gray !important;
+  cursor: default !important;
+  opacity: 1;
+}
+
+.border_bottom {
+  height: 2px;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
+}
+
+input[type='file'] {
+  border-radius: 20px;
+  padding: 10px;
+  font-weight: bold;
+  color: $color-black;
+}
+
+.containerLabelsSelect {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  width: 100%;
+  .select {
+    background: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    span {
+      font-weight: 700;
+      color: $color-black;
+      font-size: 20px;
+    }
+  }
+}
+
+.facilitiesSelected {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5;
+  border: 2px solid$color-black;
+  border-radius: 10px;
+  gap: 20px;
+  p {
+    font-size: 20px;
+    font-weight: 700;
+    color: $color-black;
+  }
+  .selectedFacility {
+    button {
+      outline: none;
+      font-weight: bold;
+      border: none;
+      background: gray;
+      height: 20px;
+      width: 10px;
+      border-radius: 10px;
+      color: $color-black;
+      cursor: pointer;
+      transition: 0.3s;
+      &:hover {
+        background: $color-black;
+        color: white;
+      }
+    }
+  }
+}

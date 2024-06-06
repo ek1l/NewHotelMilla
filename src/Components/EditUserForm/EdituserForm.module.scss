@@ -1,0 +1,45 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.form {
+  @include flexDefault;
+  flex-direction: column;
+  background: rgb(168, 168, 168);
+  padding: 10px;
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+  gap: 30px;
+  border: 2px solid $color-blue-weight;
+  h1 {
+    font-size: 30px;
+  }
+  .closeButton {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    width: 70%;
+    button {
+      width: 10%;
+    }
+  }
+
+  input,
+  select {
+    width: 50%;
+    padding: 10px;
+    height: 10%;
+    font-size: 25px;
+    border: none;
+    outline: none;
+    background-color: white;
+    color: $color-blue-weight;
+    ::placeholder {
+      color: $color-blue-weight;
+    }
+  }
+}
+
+.error {
+  color: red;
+}

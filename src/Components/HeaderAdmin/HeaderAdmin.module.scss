@@ -1,0 +1,28 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+.header {
+  @include flexDefault;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  background-color: #efeded;
+  padding: 10px;
+  h1 {
+    display: flex;
+    font-weight: 700;
+    font-size: 50px;
+    color: $color-blue-weight;
+  }
+  p {
+    font-weight: 700;
+    font-size: 30px;
+    color: red;
+    a {
+      color: rgb(134, 0, 0);
+      transition: 0.3s;
+      &:hover {
+        color: rgb(255, 85, 85);
+      }
+    }
+  }
+}

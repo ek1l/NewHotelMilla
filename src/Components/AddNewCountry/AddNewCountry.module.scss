@@ -1,0 +1,137 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+.containerCreateNewCountry {
+  @include flexDefault;
+  gap: 20px;
+  flex-direction: column;
+  width: 400px;
+  max-width: 100%;
+  border-radius: 20px;
+  border: 2px solid $color-blue-weight;
+  padding: 10px;
+  height: 100%;
+  h2 {
+    font-weight: 700;
+    border: 2px solid $color-blue-weight;
+    border-radius: 10px;
+    padding: 10px;
+    transition: 0.3s;
+    cursor: pointer;
+    &:hover {
+      background-color: $color-blue-weight;
+      color: white;
+    }
+  }
+  .form {
+    width: 100%;
+    @include flexDefault;
+    flex-direction: column;
+    gap: 20px;
+    .input {
+      outline: none;
+      border: none;
+      background: rgb(184, 184, 184);
+      color: $color-blue-weight;
+      width: 100%;
+      height: 30px;
+      font-size: 20px;
+      font-weight: 700;
+      padding: 10px;
+      border-radius: 10px;
+      &::placeholder {
+        color: $color-blue-weight;
+      }
+    }
+    .button {
+      outline: none;
+      border: none;
+      font-weight: 700;
+      font-size: 20px;
+      color: $color-blue-weight;
+      background-color: rgb(184, 184, 184);
+      padding: 10px;
+      border-radius: 10px;
+      width: 100%;
+      cursor: pointer;
+      transition: 0.3s;
+      &:hover {
+        background-color: rgb(179, 179, 179);
+        transform: translate(0, -5px);
+      }
+    }
+  }
+  .countries {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 10px;
+    span {
+      font-weight: 700;
+      font-size: 20px;
+      color: $color-blue-weight;
+    }
+  }
+}
+.editExclude {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  span {
+    color: $color-blue-weight;
+    font-weight: 700;
+    font-size: 20px;
+  }
+  .buttonsEditAndExclude {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    button {
+      outline: none;
+      cursor: pointer;
+      border: none;
+      background: none;
+      img {
+        opacity: 0.6;
+        transition: 0.3s;
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+.input {
+  outline: none;
+  border-radius: 10px;
+  padding: 10px;
+  height: 30px;
+  width: 70%;
+  background: rgb(184, 184, 184);
+  border: none;
+  color: $color-blue-weight;
+  font-size: 20px;
+  font-weight: 700;
+  &::placeholder {
+    color: $color-blue-weight;
+  }
+}
+
+.sendEditBTN {
+  outline: none;
+  border: none;
+  font-size: 20px;
+  font-weight: 700;
+  color: $color-blue-weight;
+  padding: 5px;
+  transition: 0.3s;
+  cursor: pointer;
+  &:hover {
+    transform: translate(0, -5px);
+    color: $color-blue-weight-hover;
+  }
+}

@@ -7,6 +7,7 @@ import { useAppSelector } from './redux/store';
 import Header from './Components/Header/Header';
 import ModalForm from './Components/ModalForm/ModalForm';
 import OpenModal from './Components/OpenModal/OpenModal';
+import FormAddNewHotel from './Components/FormAddNewHotel/FormAddNewHotel';
 
 const Home = lazy(() => import('./pages/home/Home'));
 const OurTeam = lazy(() => import('./pages/OurTeam/OurTeam'));
@@ -16,11 +17,14 @@ const News = lazy(() => import('./pages/News/News'));
 const NewsUnique = lazy(() => import('./pages/NewsUnique/NewsUnique'));
 const Gallery = lazy(() => import('./pages/Gallery/Gallery'));
 const GalleryUnique = lazy(() => import('./pages/GalleryUnique/GalleryUnique'));
-
+const AdminPanel = lazy(() => import('./pages/AdminPanel/AdminPanel'));
+const Admin = lazy(() => import('./pages/Admin/Admin'));
 const App = () => {
   const { active } = useAppSelector((state) => state.notifyEmailSendSlice);
   const { toggleModal } = useAppSelector((state) => state.toggleModalSlice);
-
+  const { toggleModalAdmin } = useAppSelector(
+    (state) => state.toggleModalAdminSlice,
+  );
   return (
     <>
       <BrowserRouter>
@@ -28,7 +32,7 @@ const App = () => {
           {active && <NotifyEmail />}
           {toggleModal && <ModalForm />}
           <OpenModal />
-
+          {toggleModalAdmin ? <FormAddNewHotel /> : null}
           <Header />
           <ToastContainer
             position="top-right"
@@ -51,6 +55,8 @@ const App = () => {
             <Route path="/news/:id" element={<NewsUnique />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/gallery/:id" element={<GalleryUnique />} />
+            <Route path="/admin/login" element={<Admin />} />
+            <Route path="/admin/login/panel" element={<AdminPanel />} />
           </Routes>
           <Footer />
         </Suspense>

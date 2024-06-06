@@ -1,0 +1,50 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+.header {
+  background: #efeded;
+  min-height: 100vh;
+  width: 20vw;
+  padding: 20px;
+  nav {
+    h1 {
+      color: $color-blue-weight;
+      font-weight: 700;
+      font-size: 24px;
+    }
+    ul {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      li {
+        font-weight: 700;
+        font-size: 20px;
+        color: $color-blue-weight;
+        width: 50%;
+        cursor: pointer;
+        transition: 0.3s;
+        &:hover {
+          color: $color-blue-weight-hover;
+        }
+      }
+    }
+  }
+  .logout {
+    border: 2px solid $color-blue-weight;
+    outline: none;
+    background: transparent;
+    color: $color-blue-weight;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover {
+      background-color: $color-blue-weight;
+      color: white;
+    }
+  }
+}
+hr {
+  margin-top: 20px;
+}

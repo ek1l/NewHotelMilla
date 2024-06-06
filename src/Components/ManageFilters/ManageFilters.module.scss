@@ -1,0 +1,16 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+.sectionManageFilters {
+  width: 100%;
+  min-height: 100vh;
+  .container {
+    display: flex;
+    justify-content: flex-start;
+    margin: 0 auto;
+    padding: 10px;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 50px;
+    height: 100%;
+  }
+}

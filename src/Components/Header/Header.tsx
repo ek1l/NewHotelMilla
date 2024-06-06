@@ -3,8 +3,12 @@ import IMGLogo from '../../assets/img/logo.png';
 import IMGAdidas from '../../assets/img/adidas.png';
 import IMGUefa from '../../assets/img/uefa.png';
 import IMGSgrz from '../../assets/img/sgrz.png';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 const Header = () => {
+  const location = useLocation();
+  if (location.pathname.startsWith('/admin/login')) {
+    return;
+  }
   return (
     <header className={styles.header}>
       <div className={styles.colorOrange}></div>

@@ -1,0 +1,106 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+.section {
+  width: 100%;
+  height: 100%;
+  @include flexDefault;
+  flex-direction: column;
+  gap: 50px;
+  .title {
+    @include flexDefault;
+    width: 100%;
+    h1 {
+      color: $color-blue-weight;
+      font-size: 40px;
+      font-weight: bold;
+    }
+  }
+  .addPlayer {
+    @include flexDefault;
+    flex-direction: column;
+    margin-top: 20px;
+    gap: 30px;
+    margin-bottom: 20px;
+    width: 70%;
+    height: 100%;
+    button {
+      outline: none;
+      border: 2px solid $color-blue-weight;
+      background: transparent;
+      cursor: pointer;
+      color: $color-blue-weight;
+      border-radius: 20px;
+      padding: 20px;
+      width: 300px;
+      height: 30px;
+      text-align: center;
+      @include flexDefault;
+      font-weight: bold;
+      font-size: 24px;
+      transition: 0.3s;
+      &:hover {
+        transform: scale(1.1);
+        background-color: $color-blue-weight;
+        color: white;
+      }
+    }
+  }
+  .containerCardsPlayer {
+    @include flexDefault;
+    margin-bottom: 40px;
+    gap: 30px;
+    flex-wrap: wrap;
+    width: 70%;
+    margin-top: 20px;
+    .cardPlayer {
+      position: relative;
+      .infoPlayer {
+        h2,
+        p {
+          color: $color-blue-weight;
+        }
+      }
+      .image {
+        object-fit: cover;
+        opacity: 0.9;
+        transition: 0.3s;
+        width: 300px;
+        height: 300px;
+        &:hover {
+          opacity: 1;
+        }
+      }
+      .actions {
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        padding: 10px;
+        position: absolute;
+        top: 15px;
+        right: 0;
+        width: 25%;
+        gap: 20px;
+        button {
+          outline: none;
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          transition: 0.3s;
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+  }
+  .pagination {
+    @include flexDefault;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+  .titleEdit {
+    color: $color-blue-weight;
+    font-size: 30px;
+    font-weight: bold;
+  }
+}

@@ -1,0 +1,63 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+.containerFacilitieForm {
+  width: 100%;
+  height: 66%;
+  border-radius: 20px;
+  background-color: gray;
+  position: absolute;
+  padding: 10px;
+  bottom: 0;
+  z-index: 5555;
+  border: 5px solid $color-blue-weight;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    .title {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      h3 {
+        font-weight: 700;
+        font-size: 24px;
+        color: $color-blue-weight;
+      }
+      button {
+        outline: none;
+        background: transparent;
+        font-weight: 700;
+        color: $color-blue-weight;
+        border: none;
+        font-size: 24px;
+        transition: 0.3s;
+        cursor: pointer;
+        &:hover {
+          transform: scale(1.2);
+        }
+      }
+    }
+    .submitButton {
+      @include flexDefault;
+      outline: none;
+      width: 100%;
+      height: 40px;
+      cursor: pointer;
+      transition: 0.3s;
+      border: none;
+      border-radius: 20px;
+      padding: 10px;
+      font-weight: 700;
+      font-size: 24px;
+      background: $color-blue-weight;
+      color: white;
+      &:hover {
+        background: $color-blue-weight-hover;
+      }
+    }
+  }
+}

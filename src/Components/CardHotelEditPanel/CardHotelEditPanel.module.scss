@@ -1,0 +1,114 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.card {
+  margin-top: 30px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 20px;
+  width: 100%;
+  border-radius: 20px;
+  padding: 10px;
+  transition: 0.3s;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  .imageContainer {
+    img {
+      opacity: 0.9;
+      border-radius: 20px;
+      transition: 0.3s;
+      object-fit: cover;
+      width: 286px;
+      height: 290px;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+  .info {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 100%;
+    gap: 20px;
+    .titleAndLocal {
+      h1 {
+        word-wrap: break-word;
+        font-weight: 500;
+        font-size: 24px;
+        color: $color-blue-weight;
+      }
+      p {
+        color: $color-blue-weight;
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
+    .facilities {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      .facility {
+        display: flex;
+        gap: 20px;
+        p {
+          color: $color-blue-weight;
+        }
+      }
+    }
+    .description {
+      width: 358px;
+      max-width: 100%;
+      word-wrap: break-word;
+      p {
+        color: $color-blue-weight;
+      }
+    }
+    .stars {
+      @include flexDefault;
+      background: $color-blue-weight;
+      gap: 5px;
+      width: 80px;
+      height: 43px;
+      padding: 10px;
+
+      span {
+        color: white;
+        font-size: 24px;
+        font-weight: 500;
+      }
+      img {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+      }
+    }
+    .actions {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      button {
+        outline: none;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        padding: 10px;
+        border-radius: 10px;
+        transition: 0.3s;
+        &:hover {
+          box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+            rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+            rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        }
+      }
+    }
+  }
+}
+
+.imgCardFacilities {
+  width: 17px;
+}
