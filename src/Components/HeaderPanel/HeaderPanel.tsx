@@ -11,6 +11,7 @@ const HeaderPanel = ({
   manageFilters,
   manageGallery,
   manageNews,
+  manageSlider,
 }: any) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -32,6 +33,7 @@ const HeaderPanel = ({
           <li onClick={manageNews}>Manage news</li>
           <li onClick={manageFilters}>Manage filters</li>
           <li onClick={manageGallery}>Manage Gallery</li>
+          <li onClick={manageSlider}>Manage Slider</li>
         </ul>
       </nav>
       <hr />

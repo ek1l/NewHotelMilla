@@ -7,11 +7,8 @@ import InputTextArea from '../InputTextArea/InputTextArea';
 import styles from './FormAddNewHotel.module.scss';
 import CloseModalIMG from '../../assets/img/closeModalIMG.svg';
 import { useAppDispatch, useAppSelector } from '../../redux/store';
-
 import { useForm } from 'react-hook-form';
-
 import { toast } from 'react-toastify';
-
 import { toggleModalAdminFunction } from '../../redux/reducers/toggleModalFormAdmin';
 import { getAllCountry } from '../../redux/reducers/getAllCountry';
 import { getAllSports } from '../../redux/reducers/getAllSports';
@@ -48,11 +45,15 @@ const FormAddNewHotel = () => {
   const { loading } = useAppSelector((state) => state.createHotelsSlice);
 
   const { register, handleSubmit } = useForm();
-
   const [selectedSports, setSelectedSports] = useState<string[]>([]);
   const [selectedFacilities, setSelectedFacilities] = useState<string[]>([]);
   const [selectedTravelTimes, setSelectedTravelTimes] = useState<string[]>([]);
   const [selectedConditions, setSelectedConditions] = useState<string[]>([]);
+  const [promotion, setPromotion] = useState<boolean>(false);
+
+  const handlePromotion = () => {
+    setPromotion(!promotion);
+  };
 
   const handleToggleModalAdmin = () => {
     dispatch(toggleModalAdminFunction());
@@ -167,7 +168,7 @@ const FormAddNewHotel = () => {
     if (formData.travelTimeId === '' || formData.travelTimeId === 'Select Time')
       return;
     if (selectedSports.length === 0) return;
-    if (selectedFacilities.length === 0) return;
+
     if (selectedTravelTimes.length === 0) return;
     if (selectedConditions.length === 0) return;
 
@@ -191,22 +192,31 @@ const FormAddNewHotel = () => {
       cityId: formData.cityId,
       conditionId: formData.conditionId,
       travelTimeId: formData.travelTimeId,
-      movie: formData.movie,
+      hotelMovie: formData.hotelMovie,
+      card: {
+        description1: formData.description1,
+        description2: formData.description2,
+        description3: formData.description3,
+      },
+      promotion: promotion,
     };
 
     const formDataToSend = new FormData();
     formDataToSend.append('name', newObjHotel.name);
+
     formDataToSend.append(
       'description',
       JSON.stringify(newObjHotel.description),
     );
-    formDataToSend.append('movie', newObjHotel.movie);
+
     formDataToSend.append('comment', JSON.stringify(newObjHotel.comment));
     formDataToSend.append('sportsIds', JSON.stringify(newObjHotel.sportsIds));
+    formDataToSend.append('card', JSON.stringify(newObjHotel.card));
     formDataToSend.append(
       'facilitiesIds',
       JSON.stringify(newObjHotel.facilitiesIds),
     );
+
     formDataToSend.append(
       'travelTimeIds',
       JSON.stringify(newObjHotel.travelTimesIds),
@@ -216,11 +226,15 @@ const FormAddNewHotel = () => {
       JSON.stringify(newObjHotel.conditionsIds),
     );
     formDataToSend.append('cityId', newObjHotel.cityId);
+    formDataToSend.append(
+      'promotion',
+      String(newObjHotel.promotion === true ? true : false),
+    );
 
-    // @ts-ignore
-    formDataToSend.append('ratingId', newObjHotel.ratingId);
-    // @ts-ignore
+    formDataToSend.append('ratingId', String(newObjHotel.ratingId));
     formDataToSend.append('authors', formData.authors[0]);
+    formDataToSend.append('hotelMovie', newObjHotel.hotelMovie[0]);
+
     if (formData.image && formData.image.length > 0) {
       for (let i = 0; i < formData.image.length; i++) {
         formDataToSend.append('hotel', formData.image[i]);
@@ -228,7 +242,7 @@ const FormAddNewHotel = () => {
     }
 
     const response = await dispatch(createHotel(formDataToSend));
-
+    console.log(response);
     if (response.type === 'createHotel/fulfilled') {
       notifySuccessCreated();
       handleToggleModalAdmin();
@@ -451,6 +465,31 @@ const FormAddNewHotel = () => {
               <InputTextArea {...register('activities')} label="Activities" />
             </div>
 
+            <div className={styles.textAreaInputsContainer}>
+              <Input
+                label="Description card 1"
+                type="text"
+                {...register('description1')}
+                height="120px"
+                width="100%"
+              />
+              <Input
+                label="Description card 2"
+                type="text"
+                {...register('description2')}
+                height="120px"
+                width="100%"
+              />
+              <Input
+                label="Description card 3"
+                type="text"
+                {...register('description3')}
+                height="120px"
+                width="100%"
+              />
+              <input type="checkbox" onChange={handlePromotion} />
+            </div>
+
             <div className={styles.containerFiles}>
               <Input
                 label="Photos"
@@ -462,9 +501,9 @@ const FormAddNewHotel = () => {
                 width="100%"
               />
               <Input
-                label="Link video youtube"
-                type="text"
-                {...register('movie')}
+                label="Video Hotel"
+                type="file"
+                {...register('hotelMovie')}
                 height="120px"
                 width="100%"
               />

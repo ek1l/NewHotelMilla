@@ -1,5 +1,6 @@
 import styles from './SectionHome4.module.scss';
-import IMGRetangleTest from '../../assets/testeIMG/retangleTeste.png';
+import IMGMulherRedes from '../../assets/img/mulheresrede.png';
+
 const SectionHome4 = () => {
   return (
     <section className={styles.section}>
@@ -22,7 +23,7 @@ const SectionHome4 = () => {
           </div>
         </div>
         <div className={styles.photoGallery}>
-          <img src={IMGRetangleTest} alt="Photo Gallery" />
+          <img src={IMGMulherRedes} alt="Photo Gallery" />
         </div>
       </div>
     </section>

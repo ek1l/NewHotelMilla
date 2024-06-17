@@ -46,6 +46,8 @@
       max-width: 100%;
 
       .title {
+        word-wrap: break-word;
+        word-break: break-all;
         font-weight: 700;
         font-size: 24px;
         color: $color-green;
@@ -57,6 +59,8 @@
         line-height: 24px;
         color: $color-white;
         font-family: 'Poppins', sans-serif;
+        word-wrap: break-word;
+        word-break: break-all;
       }
     }
     .infoDireita {
@@ -78,6 +82,8 @@
           font-weight: 600;
           font-size: 12px;
           font-family: 'Poppins', sans-serif;
+          word-wrap: break-word;
+          word-break: break-all;
         }
       }
       .nameAuthorContainer {
@@ -85,6 +91,8 @@
         display: flex;
         align-items: flex-end;
         justify-content: flex-end;
+        word-wrap: break-word;
+        word-break: break-all;
         .h2 {
           color: $color-green;
           font-weight: 600;

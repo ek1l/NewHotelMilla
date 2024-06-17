@@ -11,6 +11,7 @@ import Loading from '../../Components/Loader/Loading';
 import ManageFilters from '../../Components/ManageFilters/ManageFilters';
 import ManageGallery from '../../Components/ManageGallery/ManageGallery';
 import ManageNews from '../../Components/ManageNews/ManageNews';
+import ManageSlider from '../../Components/ManageSlider/ManageSlider';
 
 const ManageTeam = lazy(() => import('../../Components/ManageTeam/ManageTeam'));
 const ManageHotels = lazy(
@@ -27,6 +28,8 @@ const AdminPanel = () => {
   const [pageManageFilters, setPageManageFilters] = useState<boolean>(false);
   const [pageManageGallery, setPageManageGallery] = useState<boolean>(false);
   const [pageManageNews, setPageManageNews] = useState<boolean>(false);
+  const [pageManageSlider, setPageManageSlider] = useState<boolean>(false);
+
   const manageTeam = useCallback(() => {
     setPageManageHotels(false);
     setPageManageUsers(false);
@@ -81,6 +84,16 @@ const AdminPanel = () => {
     setPageManageNews(true);
   }, []);
 
+  const manageSlider = useCallback(() => {
+    setPageManageTeam(false);
+    setPageManageHotels(false);
+    setPageManageUsers(false);
+    setPageManageFilters(false);
+    setPageManageGallery(false);
+    setPageManageNews(false);
+    setPageManageSlider(true);
+  }, []);
+
   const verifyTokenIsValid = useCallback(async () => {
     const response = await dispatch(verifyTokenUser());
     if (response.type === 'verifyToken/fulfilled') {
@@ -109,6 +122,7 @@ const AdminPanel = () => {
         manageFilters={manageFilters}
         manageGallery={manageGallery}
         manageNews={manageNews}
+        manageSlider={manageSlider}
       />
       <main className={styles.main}>
         {!pageManageHotels &&
@@ -116,7 +130,8 @@ const AdminPanel = () => {
           !pageManageUsers &&
           !pageManageFilters &&
           !pageManageGallery &&
-          !pageManageNews && (
+          !pageManageNews &&
+          !pageManageSlider && (
             <div className={styles.welcome}>
               <h1>PANEL ADMIN </h1>
             </div>
@@ -128,6 +143,7 @@ const AdminPanel = () => {
           {pageManageFilters && <ManageFilters />}
           {pageManageGallery && <ManageGallery />}
           {pageManageNews && <ManageNews />}
+          {pageManageSlider && <ManageSlider />}
         </Suspense>
       </main>
     </div>

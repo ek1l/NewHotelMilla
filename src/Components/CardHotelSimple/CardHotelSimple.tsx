@@ -2,9 +2,13 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import styles from './CardHotelSimple.module.scss';
 import IMGStar from '../../assets/img/starHotel.png';
-const CardHotelSimple = ({ stars, city, country, imagem, name }: any) => {
+import { Link } from 'react-router-dom';
+const CardHotelSimple = ({ stars, city, country, imagem, name, id }: any) => {
   return (
-    <div className={`${styles.cardHotelSimpleContainer} animationCarroussel`}>
+    <Link
+      to={`/offers/${id}`}
+      className={`${styles.cardHotelSimpleContainer} animationCarroussel`}
+    >
       <div className={styles.imgContainer}>
         <img
           className={styles.img}
@@ -29,7 +33,7 @@ const CardHotelSimple = ({ stars, city, country, imagem, name }: any) => {
           </span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

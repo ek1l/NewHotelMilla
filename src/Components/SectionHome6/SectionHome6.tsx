@@ -3,42 +3,43 @@ import styles from './SectionHome6.module.scss';
 import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/store';
 import BannerCardSimple from '../BannerCardSimple/BannerCardSimple';
-import { getAllhotels } from '../../redux/reducers/getAllHotels';
+import { getAllSlider } from '../../redux/reducers/getAllSlider';
 
 const SectionHome6 = () => {
   const dispatch = useAppDispatch();
-  const { data } = useAppSelector((state) => state.getAllhotelsSlice);
+  const { data }: any = useAppSelector((state) => state.getAllSliderSlice);
   const [currentIndex, setCurrentIndex] = useState(0);
-  
-  useEffect(() => {
-    dispatch(getAllhotels());
-  }, [dispatch]);
 
-  const filteredHotels = data.filter(
-    (hotel: any) => Number(hotel.rating.rating.replace('Sterren', '')) > 1,
-  );
+  useEffect(() => {
+    dispatch(getAllSlider());
+  }, [dispatch]);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex(
-        (prevIndex) => (prevIndex + 1) % filteredHotels.length,
-      );
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % data.length);
     }, 4000);
     return () => clearInterval(interval);
-  }, [filteredHotels.length]);
+  }, [data.length]);
 
   return (
     <section className={`${styles.section}`}>
       <div className={styles.containerSection2}>
         <div className={`${styles.carrossel}`}>
-          {filteredHotels.length > 0 && (
+          {data.length > 0 ? (
             <div className={`${styles.carouselInner}`}>
-              <BannerCardSimple />
+              <BannerCardSimple
+                key={data[currentIndex].id}
+                title={data[currentIndex].title}
+                description={data[currentIndex].information}
+                imagem={data[currentIndex].image}
+                comment={data[currentIndex].comment}
+                author={data[currentIndex].author}
+              />
             </div>
-          )}
+          ) : null}
         </div>
         <div className={styles.carouselIndicators}>
-          {filteredHotels.map((_, index) => (
+          {data.map((_: any, index: any) => (
             <span
               key={index}
               className={`${styles.indicator} ${

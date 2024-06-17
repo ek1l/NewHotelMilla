@@ -10,6 +10,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { sendEmailMailChimp } from '../../redux/reducers/sendEmail';
 import { notifyEmailSend } from '../../redux/reducers/notifyEmailSend';
 import styles from './NotifyEmail.module.scss';
+import { useLocation } from 'react-router-dom';
 
 const NotifyEmail = () => {
   const notifyRef = useRef(null);
@@ -67,7 +68,10 @@ const NotifyEmail = () => {
       notifyError();
     }
   }, [errors]);
-
+  const location = useLocation();
+  if (location.pathname.startsWith('/admin/login')) {
+    return;
+  }
   return (
     <div
       ref={notifyRef}

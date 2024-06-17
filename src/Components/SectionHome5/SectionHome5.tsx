@@ -5,28 +5,29 @@ import { useAppDispatch, useAppSelector } from '../../redux/store';
 import { getAllhotels } from '../../redux/reducers/getAllHotels';
 import CardHotelSimple from '../CardHotelSimple/CardHotelSimple';
 import IMGSetaButton from '../../assets/img/arrowSearch.png';
+import { Link } from 'react-router-dom';
+
 const SectionHome5 = () => {
   const dispatch = useAppDispatch();
   const { data } = useAppSelector((state) => state.getAllhotelsSlice);
   const [currentIndex, setCurrentIndex] = useState(0);
+
   useEffect(() => {
     dispatch(getAllhotels());
   }, [dispatch]);
-  const filteredHotels = data.filter(
-    (hotel: any) => Number(hotel.rating.rating.replace('Sterren', '')) === 5,
-  );
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex(
-        (prevIndex) => (prevIndex + 1) % Math.ceil(filteredHotels.length / 3),
+        (prevIndex) => (prevIndex + 1) % Math.ceil(data.length / 3),
       );
     }, 4000);
     return () => clearInterval(interval);
-  }, [filteredHotels.length]);
+  }, [data.length]);
 
   const groupedHotels = [];
-  for (let i = 0; i < filteredHotels.length; i += 3) {
-    groupedHotels.push(filteredHotels.slice(i, i + 3));
+  for (let i = 0; i < data.length; i += 3) {
+    groupedHotels.push(data.slice(i, i + 3));
   }
 
   return (
@@ -35,13 +36,13 @@ const SectionHome5 = () => {
         <div className={styles.textAndDescription}>
           <div className={styles.titleAndButton}>
             <h1 className={styles.title}>Best locations</h1>
-            <button className={styles.button}>
+            <Link to="/offers" className={styles.button}>
               Search
               <img src={IMGSetaButton} alt="Arrow button" />
-            </button>
+            </Link>
           </div>
           <p className={styles.description}>
-            Our best locations for your trainingcamps
+            Our best locations for your training camps
           </p>
         </div>
         <div className={`${styles.carrossel}`}>
@@ -52,9 +53,15 @@ const SectionHome5 = () => {
                   name={hotel.name}
                   city={hotel.city.name}
                   country={hotel.city.country.name}
-                  stars={Number(hotel.rating.rating.replace('Sterren', ''))}
+                  stars={Number(
+                    hotel.rating.rating
+                      .replace('Sterren', '')
+                      .replace('Stars', '')
+                      .replace('Star', ''),
+                  )}
                   imagem={hotel.images[0].path}
                   key={hotel.id}
+                  id={hotel.id}
                 />
               ))}
             </div>

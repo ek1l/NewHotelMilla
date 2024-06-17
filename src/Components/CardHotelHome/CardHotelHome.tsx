@@ -3,6 +3,8 @@
 import styles from './CardHotelHome.module.scss';
 import IMGStarHome from '../../assets/img/starHotel.png';
 import IMGBallDescription from '../../assets/img/ballDescription.png';
+import { Link } from 'react-router-dom';
+
 const CardHotelHome = ({
   name,
   stars,
@@ -14,11 +16,21 @@ const CardHotelHome = ({
   filtersDay,
   imagem,
   filtersCondition,
+  id,
 }: any) => {
   const filstersArr = [`${filtersDay}`, `${filtersCondition}`];
 
+  const truncateDescription = (description: string) => {
+    return description.length > 51
+      ? `${description.substring(0, 51)}...`
+      : description;
+  };
+
   return (
-    <div className={`${styles.containerCardHome} animationCarroussel`}>
+    <Link
+      to={`/offers/${id}`}
+      className={`${styles.containerCardHome} animationCarroussel`}
+    >
       <div className={styles.imgContainer}>
         <img
           className={styles.imgHotel}
@@ -32,8 +44,8 @@ const CardHotelHome = ({
             <h1 className={styles.titleNameHotel}>{name}</h1>
             {Array(stars)
               .fill(0)
-              .map((_, __) => (
-                <img src={IMGStarHome} alt="star" />
+              .map((_, index) => (
+                <img key={index} src={IMGStarHome} alt="star" />
               ))}
           </div>
           <div className={styles.cityAndCountry}>
@@ -43,25 +55,27 @@ const CardHotelHome = ({
           <div className={styles.descriptionsContainer}>
             <p className={styles.description}>
               <img src={IMGBallDescription} alt="Ball Description" />
-              Lorem ipsum dolor sit amet, consectetur adipiscing.
+              {truncateDescription(description1)}
             </p>
             <p className={styles.description}>
               <img src={IMGBallDescription} alt="Ball Description" />
-              Lorem ipsum dolor sit amet, consectetur adipiscing.
+              {truncateDescription(description2)}
             </p>
             <p className={styles.description}>
               <img src={IMGBallDescription} alt="Ball Description" />
-              Lorem ipsum dolor sit amet, consectetur adipiscing.
+              {truncateDescription(description3)}
             </p>
           </div>
           <div className={styles.filtersContainer}>
-            {filstersArr.map((filter) => (
-              <span className={styles.filters}>{filter}</span>
+            {filstersArr.map((filter, index) => (
+              <span key={index} className={styles.filters}>
+                {filter}
+              </span>
             ))}
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

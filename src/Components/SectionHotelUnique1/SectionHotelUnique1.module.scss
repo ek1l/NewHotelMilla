@@ -43,6 +43,8 @@
           color: $color-white;
           font-weight: 600;
           font-size: 20px;
+          word-wrap: break-word;
+          word-break: break-all;
         }
 
         .stars {

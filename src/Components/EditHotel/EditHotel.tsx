@@ -19,7 +19,7 @@ import { getAllTravelTime } from '../../redux/reducers/getAllNewTravelTime';
 import { getAllCondition } from '../../redux/reducers/getAllCondition';
 import { getAllhotels } from '../../redux/reducers/getAllHotels';
 import { getAllRatings } from '../../redux/reducers/getAllRating';
-import { editHotel, setIdHotelZero }  from '../../redux/reducers/editHotel';
+import { editHotel, setIdHotelZero } from '../../redux/reducers/editHotel';
 import { deleteImageHotel } from '../../redux/reducers/deleteImageHotel';
 
 const notifySuccessEdited = () => toast.success('Hotel Edited successfully');
@@ -53,10 +53,10 @@ const EditHotel = ({ setHandleEditHotel }: any) => {
   const { data: oneHotelData, loading: loadingOneHotel } = useAppSelector(
     (state: any) => state.getOneHotelSlice,
   );
-  console.log(oneHotelData);
+
   const { idHotel, loading } = useAppSelector((state) => state.editHotelSlice);
 
-  const { register, handleSubmit } = useForm({
+  const { register, handleSubmit } = useForm<any>({
     values: {
       name: oneHotelData.length > 0 ? oneHotelData[0]?.name : '',
       cityId: oneHotelData.length > 0 ? oneHotelData[0].cityId : '',
@@ -64,16 +64,22 @@ const EditHotel = ({ setHandleEditHotel }: any) => {
       destination:
         oneHotelData.length > 0 ? oneHotelData[0].description.destination : '',
       accommodation:
+        oneHotelData.length > 0 ? oneHotelData[0].card.description1 : '',
+      description1:
         oneHotelData.length > 0
           ? oneHotelData[0].description.accommodation
           : '',
+      description2:
+        oneHotelData.length > 0 ? oneHotelData[0].card.description2 : '',
+
+      description3:
+        oneHotelData.length > 0 ? oneHotelData[0].card.description3 : '',
       activities:
         oneHotelData.length > 0 ? oneHotelData[0].description.activities : '',
       nameAuthor:
         oneHotelData.length > 0
           ? oneHotelData[0].description.comment.author
           : '',
-
       comment:
         oneHotelData.length > 0
           ? oneHotelData[0].description.comment.comment
@@ -86,6 +92,13 @@ const EditHotel = ({ setHandleEditHotel }: any) => {
   const [selectedConditions, setSelectedConditions] = useState<string[]>([]);
   const [selectedFacilities, setSelectedFacilities] = useState<string[]>([]);
   const [selectedTravelTimes, setSelectedTravelTimes] = useState<string[]>([]);
+  const [promotion, setPromotion] = useState(
+    oneHotelData[0]?.promotion ? true : false,
+  );
+  const handlePromotion = () => {
+    setPromotion(!promotion);
+    console.log(promotion);
+  };
   const handleSportsChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedSportId = event.target.value;
     if (
@@ -186,7 +199,9 @@ const EditHotel = ({ setHandleEditHotel }: any) => {
     if (formData.travelTimeId === '' || formData.travelTimeId === 'Select Time')
       return;
     if (selectedSports.length === 0) return;
+
     if (selectedFacilities.length === 0) return;
+
     if (selectedTravelTimes.length === 0) return;
     if (selectedConditions.length === 0) return;
 
@@ -210,18 +225,25 @@ const EditHotel = ({ setHandleEditHotel }: any) => {
       cityId: formData.cityId,
       conditionId: formData.conditionId,
       travelTimeId: formData.travelTimeId,
-      movie: formData.movie,
+      hotelMovie: formData.hotelMovie,
+      card: {
+        description1: formData.description1,
+        description2: formData.description2,
+        description3: formData.description3,
+      },
+      promotion: promotion,
     };
-
     const formDataToSend = new FormData();
     formDataToSend.append('name', newObjHotel.name);
-    formDataToSend.append('movie', newObjHotel.movie);
+
     formDataToSend.append(
       'description',
       JSON.stringify(newObjHotel.description),
     );
+
     formDataToSend.append('comment', JSON.stringify(newObjHotel.comment));
     formDataToSend.append('sportsIds', JSON.stringify(newObjHotel.sportsIds));
+    formDataToSend.append('card', JSON.stringify(newObjHotel.card));
     formDataToSend.append(
       'facilitiesIds',
       JSON.stringify(newObjHotel.facilitiesIds),
@@ -240,6 +262,8 @@ const EditHotel = ({ setHandleEditHotel }: any) => {
     formDataToSend.append('ratingId', newObjHotel.ratingId);
     // @ts-ignore
     formDataToSend.append('authors', formData.authors[0]);
+    formDataToSend.append('hotelMovie', newObjHotel.hotelMovie[0]);
+    formDataToSend.append('promotion', String(promotion));
     if (formData.image && formData.image.length > 0) {
       for (let i = 0; i < formData.image.length; i++) {
         formDataToSend.append('hotel', formData.image[i]);
@@ -251,7 +275,7 @@ const EditHotel = ({ setHandleEditHotel }: any) => {
     };
     // @ts-ignore
     const response = await dispatch(editHotel(objToSend));
-
+    console.log(response);
     if (response.type === 'editHotel/fulfilled') {
       notifySuccessEdited();
       dispatch(getAllhotels());
@@ -534,6 +558,36 @@ const EditHotel = ({ setHandleEditHotel }: any) => {
               <div className={styles.textAreaInputsContainer}>
                 <InputTextArea {...register('comment')} label="Comment" />
               </div>
+
+              <div className={styles.textAreaInputsContainer}>
+                <Input
+                  label="Description card 1"
+                  type="text"
+                  {...register('description1')}
+                  height="120px"
+                  width="100%"
+                />
+                <Input
+                  label="Description card 2"
+                  type="text"
+                  {...register('description2')}
+                  height="120px"
+                  width="100%"
+                />
+                <Input
+                  label="Description card 3"
+                  type="text"
+                  {...register('description3')}
+                  height="120px"
+                  width="100%"
+                />
+                <input
+                  type="checkbox"
+                  onChange={handlePromotion}
+                  value={'false'}
+                />
+              </div>
+
               <div className={styles.textAreaInputsContainer}>
                 <InputTextArea
                   required
@@ -586,10 +640,10 @@ const EditHotel = ({ setHandleEditHotel }: any) => {
                   : null}
               </div>
               <Input
-                label="Link youtube video"
-                type="text"
+                label="Video Hotel"
+                type="file"
                 // @ts-ignore
-                {...register('movie')}
+                {...register('hotelMovie')}
                 height="120px"
                 width="50%"
               />

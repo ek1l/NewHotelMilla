@@ -9,26 +9,37 @@ const SectionHome2 = () => {
   const dispatch = useAppDispatch();
   const { data } = useAppSelector((state) => state.getAllhotelsSlice);
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Dispatch para buscar todos os hotéis ao montar o componente
   useEffect(() => {
     dispatch(getAllhotels());
   }, [dispatch]);
-  const filteredHotels = data.filter(
-    (hotel: any) => Number(hotel.rating.rating.replace('Sterren', '')) > 1,
-  );
+
+  // Filtra os hotéis que estão em promoção
+  const filteredHotels = data.filter((hotel: any) => hotel.promotion === true);
+
+  // Atualiza o índice do carousel a cada 4 segundos, apenas se houver pelo menos 3 hotéis
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex(
-        (prevIndex) => (prevIndex + 1) % Math.ceil(filteredHotels.length / 3),
-      );
-    }, 4000);
-    return () => clearInterval(interval);
+    if (filteredHotels.length >= 3) {
+      const interval = setInterval(() => {
+        setCurrentIndex(
+          (prevIndex) => (prevIndex + 1) % Math.ceil(filteredHotels.length / 3),
+        );
+      }, 4000);
+      return () => clearInterval(interval);
+    }
   }, [filteredHotels.length]);
 
+  // Agrupa os hotéis filtrados em grupos de 3 para o carousel, se houver pelo menos 3 hotéis
   const groupedHotels = [];
-  for (let i = 0; i < filteredHotels.length; i += 3) {
-    groupedHotels.push(filteredHotels.slice(i, i + 3));
+  if (filteredHotels.length >= 3) {
+    for (let i = 0; i < filteredHotels.length; i += 3) {
+      groupedHotels.push(filteredHotels.slice(i, i + 3));
+    }
+  } else {
+    groupedHotels.push(filteredHotels);
   }
-
+  console.log(data);
   return (
     <section className={`${styles.section}`}>
       <div className={styles.containerSection2}>
@@ -45,13 +56,22 @@ const SectionHome2 = () => {
               {groupedHotels[currentIndex].map((hotel: any) => (
                 <CardHotelHome
                   name={hotel.name}
-                  stars={Number(hotel.rating.rating.replace('Sterren', ''))}
+                  stars={Number(
+                    hotel.rating.rating
+                      .replace('Sterren', '')
+                      .replace('Stars', '')
+                      .replace('Star', ''),
+                  )}
+                  description1={hotel.card.description1}
+                  description2={hotel.card.description2}
+                  description3={hotel.card.description3}
                   city={hotel.city.name}
                   country={hotel.city.country.name}
-                  filtersDay={hotel.travelTime[0].travelTime}
-                  filtersCondition={hotel.condition[0].condition}
-                  imagem={hotel.images[0].path}
+                  filtersDay={hotel.travelTime[0]?.travelTime}
+                  filtersCondition={hotel.condition[0]?.condition}
+                  imagem={hotel.images[0]?.path}
                   key={hotel.id}
+                  id={hotel.id}
                 />
               ))}
             </div>
