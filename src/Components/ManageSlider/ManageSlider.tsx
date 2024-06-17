@@ -3,6 +3,8 @@ import { useForm } from 'react-hook-form';
 import styles from './ManageSlider.module.scss';
 import { useAppDispatch } from '../../redux/store';
 import { createNewSlider } from '../../redux/reducers/createNewSlider';
+import SectionHome6 from '../SectionHome6/SectionHome6';
+import { getAllSlider } from '../../redux/reducers/getAllSlider';
 const ManageSlider = () => {
   const dispatch = useAppDispatch();
   const { register, handleSubmit, reset } = useForm();
@@ -16,6 +18,7 @@ const ManageSlider = () => {
     const response = await dispatch(createNewSlider(formDataToSend));
     if (response.type === 'createNewSlider/fulfilled') {
       reset();
+      dispatch(getAllSlider());
       return response;
     } else {
       throw new Error('Create Slider Error');
@@ -38,7 +41,7 @@ const ManageSlider = () => {
           <button type="submit">Create Slide</button>
         </form>
         <div className={styles.containerSliders}>
-          ew
+          <SectionHome6 />
         </div>
       </div>
     </section>

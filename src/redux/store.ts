@@ -57,6 +57,7 @@ import createNewsSlice from './reducers/createNews';
 import createHotelsSlice from './reducers/createHotel';
 import getAllSliderSlice from './reducers/getAllSlider';
 import createNewSliderSlice from './reducers/createNewSlider';
+import deleteSliderSlice from './reducers/deleteSlider';
 const store = configureStore({
   reducer: {
     getAllCountrySlice: getAllCountrySlice,
@@ -116,6 +117,7 @@ const store = configureStore({
     createHotelsSlice: createHotelsSlice,
     getAllSliderSlice: getAllSliderSlice,
     createNewSliderSlice: createNewSliderSlice,
+    deleteSliderSlice: deleteSliderSlice,
   },
 });
 

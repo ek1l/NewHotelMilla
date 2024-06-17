@@ -6,6 +6,12 @@
   width: 100%;
   height: 487px;
   max-height: 100%;
+  .trash {
+    position: absolute;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10000000000000000000;
+  }
   .imgContainer {
     @include flexDefault;
     width: 100%;

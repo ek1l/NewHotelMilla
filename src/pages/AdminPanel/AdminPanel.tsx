@@ -37,6 +37,7 @@ const AdminPanel = () => {
     setPageManageGallery(false);
     setPageManageNews(false);
     setPageManageTeam(true);
+    setPageManageSlider(false);
   }, []);
 
   const manageHotels = useCallback(() => {
@@ -46,6 +47,7 @@ const AdminPanel = () => {
     setPageManageGallery(false);
     setPageManageNews(false);
     setPageManageHotels(true);
+    setPageManageSlider(false);
   }, []);
 
   const manageUsers = useCallback(() => {
@@ -55,6 +57,7 @@ const AdminPanel = () => {
     setPageManageGallery(false);
     setPageManageNews(false);
     setPageManageUsers(true);
+    setPageManageSlider(false);
   }, []);
 
   const manageFilters = useCallback(() => {
@@ -64,6 +67,7 @@ const AdminPanel = () => {
     setPageManageGallery(false);
     setPageManageNews(false);
     setPageManageFilters(true);
+    setPageManageSlider(false);
   }, []);
 
   const manageGallery = useCallback(() => {
@@ -73,6 +77,7 @@ const AdminPanel = () => {
     setPageManageFilters(false);
     setPageManageNews(false);
     setPageManageGallery(true);
+    setPageManageSlider(false);
   }, []);
 
   const manageNews = useCallback(() => {
@@ -82,6 +87,7 @@ const AdminPanel = () => {
     setPageManageFilters(false);
     setPageManageGallery(false);
     setPageManageNews(true);
+    setPageManageSlider(false);
   }, []);
 
   const manageSlider = useCallback(() => {
