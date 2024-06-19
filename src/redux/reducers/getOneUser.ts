@@ -27,7 +27,7 @@ export const getOneUserId = createAsyncThunk('getOneUser', async (id) => {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
     });
-    console.log(data);
+ 
     const user = data.filter((user: { id: any }) => user.id === id);
     return user;
   } catch (error) {

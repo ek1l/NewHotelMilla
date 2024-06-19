@@ -39,7 +39,7 @@ const SectionHome2 = () => {
   } else {
     groupedHotels.push(filteredHotels);
   }
-  console.log(data);
+ 
   return (
     <section className={`${styles.section}`}>
       <div className={styles.containerSection2}>

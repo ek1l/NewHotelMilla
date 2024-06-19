@@ -9,7 +9,7 @@ const SectionNewsUnique1 = () => {
   const { id } = useParams();
   const dispatch = useAppDispatch();
   const { data }: any = useAppSelector((state) => state.getOneNewsSlice);
-  console.log(data);
+ 
   useEffect(() => {
     dispatch(getOneNews(id));
   }, [dispatch, id]);

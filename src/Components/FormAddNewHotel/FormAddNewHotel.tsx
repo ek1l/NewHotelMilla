@@ -242,7 +242,7 @@ const FormAddNewHotel = () => {
     }
 
     const response = await dispatch(createHotel(formDataToSend));
-    console.log(response);
+ 
     if (response.type === 'createHotel/fulfilled') {
       notifySuccessCreated();
       handleToggleModalAdmin();

@@ -5,7 +5,7 @@ import DescriptionHotelUnique from '../DescriptionHotelUnique/DescriptionHotelUn
 
 const SectionHotelUnique2 = () => {
   const { data }: any = useAppSelector((state) => state.getOneHotelSlice);
-  console.log(data);
+  
   return (
     <section className={styles.section}>
       {data.length > 0 ? (
@@ -57,8 +57,8 @@ const SectionHotelUnique2 = () => {
               <div className={styles.card}>
                 <h1 className={styles.titleCard}>Op aanvraag</h1>
                 <span className={styles.DaysAndConditionSpan}>
-                  {data[0].travelTime[0].travelTime} |{' '}
-                  {data[0].condition[0].condition}
+                  {data[0]?.travelTime[0]?.travelTime} |{' '}
+                  {data[0]?.condition[0]?.condition}
                 </span>
                 <p className={styles.descriptionCard}>
                   Description - card (can be a bigger text like this).

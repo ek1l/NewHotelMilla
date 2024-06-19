@@ -47,7 +47,7 @@ const FormEditFacilitie = ({
       notifyErrorEdited();
     }
   };
-  console.log(data);
+ 
   const { handleSubmit, register } = useForm({
     values: {
       // @ts-ignore

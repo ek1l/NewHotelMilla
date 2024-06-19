@@ -97,7 +97,7 @@ const EditHotel = ({ setHandleEditHotel }: any) => {
   );
   const handlePromotion = () => {
     setPromotion(!promotion);
-    console.log(promotion);
+ 
   };
   const handleSportsChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedSportId = event.target.value;
@@ -275,7 +275,7 @@ const EditHotel = ({ setHandleEditHotel }: any) => {
     };
     // @ts-ignore
     const response = await dispatch(editHotel(objToSend));
-    console.log(response);
+   
     if (response.type === 'editHotel/fulfilled') {
       notifySuccessEdited();
       dispatch(getAllhotels());

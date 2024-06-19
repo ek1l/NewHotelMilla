@@ -4,11 +4,15 @@ import IMGAdidas from '../../assets/img/adidas.png';
 import IMGUefa from '../../assets/img/uefa.png';
 import IMGSgrz from '../../assets/img/sgrz.png';
 import { NavLink, useLocation } from 'react-router-dom';
+import IMGIcoMenuMobile from '../../assets/img/iconMenuMobile.svg';
+import { useState } from 'react';
 const Header = () => {
+  const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
   if (location.pathname.startsWith('/admin/login')) {
     return;
   }
+  const setMobileOpenFunction = () => setMobileOpen(!mobileOpen);
   return (
     <header className={styles.header}>
       <div className={styles.colorOrange}></div>
@@ -52,12 +56,47 @@ const Header = () => {
               </NavLink>
             </ul>
           </nav>
+
+          <nav className={styles.navHamburguer}>
+            <ul className={styles.ulHamburguer}>
+              {!mobileOpen && (
+                <button onClick={setMobileOpenFunction}>
+                  <img src={IMGIcoMenuMobile} alt="Menu Mobile Ico" />
+                </button>
+              )}
+            </ul>
+          </nav>
+
           <select className={styles.select}>
             <option value="en">EN</option>
             <option value="dt">DT</option>
           </select>
         </div>
       </div>
+      {mobileOpen && (
+        <div className={styles.menuHamburguer}>
+          <div className={styles.closeMobile}>
+            <button onClick={setMobileOpenFunction}>X</button>
+          </div>
+          <div className={styles.containerMenuHamburguer}>
+            <NavLink className={styles.navLinkhamburguer} to="/">
+              Home
+            </NavLink>
+            <NavLink className={styles.navLinkhamburguer} to="/our-team">
+              Our team
+            </NavLink>
+            <NavLink className={styles.navLinkhamburguer} to="/offers">
+              Offers
+            </NavLink>
+            <NavLink className={styles.navLinkhamburguer} to="/news">
+              News
+            </NavLink>
+            <NavLink className={styles.navLinkhamburguer} to="/gallery">
+              Gallery
+            </NavLink>
+          </div>
+        </div>
+      )}
     </header>
   );
 };

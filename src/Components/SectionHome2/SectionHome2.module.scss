@@ -65,11 +65,45 @@
         cursor: pointer;
         &.active {
           box-shadow: rgba(211, 191, 191, 0.25) 0px 54px 55px,
-            rgba(250, 248, 248, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-            rgba(247, 245, 245, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+            rgba(250, 248, 248, 0.12) 0px -12px 30px,
+            rgba(0, 0, 0, 0.12) 0px 4px 6px,
+            rgba(247, 245, 245, 0.17) 0px 12px 13px,
+            rgba(0, 0, 0, 0.09) 0px -3px 5px;
           background-color: $color-green;
         }
       }
+    }
+  }
+}
+
+// MOBILE
+
+@media (max-width: 1350px) {
+  .section {
+    .containerSection2 {
+      width: 1100px;
+    }
+  }
+}
+
+@media (max-width: 1150px) {
+  .section {
+    .containerSection2 {
+      width: 920px;
+    }
+  }
+}
+@media (max-width: 600px) {
+  .section {
+    .containerSection2 {
+      width: 500px !important;
+    }
+  }
+}
+@media (max-width: 525px) {
+  .section {
+    .containerSection2 {
+      width: 400px !important;
     }
   }
 }

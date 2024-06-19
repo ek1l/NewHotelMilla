@@ -53,3 +53,36 @@
     }
   }
 }
+
+// MOBILE
+
+@media (max-width: 1350px) {
+  .section {
+    .sectionContainer {
+      width: 1100px;
+    }
+  }
+}
+
+@media (max-width: 1150px) {
+  .section {
+    .sectionContainer {
+      width: 920px;
+    }
+  }
+}
+@media (max-width: 600px) {
+  .section {
+    .sectionContainer {
+      width: 500px !important;
+    }
+  }
+}
+
+@media (max-width: 525px) {
+  .section {
+    .sectionContainer {
+      width: 400px !important;
+    }
+  }
+}

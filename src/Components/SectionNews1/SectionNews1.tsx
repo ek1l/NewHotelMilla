@@ -9,7 +9,7 @@ const SectionNews1 = () => {
   const dispatch = useAppDispatch();
   const { data }: any = useAppSelector((state) => state.getAllnewsSlice);
   const [currentIndex, setCurrentIndex] = useState(0);
-  console.log(data);
+ 
 
   useEffect(() => {
     dispatch(getAllnews());
