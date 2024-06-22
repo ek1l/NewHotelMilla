@@ -35,6 +35,7 @@ const AddNewCities = () => {
   const [openFormNewCountry, setOpenFormNewCountry] = useState<boolean>(false);
   const [selectedCity, setSelectedCity] = useState<string | null>(null);
   const [editingCityId, setEditingCityId] = useState<number | null>(null);
+  // @ts-ignore
   const [editingCityCountryId, setEditingCityCountryId] = useState<
     number | null
   >(null);
