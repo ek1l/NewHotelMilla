@@ -13,7 +13,7 @@ export const deleteTravelTime = createAsyncThunk(
   'deleteTravelTime',
   async (id) => {
     try {
-      const { data } = await instanceApiDefault.delete(`/traveltime/${id}`, {
+      const { data } = await instanceApiDefault.delete(`/travel-time/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },

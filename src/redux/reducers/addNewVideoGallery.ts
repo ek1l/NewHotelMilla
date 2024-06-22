@@ -13,15 +13,11 @@ export const addNewVideoGallery = createAsyncThunk(
   'addNewVideoGallery',
   async (formData) => {
     try {
-      const { data } = await instanceApiDefault.post(
-        `galery/create/movie`,
-        formData,
-        {
-          headers: {
-            Authorization: 'Bearer ' + localStorage.getItem('token'),
-          },
+      const { data } = await instanceApiDefault.post(`galery/movie`, formData, {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('token'),
         },
-      );
+      });
       return data;
     } catch (error) {
       throw new Error('Add new Video Error');

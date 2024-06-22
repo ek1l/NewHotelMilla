@@ -55,10 +55,14 @@
         color: $color-white;
         font-weight: 600;
         font-size: 24px;
+        word-wrap: break-word;
+        word-break: break-all;
       }
       .descriptionContainer {
         width: 80%;
         .description {
+          word-wrap: break-word;
+          word-break: break-all;
           font-weight: 500;
           font-size: 12px;
           width: 100%;
@@ -101,5 +105,14 @@
       font-weight: 500;
       font-size: 12px;
     }
+  }
+}
+
+// MOBILE
+
+@media (max-width: 600px) {
+  .cardNewsContainer {
+    width: 350px;
+    height: 300px;
   }
 }

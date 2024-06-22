@@ -14,7 +14,7 @@ export const createNews = createAsyncThunk(
   'createNews',
   async (formData: any) => {
     try {
-      const { data } = await instanceApiDefault.post(`/news/create`, formData, {
+      const { data } = await instanceApiDefault.post(`/news`, formData, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },

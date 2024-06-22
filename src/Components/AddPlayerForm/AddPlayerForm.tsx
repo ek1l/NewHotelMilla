@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
- 
+
 import styles from './AddPlayerForm.module.scss';
 import { useForm } from 'react-hook-form';
 import { useAppDispatch } from '../../redux/store';

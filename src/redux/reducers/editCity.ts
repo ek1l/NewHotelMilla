@@ -16,7 +16,7 @@ export const editCity = createAsyncThunk(
     try {
       const { data } = await instanceApiDefault.patch(
         // @ts-ignore
-        `/address/cities/${idAndNameUpdate.id}`,
+        `/address/city/${idAndNameUpdate.id}`,
         // @ts-ignore
         idAndNameUpdate.value,
         {

@@ -22,7 +22,7 @@ export const verifyTokenUser = createAsyncThunk(
   async (): Promise<any> => {
     try {
       const { data } = await instanceApiDefault.post(
-        'user/verifytoken',
+        'auth/verifyToken',
         {
           token: localStorage.getItem('token'),
         },

@@ -51,8 +51,9 @@
 }
 @media (max-width: 1150px) {
   .section {
+    width: 100%;
     .containerSection {
-      width: 920px;
+      width: 100%;
     }
   }
 }
@@ -67,6 +68,37 @@
   .section {
     .containerSection {
       width: 400px !important;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .section {
+    overflow: hidden !important;
+    .containerSection {
+      overflow: hidden !important;
+      width: 100% !important;
+      height: 100% !important;
+      .cardsNewsContainer {
+        height: 100% !important;
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .section {
+    .containerSection {
+      .newsText {
+        .news1,
+        .news2 {
+          .newsTitle {
+            font-size: 20px;
+          }
+        }
+      }
     }
   }
 }

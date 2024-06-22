@@ -10,7 +10,7 @@ const initialState = {
 export const getOneNews = createAsyncThunk('getOneNews', async (id: any) => {
   try {
     const { data } = await instanceApiDefault.get(`/news/${id}`);
-
+  
     return data;
   } catch (error) {
     throw new Error('Get One Hotel Error');

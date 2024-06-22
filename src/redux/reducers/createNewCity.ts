@@ -15,7 +15,7 @@ export const createCity = createAsyncThunk(
   async (formData: any) => {
     try {
       const { data } = await instanceApiDefault.post(
-        `/address/cities/create`,
+        `/address/city`,
         formData,
         {
           headers: {

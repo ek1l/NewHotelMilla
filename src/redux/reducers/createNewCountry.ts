@@ -15,7 +15,7 @@ export const createNewCountry = createAsyncThunk(
   async (formData: any) => {
     try {
       const { data } = await instanceApiDefault.post(
-        `/address/country/create`,
+        `/address/country`,
         formData,
         {
           headers: {

@@ -5,10 +5,10 @@ import DescriptionHotelUnique from '../DescriptionHotelUnique/DescriptionHotelUn
 
 const SectionHotelUnique2 = () => {
   const { data }: any = useAppSelector((state) => state.getOneHotelSlice);
-  
+ 
   return (
     <section className={styles.section}>
-      {data.length > 0 ? (
+      {data.id ? (
         <div className={styles.containerSection}>
           <div className={styles.containerEsquerdo}>
             <div className={styles.commentContainer}>
@@ -17,73 +17,73 @@ const SectionHotelUnique2 = () => {
                   <img
                     className={styles.img}
                     src={`${import.meta.env.VITE_APP_API_IMAGE}/${
-                      data[0].description.comment.photo
+                      data.description.comment.photo
                     }`}
                     alt="Photo People"
                   />
                   <p className={styles.comment}>
-                    "{data[0].description.comment.comment}"
+                    "{data.description.comment.comment}"
                   </p>
                 </div>
                 <div className={styles.nameAuthor}>
                   <p className={styles.name}>
-                    {data[0].description.comment.author}
+                    {data.description.comment.author}
                   </p>
                 </div>
               </div>
             </div>
             <div className={styles.containerFilters}>
-              {data[0].facilities.map(({ facility }: any) => {
+              {data.facilities.map(({ facility }: any) => {
                 return <p className={styles.filters}>{facility}</p>;
               })}
             </div>
             <div className={styles.containerDescriptions}>
               <DescriptionHotelUnique
                 title={'Destination'}
-                description={data[0].description.destination}
+                description={data.description.destination}
               />
               <DescriptionHotelUnique
                 title={'Accommodation'}
-                description={data[0].description.accommodation}
+                description={data.description.accommodation}
               />
               <DescriptionHotelUnique
                 title={'Activities'}
-                description={data[0].description.activities}
+                description={data.description.activities}
               />
             </div>
           </div>
           <div className={styles.containerDireito}>
             <div className={styles.cardUniqueHotel}>
               <div className={styles.card}>
-                <h1 className={styles.titleCard}>Op aanvraag</h1>
+                <h1 className={styles.titleCard}>{data.card.title}</h1>
                 <span className={styles.DaysAndConditionSpan}>
-                  {data[0]?.travelTime[0]?.travelTime} |{' '}
-                  {data[0]?.condition[0]?.condition}
+                  {data?.travelTime[0]?.travel_time} |{' '}
+                  {data?.conditions[0]?.condition}
                 </span>
                 <p className={styles.descriptionCard}>
-                  Description - card (can be a bigger text like this).
+                  {data.card.description_big}
                 </p>
                 <div className={styles.textAndBallGreen}>
                   <div className={styles.ball}></div>
-                  <p className={styles.text}>{data[0].card.description1}</p>
+                  <p className={styles.text}>{data.card.description1}</p>
                 </div>
                 <div className={styles.textAndBallGreen}>
                   <div className={styles.ball}></div>
-                  <p className={styles.text}>{data[0].card.description2}</p>
+                  <p className={styles.text}>{data.card.description2}</p>
                 </div>
                 <div className={styles.textAndBallGreen}>
                   <div className={styles.ball}></div>
-                  <p className={styles.text}>{data[0].card.description2}</p>
+                  <p className={styles.text}>{data.card.description2}</p>
                 </div>
                 <div className={styles.buttonAsk}>
                   <button className={styles.button}>Ask for an offer</button>
                 </div>
               </div>
             </div>
-            {data[0].movie ? (
+            {data.movie ? (
               <video className={styles.imgVideo} controls autoPlay>
                 <source
-                  src={`${import.meta.env.VITE_APP_API_IMAGE}/${data[0].movie}`}
+                  src={`${import.meta.env.VITE_APP_API_IMAGE}/${data.movie}`}
                   type="video/mp4"
                 />
               </video>

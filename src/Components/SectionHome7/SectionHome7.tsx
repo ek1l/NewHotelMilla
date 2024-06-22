@@ -29,7 +29,7 @@ const SectionHome7 = () => {
                         title={news.title}
                         description={news.description}
                         author={news.author}
-                        date={news.createdAt}
+                        date={news.created_at}
                         banner={news.banner}
                         id={news.id}
                       />

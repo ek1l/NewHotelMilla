@@ -17,7 +17,7 @@ const initialState: InitialObjectState = {
 
 export const getAllCondition = createAsyncThunk('getAllCondition', async () => {
   try {
-    const { data } = await instanceApiDefault.get(`/conditions`);
+    const { data } = await instanceApiDefault.get(`/condition`);
     return data;
   } catch (error) {
     throw new Error('Get All Conditions  Error');

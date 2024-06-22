@@ -14,15 +14,11 @@ export const createNewPhotoGalery = createAsyncThunk(
   'createNewPhotoGalery',
   async (formData: any) => {
     try {
-      const { data } = await instanceApiDefault.post(
-        `/galery/create`,
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-          },
+      const { data } = await instanceApiDefault.post(`/galery`, formData, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
-      );
+      });
       return data;
     } catch (error) {
       throw new Error('Create Photo Galery Error');

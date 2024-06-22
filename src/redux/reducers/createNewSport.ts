@@ -14,15 +14,11 @@ export const createNewSport = createAsyncThunk(
   'createNewSport',
   async (formData: any) => {
     try {
-      const { data } = await instanceApiDefault.post(
-        `/sports/create`,
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-          },
+      const { data } = await instanceApiDefault.post(`/sport`, formData, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
-      );
+      });
       return data;
     } catch (error) {
       throw new Error('Create sport Error');

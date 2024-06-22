@@ -1,5 +1,6 @@
 @import '../../styles/variables.scss';
 @import '../../styles/mixins.scss';
+
 .section {
   @include flexDefault;
   flex-direction: column;
@@ -54,6 +55,10 @@
           background-position: 95% 50%;
         }
       }
+    }
+    .filterHotels {
+      display: none;
+      width: 90%;
     }
     .hotelsAndFilters {
       width: 100%;
@@ -144,8 +149,33 @@
 }
 @media (max-width: 1150px) {
   .section {
+    width: 100%;
     .containerSection {
-      width: 920px;
+      height: 100%;
+      width: 100%;
+      .filterHotels {
+        display: block !important;
+        display: flex !important;
+        align-items: flex-end;
+        justify-content: flex-end;
+        height: 100% !important;
+      }
+      .containerInputsFilterSelect {
+        display: none !important;
+        height: 100%;
+      }
+      .hotelsAndFilters {
+        height: 100%;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        .containerHoteis {
+          width: 370px;
+        }
+        .filter {
+          display: none !important;
+        }
+      }
     }
   }
 }
@@ -153,13 +183,20 @@
   .section {
     .containerSection {
       width: 500px !important;
+      .hotelsAndFilters {
+        .container {
+          .pagination {
+            width: 97%;
+          }
+        }
+      }
     }
   }
 }
 @media (max-width: 525px) {
   .section {
     .containerSection {
-      width:400px !important;
+      width: 400px !important;
     }
   }
 }

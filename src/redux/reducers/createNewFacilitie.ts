@@ -14,15 +14,11 @@ export const createNewFacilitie = createAsyncThunk(
   'createNewFacilitie',
   async (formData: any) => {
     try {
-      const { data } = await instanceApiDefault.post(
-        `/facilities/create`,
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-          },
+      const { data } = await instanceApiDefault.post(`/facility`, formData, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
-      );
+      });
       return data;
     } catch (error) {
       throw new Error('Create Facilitie Error');

@@ -14,7 +14,7 @@ export const createNewPlayer = createAsyncThunk(
   'createNewPlayer',
   async (formData: any) => {
     try {
-      const { data } = await instanceApiDefault.post(`/team/create`, formData, {
+      const { data } = await instanceApiDefault.post(`/team`, formData, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },

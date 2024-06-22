@@ -15,7 +15,7 @@ export const createHotel = createAsyncThunk(
   async (formData: any) => {
     try {
       const { data } = await instanceApiDefault.post(
-        `/hotels/create`,
+        `/hotel`,
         formData,
         {
           headers: {

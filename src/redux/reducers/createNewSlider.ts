@@ -14,15 +14,11 @@ export const createNewSlider = createAsyncThunk(
   'createNewSlider',
   async (formData: any) => {
     try {
-      const { data } = await instanceApiDefault.post(
-        `/slider/create`,
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-          },
+      const { data } = await instanceApiDefault.post(`/slider`, formData, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
-      );
+      });
       return data;
     } catch (error) {
       throw new Error('Create News Error');

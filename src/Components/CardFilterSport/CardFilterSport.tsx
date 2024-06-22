@@ -41,7 +41,7 @@ const Filter = ({ data, modalFilter }: any) => {
       query += `travelTime=${selectedTravelTimeFilter}&`;
     }
     if (selectedRatingFilter) {
-      query += `rating=${selectedRatingFilter}&`;
+      query += `ratingId=${selectedRatingFilter}&`;
     }
     return query.slice(0, -1);
   }, [
@@ -101,7 +101,7 @@ const Filter = ({ data, modalFilter }: any) => {
   const handleRatingCheckboxChange = (filterId: string) => {
     if (filterId === selectedRatingFilter) {
       setSelectedRatingFilter(null);
-      dispatch(removeTextParam('rating'));
+      dispatch(removeTextParam('ratingid'));
     } else {
       setSelectedRatingFilter(filterId);
     }
@@ -208,7 +208,7 @@ const Filter = ({ data, modalFilter }: any) => {
                   </span>
                 </>
               )}
-              {filter.travelTime && (
+              {filter.travel_time && (
                 <>
                   <input
                     style={{
@@ -216,7 +216,7 @@ const Filter = ({ data, modalFilter }: any) => {
                       height: modalFilter ? '20px' : '15px',
                     }}
                     type="checkbox"
-                    value={filter.travelTime}
+                    value={filter.travel_time}
                     checked={filter.id === selectedTravelTimeFilter}
                     onChange={() => handleTravelTimeCheckboxChange(filter.id)}
                   />
@@ -233,7 +233,7 @@ const Filter = ({ data, modalFilter }: any) => {
                       fontSize: modalFilter ? '24px' : '14px',
                     }}
                   >
-                    {filter.travelTime}
+                    {filter.travel_time}
                   </span>
                 </>
               )}

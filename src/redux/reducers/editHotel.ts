@@ -11,7 +11,7 @@ export const editHotel = createAsyncThunk('editHotel', async (objToSend) => {
     const { data } = await instanceApiDefault.patch(
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      `/hotels/${objToSend.id}`,
+      `/hotel/${objToSend.id}`,
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       objToSend.data,

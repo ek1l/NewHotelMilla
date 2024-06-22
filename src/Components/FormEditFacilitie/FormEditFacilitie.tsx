@@ -5,12 +5,13 @@ import { useAppDispatch, useAppSelector } from '../../redux/store';
 import Input from '../Input/Input';
 import styles from './FormEditFacilitie.module.scss';
 import { toast } from 'react-toastify';
- 
- 
+
 import { useEffect } from 'react';
- 
+
 import { editFacilitie } from '../../redux/reducers/editFacilitie';
 import { getAllFacilities } from '../../redux/reducers/getAllFacilities';
+import { getOneFacilitie } from '../../redux/reducers/getOneFacilitie';
+ 
 
 const notifySuccessEdited = () =>
   toast.success('Facilitie Edited successfully');
@@ -24,12 +25,12 @@ const FormEditFacilitie = ({
   const { idEditFacilitie } = useAppSelector(
     (state) => state.editFacilitieSlice,
   );
+  
   const { data } = useAppSelector((state) => state.getOneFacilitieSlice);
-
+ 
   const dispatch = useAppDispatch();
   const onSubmit = async (formData: any) => {
     const { facility, icon } = formData;
-
     const formDataToSend = new FormData();
     formDataToSend.append('facility', facility);
     formDataToSend.append('icon', icon[0]);
@@ -47,7 +48,7 @@ const FormEditFacilitie = ({
       notifyErrorEdited();
     }
   };
- 
+
   const { handleSubmit, register } = useForm({
     values: {
       // @ts-ignore
@@ -56,7 +57,6 @@ const FormEditFacilitie = ({
     },
   });
   useEffect(() => {
-    // @ts-ignore
     dispatch(getOneFacilitie(idEditFacilitie));
   }, [dispatch, idEditFacilitie]);
   return (

@@ -20,8 +20,8 @@ export const loginAdminUser = createAsyncThunk(
   'loginAdminuser',
   async (formData: any) => {
     try {
-      const { data } = await instanceApiDefault.post('user/login', formData);
-
+      const { data } = await instanceApiDefault.post('auth/login', formData);
+ 
       if (data.token && data.role === 'admin') {
         localStorage.setItem('token', data.token);
         return data;

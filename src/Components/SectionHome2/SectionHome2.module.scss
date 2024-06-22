@@ -88,18 +88,24 @@
 
 @media (max-width: 1150px) {
   .section {
+    overflow: hidden !important;
+    width: 100%;
     .containerSection2 {
-      width: 920px;
+      overflow: hidden !important;
+      width: 100% !important;
     }
   }
 }
+
 @media (max-width: 600px) {
   .section {
+    padding: 5px;
     .containerSection2 {
       width: 500px !important;
     }
   }
 }
+
 @media (max-width: 525px) {
   .section {
     .containerSection2 {

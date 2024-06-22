@@ -14,15 +14,11 @@ export const createTravelTime = createAsyncThunk(
   'createTravelTime',
   async (formData: any) => {
     try {
-      const { data } = await instanceApiDefault.post(
-        `/traveltime/create`,
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-          },
+      const { data } = await instanceApiDefault.post(`travel-time`, formData, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
-      );
+      });
       return data;
     } catch (error) {
       throw new Error('Create travelTime Error');

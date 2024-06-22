@@ -92,8 +92,8 @@ const ManageNews = () => {
                 title={news.title}
                 image={news.banner}
                 descriptionCard={news.description}
-                createdAt={news.createdAt}
-                updatedAt={news.updatedAt}
+                createdAt={news.created_at}
+                updatedAt={news.updated_at}
                 id={news.id}
                 isAdmin={true}
               />

@@ -11,11 +11,15 @@ const initialState: InitialObjectState = {
 
 export const addNewUserr = createAsyncThunk('addNewUser', async (formData) => {
   try {
-    const { data } = await instanceApiDefault.post(`user/register`, formData, {
-      headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('token'),
+    const { data } = await instanceApiDefault.post(
+      `account/register`,
+      formData,
+      {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('token'),
+        },
       },
-    });
+    );
     return data;
   } catch (error) {
     throw new Error('Create  User Error');

@@ -1,14 +1,12 @@
 @import '../../styles/variables.scss';
 @import '../../styles/mixins.scss';
 .containerOpenModal {
-  display: none !important;
   width: 300px;
   height: 200px;
   z-index: 999999999;
   position: fixed;
   bottom: 0;
   right: 0;
-
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
@@ -46,6 +44,31 @@
     cursor: pointer;
     .img {
       object-fit: contain;
+    }
+  }
+}
+
+// MOBILE
+
+@media (max-width: 700px) {
+  .containerOpenModal {
+    width: 200px;
+    height: 150px;
+    .askForAnOffer {
+      width: 180px;
+      height: 45px;
+      .title {
+        font-size: 16px;
+      }
+    }
+    .button {
+      width: 60px;
+      height: 60px;
+      .img {
+        width: 30px;
+        height: 30px;
+        object-fit: contain;
+      }
     }
   }
 }

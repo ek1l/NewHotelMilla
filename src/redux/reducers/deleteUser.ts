@@ -11,11 +11,12 @@ const initialState: InitialObjectState = {
 
 export const deleteUser = createAsyncThunk('deleteUser', async (id) => {
   try {
-    const { data } = await instanceApiDefault.delete(`user/${id}`, {
+    const { data } = await instanceApiDefault.delete(`account/${id}`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
     });
+
     return data;
   } catch (error) {
     throw new Error('Delete User Error');

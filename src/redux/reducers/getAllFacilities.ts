@@ -22,7 +22,7 @@ export const getAllFacilities = createAsyncThunk(
   'getAllFacilities',
   async (): Promise<DataType[]> => {
     try {
-      const { data } = await instanceApiDefault.get('facilities');
+      const { data } = await instanceApiDefault.get('facility');
       return data;
     } catch (error) {
       throw new Error('Get all Facilities Error');

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { instanceApiDefault } from '../../api/apiDefault';
 import { Draft } from 'immer';
@@ -17,17 +18,21 @@ const initialState: InitialObjectState = {
   data: [],
 };
 
-export const getOneFacilitie = createAsyncThunk('getOneUser', async (id) => {
-  try {
-    const { data } = await instanceApiDefault.get(`/facilities/`);
-    const facilitie = data.filter(
-      (facility: { id: void }) => facility.id === id,
-    );
-    return facilitie;
-  } catch (error) {
-    throw new Error('Get One Facilitie Error');
-  }
-});
+export const getOneFacilitie = createAsyncThunk(
+  'getOneUser',
+  async (id: any) => {
+    try {
+      const { data } = await instanceApiDefault.get(`/facility/${id}`);
+      const facilitie = data.filter(
+        (facility: { id: void }) => facility.id === id,
+      );
+
+      return facilitie;
+    } catch (error) {
+      throw new Error('Get One Facilitie Error');
+    }
+  },
+);
 
 const getOneFacilitieSlice = createSlice({
   name: 'getOneFacilitie',

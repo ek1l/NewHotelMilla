@@ -14,15 +14,11 @@ export const createNewRating = createAsyncThunk(
   'createNewRating',
   async (formData: any) => {
     try {
-      const { data } = await instanceApiDefault.post(
-        `/rating/create`,
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-          },
+      const { data } = await instanceApiDefault.post(`/rating `, formData, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
-      );
+      });
       return data;
     } catch (error) {
       throw new Error('Create Rating Error');

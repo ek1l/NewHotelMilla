@@ -22,6 +22,9 @@ import IMGCity from '../../assets/img/cityGreen.png';
 import IMGCountry from '../../assets/img/countryGreen.png';
 import ModalFilter from '../ModalFilter/ModalFilter';
 import { getAllRatings } from '../../redux/reducers/getAllRating';
+import IMGFilterIco from '../../assets/img/filterIMG.svg';
+import { toggleMenu } from '../../redux/reducers/menuMobileOpen';
+import MenuMobileFilter from '../MenuMobileFilter/MenuMobileFilter';
 
 const SectionOffers1 = () => {
   const dispatch = useAppDispatch();
@@ -76,7 +79,7 @@ const SectionOffers1 = () => {
   };
 
   const handleSubmit = useCallback(() => {
-    const queryParams = `sport=${selectedSportId}&country=${selectedCountryId}&city=${selectedCityId}`;
+    const queryParams = `&sport=${selectedSportId}&country=${selectedCountryId}&city=${selectedCityId}`;
     if (!selectedCountryId && !selectedCityId && !selectedSportId) {
       dispatch(getAllhotels());
     } else {
@@ -194,7 +197,9 @@ const SectionOffers1 = () => {
     facilitiesData.length,
     travelTimeData.length,
   ]);
-
+  const { open } = useAppSelector((state) => state.mobileMenuOpenSlice);
+  
+  const toggleMenuMobile = () => dispatch(toggleMenu());
   return (
     <section className={styles.section}>
       <ModalFilter
@@ -285,6 +290,16 @@ const SectionOffers1 = () => {
             </select>
           </label>
         </div>
+        <div className={styles.filterHotels}>
+          {!open && (
+            <img
+              onClick={toggleMenuMobile}
+              src={IMGFilterIco}
+              alt="Filter Hotels Button"
+            />
+          )}
+          {open && <MenuMobileFilter />}
+        </div>
         <div className={styles.hotelsAndFilters}>
           {hotelData.length > 0 ? (
             <div className={styles.container}>
@@ -323,7 +338,7 @@ const SectionOffers1 = () => {
               </div>
             </div>
           ) : (
-            <h1 className='loadingText'>Loading...</h1>
+            <h1 className="loadingText">Loading...</h1>
           )}
           {data.length > 0 ? (
             <div className={styles.filter}>

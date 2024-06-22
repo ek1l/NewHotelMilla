@@ -17,7 +17,7 @@ export const editUser = createAsyncThunk(
   async (formDataAndId: any) => {
     try {
       const { data } = await instanceApiDefault.patch(
-        `user/${formDataAndId.id}`,
+        `account/${formDataAndId.id}`,
         formDataAndId.formData,
         {
           headers: {

@@ -75,7 +75,9 @@ const FilterCountry = ({ data, modalFilter }: any) => {
           {data.map((country: any) => (
             <div className={styles.envolve} key={country.id}>
               <label
-                className={`${styles.label1} ${selectedCountry === country.id ? styles.checked : ''}`}
+                className={`${styles.label1} ${
+                  selectedCountry === country.id ? styles.checked : ''
+                }`}
               >
                 <input
                   style={{

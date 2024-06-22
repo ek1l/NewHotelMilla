@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/store';
 import styles from './AddNewTravelTime.module.scss';
@@ -5,22 +6,14 @@ import styles from './AddNewTravelTime.module.scss';
 import IMGDeleteButton from '../../assets/img/deleteIco.svg';
 import { useForm } from 'react-hook-form';
 
-import { toast } from 'react-toastify';
 import { getAllTravelTime } from '../../redux/reducers/getAllNewTravelTime';
 import { deleteTravelTime } from '../../redux/reducers/deleteTravelTime';
 import { createTravelTime } from '../../redux/reducers/createNewTravelTime';
 
-const notifySuccessCreate = () =>
-  toast.success('TravelTime Created successfully');
-const notifyErrorCreate = () => toast.error('TravelTime not Created');
-
-const notifySuccessDelete = () =>
-  toast.success('TravelTime Deleted successfully');
-const notifyErrorDelete = () => toast.error('TravelTime not Deleted');
-
 const AddNewTravelTime = () => {
   const dispatch = useAppDispatch();
   const { data } = useAppSelector((state) => state.getAllTravelTimeSlice);
+ 
   const [handleModalIsOpen, setHandleModalIsOpen] = useState<boolean>(false);
   const { handleSubmit, register, reset } = useForm();
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -32,12 +25,11 @@ const AddNewTravelTime = () => {
     const response = await dispatch(createTravelTime(formData));
 
     if (response.type === 'createTravelTime/fulfilled') {
-      notifySuccessCreate();
       reset();
       dispatch(getAllTravelTime());
       return;
     } else {
-      notifyErrorCreate();
+      return;
     }
   };
 
@@ -51,12 +43,11 @@ const AddNewTravelTime = () => {
     const response = await dispatch(deleteTravelTime(id));
 
     if (response.type === 'deleteTravelTime/fulfilled') {
-      notifySuccessDelete();
       dispatch(getAllTravelTime());
       reset();
       return;
     } else {
-      notifyErrorDelete();
+      return;
     }
   };
 
@@ -72,7 +63,7 @@ const AddNewTravelTime = () => {
           className={`${styles.form} animationFormModal`}
         >
           <input
-            {...register('travelTime')}
+            {...register('travel_time')}
             className={styles.input}
             type="text"
             placeholder="Travel Time"
@@ -81,9 +72,9 @@ const AddNewTravelTime = () => {
             Create Travel Time
           </button>
           {data.length > 0
-            ? data.map((item) => (
+            ? data.map((item: any) => (
                 <div key={item.id} className={styles.travelTime}>
-                  <span>{item.travelTime}</span>
+                  <span>{item.travel_time}</span>
                   <button onClick={() => handleDeleteTravelTime(item.id)}>
                     <img src={IMGDeleteButton} alt="Delete button" />
                   </button>

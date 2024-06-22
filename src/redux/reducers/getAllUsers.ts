@@ -23,11 +23,12 @@ export const getAllusers = createAsyncThunk(
   'getAllusers',
   async (): Promise<DataType[]> => {
     try {
-      const { data } = await instanceApiDefault.get('user', {
+      const { data } = await instanceApiDefault.get('account', {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       });
+
       return data;
     } catch (error) {
       throw new Error('Get all Users Error');

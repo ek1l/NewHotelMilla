@@ -18,7 +18,7 @@ const initialState: InitialObjectState = {
 
 export const getAllRatings = createAsyncThunk('getAllRatings', async () => {
   try {
-    const { data } = await instanceApiDefault.get(`/rating`);
+    const { data } = await instanceApiDefault.get(`rating`);
     return data;
   } catch (error) {
     throw new Error('Get All Ratings Error');

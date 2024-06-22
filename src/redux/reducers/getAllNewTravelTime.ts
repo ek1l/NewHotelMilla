@@ -20,7 +20,7 @@ export const getAllTravelTime = createAsyncThunk(
   'getAllTravelTime',
   async () => {
     try {
-      const { data } = await instanceApiDefault.get(`/traveltime`);
+      const { data } = await instanceApiDefault.get(`/travel-time`);
       return data;
     } catch (error) {
       throw new Error('Get All TravelTime Error');

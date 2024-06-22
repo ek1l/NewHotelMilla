@@ -10,7 +10,7 @@ const initialState = {
 
 export const getAllhotels = createAsyncThunk('getAllhotels', async () => {
   try {
-    const { data } = await instanceApiDefault.get(`/hotels `);
+    const { data } = await instanceApiDefault.get(`/hotel`);
     return data;
   } catch (error) {
     throw new Error('Get all Hotels Error');
@@ -20,8 +20,10 @@ export const getAllhotels = createAsyncThunk('getAllhotels', async () => {
 export const getAllhotelsParams = createAsyncThunk(
   'getAllhotelsParams',
   async (parametro: string) => {
+    const parameter = parametro.replace(`${parametro[0]}`, '');
+    console.log(parametro);
     try {
-      const { data } = await instanceApiDefault.get(`/hotels/?${parametro} `);
+      const { data } = await instanceApiDefault.get(`/hotel?${parameter} `);
       return data;
     } catch (error) {
       throw new Error('Get  Hotels Params Error');
@@ -33,7 +35,7 @@ export const getHotelFilter = createAsyncThunk(
   'getHotelFilter',
   async (filter: string) => {
     try {
-      const { data } = await instanceApiDefault.get(`/hotels `);
+      const { data } = await instanceApiDefault.get(`/hotel`);
       const lowercaseFilter = filter.toLowerCase();
       const filterData = data.filter((hotel: any) => {
         const sportMatch = hotel.sport.some(

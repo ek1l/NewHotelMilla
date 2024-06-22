@@ -3,12 +3,12 @@ import { instanceApiDefault } from '../../api/apiDefault';
 
 type InitialObjectState = {
   loading: boolean;
-  idEditFacilitie: number;
+  idEditFacilitie: string;
 };
 
 const initialState: InitialObjectState = {
   loading: false,
-  idEditFacilitie: 0,
+  idEditFacilitie: '',
 };
 
 export const editFacilitie = createAsyncThunk(
@@ -18,7 +18,7 @@ export const editFacilitie = createAsyncThunk(
       const { data } = await instanceApiDefault.patch(
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        `/facilities/${idAndNameUpdate.id}`,
+        `/facility/${idAndNameUpdate.id}`,
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         idAndNameUpdate.value,

@@ -62,7 +62,7 @@ const EditUserForm = ({ handleModalEditUserClose }: any) => {
     // @ts-ignore
     dispatch(getOneUserId(idUserEdit));
   }, [dispatch, idUserEdit]);
-
+ 
   return (
     <form
       onSubmit={handleSubmit(submit)}

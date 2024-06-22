@@ -77,3 +77,12 @@
     }
   }
 }
+@media (max-width: 900px) {
+  .section {
+    width: 100%;
+    padding: 5px;
+    .sectionContainer {
+      width: 100%;
+    }
+  }
+}

@@ -10,6 +10,7 @@ const Offers = () => {
     window.scrollTo(0, 0);
     let modifiedText = text.replace(/&city/g, '');
     modifiedText = modifiedText.replace(/&=undefined/g, '');
+ 
     dispatch(getAllhotelsParams(modifiedText));
   }, [dispatch, text]);
   return (

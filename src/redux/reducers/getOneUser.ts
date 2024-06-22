@@ -22,12 +22,12 @@ const initialState: InitialObjectState = {
 
 export const getOneUserId = createAsyncThunk('getOneUser', async (id) => {
   try {
-    const { data } = await instanceApiDefault.get(`user`, {
+    const { data } = await instanceApiDefault.get(`account`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
     });
- 
+
     const user = data.filter((user: { id: any }) => user.id === id);
     return user;
   } catch (error) {

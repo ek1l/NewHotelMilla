@@ -13,7 +13,7 @@ export const deleteImageHotel = createAsyncThunk(
   'deleteImageHotel',
   async (id) => {
     try {
-      const { data } = await instanceApiDefault.delete(`/hotels/image/${id}`, {
+      const { data } = await instanceApiDefault.delete(`/hotel/image/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },

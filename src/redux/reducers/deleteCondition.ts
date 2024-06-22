@@ -13,7 +13,7 @@ export const deleteCondition = createAsyncThunk(
   'deleteCondition',
   async (id) => {
     try {
-      const { data } = await instanceApiDefault.delete(`/conditions/${id}`, {
+      const { data } = await instanceApiDefault.delete(`/condition/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },

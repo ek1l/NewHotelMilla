@@ -18,6 +18,7 @@ const CardNewsHome = ({
       return string.slice(0, quantidade) + '...';
     }
   };
+
   const partes = date.split('T');
   const data = partes[0];
   const hora = partes[1].slice(0, 8);

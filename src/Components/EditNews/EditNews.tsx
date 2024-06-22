@@ -22,10 +22,10 @@ const EditNews = ({ handleOpenModalEditNews }: any) => {
   const { data } = useAppSelector((state: any) => state.getOneNewsSlice);
   const { handleSubmit, register } = useForm({
     values: {
-      title: data[0]?.title || '',
-      author: data[0]?.author || '',
-      description: data[0]?.description || '',
-      content: data[0]?.content || '',
+      title: data?.title || '',
+      author: data?.author || '',
+      description: data?.description || '',
+      content: data?.content || '',
     },
   });
 
@@ -62,7 +62,7 @@ const EditNews = ({ handleOpenModalEditNews }: any) => {
       <div className={styles.closeButton}>
         <button onClick={handleOpenModalEditNews}>X</button>
       </div>
-      {data.length > 0 ? (
+      {data.id ? (
         <form className={styles.form} onSubmit={handleSubmit(submit)}>
           <InputPanelAdmin
             type="text"

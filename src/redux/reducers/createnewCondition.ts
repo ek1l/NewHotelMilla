@@ -14,15 +14,11 @@ export const createConditions = createAsyncThunk(
   'createConditions',
   async (formData: any) => {
     try {
-      const { data } = await instanceApiDefault.post(
-        `/conditions/create`,
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-          },
+      const { data } = await instanceApiDefault.post(`/condition`, formData, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
-      );
+      });
       return data;
     } catch (error) {
       throw new Error('Create condition Error');

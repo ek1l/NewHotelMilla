@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { toast } from 'react-toastify';
@@ -55,7 +56,7 @@ const AddNewCities = () => {
     }
 
     const response = await dispatch(
-      createCity({ ...formData, countryId: Number(selectedCity) }),
+      createCity({ ...formData, countryId: selectedCity }),
     );
     if (response.type === 'createCity/fulfilled') {
       notifySuccess();
@@ -86,7 +87,6 @@ const AddNewCities = () => {
     const idAndNameUpdate = {
       id: editingCityId,
       value: {
-        countryId: editingCityCountryId,
         name: inputEditValue,
       },
     };

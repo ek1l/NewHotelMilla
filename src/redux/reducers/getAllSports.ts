@@ -18,7 +18,7 @@ const initialState: InitialObjectState = {
 
 export const getAllSports = createAsyncThunk('getAllSports', async () => {
   try {
-    const { data } = await instanceApiDefault.get(`/sports`);
+    const { data } = await instanceApiDefault.get(`/sport`);
     return data;
   } catch (error) {
     throw new Error('Get All Sports Error');

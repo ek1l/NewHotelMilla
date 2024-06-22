@@ -13,7 +13,7 @@ export const deleteFacilities = createAsyncThunk(
   'deleteFacilities',
   async (id) => {
     try {
-      const { data } = await instanceApiDefault.delete(`/facilities/${id}`, {
+      const { data } = await instanceApiDefault.delete(`/facility/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },

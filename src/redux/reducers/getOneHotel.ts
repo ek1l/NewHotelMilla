@@ -10,7 +10,7 @@ export const getOneHotel = createAsyncThunk(
   'getOneHotel',
   async (id: string) => {
     try {
-      const { data } = await instanceApiDefault.get(`/hotels/${id}`);
+      const { data } = await instanceApiDefault.get(`/hotel/${id}`);
       return data;
     } catch (error) {
       throw new Error('Get One Hotel Error');

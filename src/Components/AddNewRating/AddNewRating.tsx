@@ -75,18 +75,21 @@ const AddNewRating = () => {
             </button>
           </form>
           <div className={`${styles.containerRatingList} animationFormModal`}>
-            {data.length > 0 ? (
-              data.map((rating: any) => (
-                <div key={rating.id} className={styles.ratingAndDelete}>
-                  <p>{rating.rating}</p>
-                  <button onClick={() => handleDeleteRating(rating.id)}>
-                    <img src={IMGIconDeletebutton} alt="Icon Delete Button" />
-                  </button>
-                </div>
-              ))
-            ) : (
-              <span>Loading...</span>
-            )}
+            {data.length > 0
+              ? data.map((rating: any) => {
+                  return (
+                    <div key={rating.id} className={styles.ratingAndDelete}>
+                      <p>{rating.rating}</p>
+                      <button onClick={() => handleDeleteRating(rating.id)}>
+                        <img
+                          src={IMGIconDeletebutton}
+                          alt="Icon Delete Button"
+                        />
+                      </button>
+                    </div>
+                  );
+                })
+              : null}
           </div>
         </>
       )}

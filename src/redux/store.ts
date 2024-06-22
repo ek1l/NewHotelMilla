@@ -58,6 +58,7 @@ import createHotelsSlice from './reducers/createHotel';
 import getAllSliderSlice from './reducers/getAllSlider';
 import createNewSliderSlice from './reducers/createNewSlider';
 import deleteSliderSlice from './reducers/deleteSlider';
+import mobileMenuOpenSlice from './reducers/menuMobileOpen';
 const store = configureStore({
   reducer: {
     getAllCountrySlice: getAllCountrySlice,
@@ -118,6 +119,7 @@ const store = configureStore({
     getAllSliderSlice: getAllSliderSlice,
     createNewSliderSlice: createNewSliderSlice,
     deleteSliderSlice: deleteSliderSlice,
+    mobileMenuOpenSlice: mobileMenuOpenSlice,
   },
 });
 

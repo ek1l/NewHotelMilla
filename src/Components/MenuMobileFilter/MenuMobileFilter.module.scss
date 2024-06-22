@@ -1,0 +1,47 @@
+.containerFilter {
+  background-color: rgba(5, 26, 63, 0.6);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  min-height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-star;
+  z-index: 9999;
+  padding: 10px;
+  .titleFilter {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    h2 {
+      margin-bottom: 20px;
+      color: white;
+    }
+    .closeModalMenuMobile {
+      outline: none;
+      border: none;
+      background: transparent;
+      font-size: 24px;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      
+    }
+  }
+  .cardFilter {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+    h3 {
+      color: white;
+    }
+  }
+}

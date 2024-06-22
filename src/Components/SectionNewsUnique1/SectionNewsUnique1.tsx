@@ -9,7 +9,7 @@ const SectionNewsUnique1 = () => {
   const { id } = useParams();
   const dispatch = useAppDispatch();
   const { data }: any = useAppSelector((state) => state.getOneNewsSlice);
- 
+
   useEffect(() => {
     dispatch(getOneNews(id));
   }, [dispatch, id]);
@@ -27,28 +27,29 @@ const SectionNewsUnique1 = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [data]);
+ 
   return (
     <section className={styles.section}>
-      {data.length > 0 ? (
+      {data.id ? (
         <div className={styles.containerSection}>
           <div className={styles.titleAndAuthorAndDateAndDay}>
-            <h1 className={styles.title}>{data[0].title}</h1>
+            <h1 className={styles.title}>{data.title}</h1>
             <div className={styles.authorAndDate}>
-              <span className={styles.authorAndDateSpan}>{data[0].author}</span>
+              <span className={styles.authorAndDateSpan}>{data.author}</span>
               <span className={styles.authorAndDateSpan}>
-                {formatDate(data[0].createdAt)}
+                {formatDate(data.createdAt)}
               </span>
             </div>
           </div>
           <div className={styles.containerNewsAndBanner}>
             <div className={styles.containerNews}>
-              <p className={styles.description}>{data[0].content}</p>
-              <p className={styles.description}>{data[0].description}</p>
+              <p className={styles.description}>{data.content}</p>
+              <p className={styles.description}>{data.description}</p>
             </div>
             <div className={styles.banner}>
               <img
                 className={styles.bannerImg}
-                src={`${import.meta.env.VITE_APP_API_IMAGE}/${data[0].banner}`}
+                src={`${import.meta.env.VITE_APP_API_IMAGE}/${data.banner}`}
                 alt=""
               />
             </div>

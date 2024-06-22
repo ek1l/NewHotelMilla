@@ -11,7 +11,7 @@ const initialState: InitialObjectState = {
 
 export const deleteSport = createAsyncThunk('deleteSport', async (id) => {
   try {
-    const { data } = await instanceApiDefault.delete(`/sports/${id}`, {
+    const { data } = await instanceApiDefault.delete(`/sport/${id}`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },

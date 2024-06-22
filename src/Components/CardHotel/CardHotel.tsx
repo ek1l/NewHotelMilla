@@ -2,6 +2,7 @@
 import styles from './CardHotel.module.scss';
 import { Link } from 'react-router-dom';
 import IMGCardHotelArrow from '../../assets/img/arrowCardHotelView.png';
+
 const CardHotel = ({
   id,
   name,
@@ -15,15 +16,18 @@ const CardHotel = ({
   const truncatedName =
     name.length > limitTitle ? `${name.slice(0, limitTitle)}...` : name;
 
-  const firstThreeFacilities = facilities.slice(0, 8);
+  const isMobile = window.innerWidth < 900;
+
+  const maxFacilities = isMobile ? 3 : 8;
+  const firstFacilities = facilities.slice(0, maxFacilities);
 
   const capitalizeFirstLetter = (text: string) => {
     return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
   };
 
-  const description =
+  const truncatedAccomodation =
     accomoditation.length > 122
-      ? `${capitalizeFirstLetter(accomoditation.slice(0, 200))}...`
+      ? `${capitalizeFirstLetter(accomoditation.slice(0, 80))}...`
       : capitalizeFirstLetter(accomoditation);
 
   return (
@@ -46,12 +50,18 @@ const CardHotel = ({
             </p>
           </div>
           <div className={styles.description}>
-            <p>{description}</p>
+            <p>{truncatedAccomodation}</p>
           </div>
           <div className={styles.categories}>
-            {firstThreeFacilities.map((facility: any) => (
+            {firstFacilities.map((facility: any) => (
               <div className={styles.category} key={facility.id}>
-                <p>{facility.facility}</p>
+                <p>
+                  {window.innerWidth < 900
+                    ? `${facility.facility.slice(0, 10)}...`
+                    : facility.facility.length > 20
+                    ? `${facility.facility.slice(0, 20)}...`
+                    : facility.facility}
+                </p>
               </div>
             ))}
           </div>

@@ -11,24 +11,35 @@ const SectionHome5 = () => {
   const dispatch = useAppDispatch();
   const { data } = useAppSelector((state) => state.getAllhotelsSlice);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     dispatch(getAllhotels());
+
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, [dispatch]);
+
+  const itemsPerPage = windowWidth >= 1175 ? 3 : windowWidth >= 900 ? 2 : 1;
+
+  const groupedHotels = [];
+  for (let i = 0; i < data.length; i += itemsPerPage) {
+    groupedHotels.push(data.slice(i, i + itemsPerPage));
+  }
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex(
-        (prevIndex) => (prevIndex + 1) % Math.ceil(data.length / 3),
-      );
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % groupedHotels.length);
     }, 4000);
     return () => clearInterval(interval);
-  }, [data.length]);
-
-  const groupedHotels = [];
-  for (let i = 0; i < data.length; i += 3) {
-    groupedHotels.push(data.slice(i, i + 3));
-  }
+  }, [data.length, groupedHotels.length]);
 
   return (
     <section className={`${styles.section}`}>
@@ -54,10 +65,12 @@ const SectionHome5 = () => {
                   city={hotel.city.name}
                   country={hotel.city.country.name}
                   stars={Number(
-                    hotel.rating.rating
+                    hotel.ratings.rating
                       .replace('Sterren', '')
                       .replace('Stars', '')
-                      .replace('Star', ''),
+                      .replace('Star', '')
+                      .replace('star', '')
+                      .replace('stars', ''),
                   )}
                   imagem={hotel.images[0].path}
                   key={hotel.id}

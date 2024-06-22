@@ -213,3 +213,78 @@
     }
   }
 }
+
+// MOBILE
+
+@media (max-width: 1300px) {
+  .footer {
+    .containerFooter {
+      width: 100% !important;
+
+      .containerInformacoes {
+        padding: 5px;
+      }
+      .ul {
+        .li {
+          .link {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1105px) {
+  .footer {
+    height: 100%;
+    padding: 5px;
+    .containerFooter {
+      height: 100%;
+      .containerInformacoes {
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+
+        .logoAndDescription {
+          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .contact {
+          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .about {
+          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          .ul {
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+        .getUpdatedAndMailSend {
+          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          .bolaContainer {
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+      }
+    }
+  }
+}

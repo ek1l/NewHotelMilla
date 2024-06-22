@@ -22,13 +22,13 @@ const SectionHotelUnique1 = () => {
 
   const handlePrevClick = () => {
     setCurrentImageIndex((prevIndex) =>
-      prevIndex === 0 ? data[0].images.length - 1 : prevIndex - 1,
+      prevIndex === 0 ? data.images.length - 1 : prevIndex - 1,
     );
   };
 
   const handleNextClick = () => {
     setCurrentImageIndex((prevIndex) =>
-      prevIndex === data[0].images.length - 1 ? 0 : prevIndex + 1,
+      prevIndex === data.images.length - 1 ? 0 : prevIndex + 1,
     );
   };
 
@@ -38,7 +38,7 @@ const SectionHotelUnique1 = () => {
 
   return (
     <section className={styles.section}>
-      {data.length > 0 ? (
+      {data.id ? (
         <div className={styles.containerSection}>
           <div className={styles.offersAndHotelNameAndStarAndCityAndCountry}>
             <Link className={styles.link} to="/offers">
@@ -50,8 +50,8 @@ const SectionHotelUnique1 = () => {
               Offers
             </Link>
             <div className={styles.hotelNameAndStars}>
-              <h1 className={styles.hotelName}>{data[0].name}</h1>
-              {Array(Number(data[0].rating.rating[0]))
+              <h1 className={styles.hotelName}>{data.name}</h1>
+              {Array(Number(data.ratings.rating[0]))
                 .fill(0)
                 .map((_, index) => (
                   <img
@@ -64,7 +64,7 @@ const SectionHotelUnique1 = () => {
             </div>
             <div className={styles.cityAndCountry}>
               <span className={styles.cityAndCountrySpan}>
-                {data[0].city.name}, {data[0].city.country.name}
+                {data.city.name}, {data.city.country.name}
               </span>
             </div>
           </div>
@@ -74,14 +74,14 @@ const SectionHotelUnique1 = () => {
               <img
                 className={styles.imgCarroussel}
                 src={`${import.meta.env.VITE_APP_API_IMAGE}/${
-                  data[0].images[currentImageIndex].path
+                  data.images[currentImageIndex].path
                 }`}
                 alt="CarrousselIMG"
               />
             </div>
             <button className={styles.arrow} onClick={handleNextClick}></button>
             <div className={styles.thumbnails}>
-              {data[0].images.map((image: any, index: number) => (
+              {data.images.map((image: any, index: number) => (
                 <img
                   key={image.id}
                   className={`${styles.thumbnail} ${
@@ -95,7 +95,9 @@ const SectionHotelUnique1 = () => {
             </div>
           </div>
         </div>
-      ) : null}
+      ) : (
+        <h1>Loading</h1>
+      )}
     </section>
   );
 };

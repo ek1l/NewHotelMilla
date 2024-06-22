@@ -61,7 +61,7 @@ const SectionHome1 = () => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    const queryParams = `sport=${selectedSportId}&country=${selectedCountryId}&city=${selectedCityId}`;
+    const queryParams = `&sport=${selectedSportId}&country=${selectedCountryId}&city=${selectedCityId}`;
     navigate('/offers');
     dispatch(getAllhotelsParams(queryParams));
   };

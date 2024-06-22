@@ -25,7 +25,7 @@ const CardHotelHome = ({
       ? `${description.substring(0, 51)}...`
       : description;
   };
-
+ 
   return (
     <Link
       to={`/offers/${id}`}
@@ -42,11 +42,12 @@ const CardHotelHome = ({
         <div className={styles.containerInfos}>
           <div className={styles.titleAndStars}>
             <h1 className={styles.titleNameHotel}>{name}</h1>
-            {Array(stars)
-              .fill(0)
-              .map((_, index) => (
-                <img key={index} src={IMGStarHome} alt="star" />
-              ))}
+            {typeof stars === 'number' &&
+              Array(stars)
+                .fill(0)
+                .map((_, index) => (
+                  <img key={index} src={IMGStarHome} alt="star" />
+                ))}
           </div>
           <div className={styles.cityAndCountry}>
             <span className={styles.cityCountrySpan}>{city}, </span>

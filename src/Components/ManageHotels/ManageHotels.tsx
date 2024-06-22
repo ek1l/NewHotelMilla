@@ -174,7 +174,7 @@ const ManageHotels = () => {
                       }
                       setHandleEditHotel={setHandleEditHotel}
                       star={
-                        hotel.rating.rating.toLowerCase().includes('stars')
+                        hotel.ratings.rating.toLowerCase().includes('stars')
                           ? parseInt(
                               hotel.rating.rating
                                 .toLowerCase()
@@ -182,7 +182,7 @@ const ManageHotels = () => {
                               10,
                             )
                           : parseInt(
-                              hotel.rating.rating
+                              hotel.ratings.rating
                                 .toLowerCase()
                                 .replace('star', ''),
                               10,

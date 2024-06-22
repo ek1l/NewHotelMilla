@@ -3,6 +3,7 @@
 import styles from './CardHotelSimple.module.scss';
 import IMGStar from '../../assets/img/starHotel.png';
 import { Link } from 'react-router-dom';
+
 const CardHotelSimple = ({ stars, city, country, imagem, name, id }: any) => {
   return (
     <Link
@@ -19,11 +20,17 @@ const CardHotelSimple = ({ stars, city, country, imagem, name, id }: any) => {
       <div className={styles.infos}>
         <div className={styles.containerIMGStars}>
           <div className={styles.starsContainer}>
-            {Array(stars)
-              .fill(0)
-              .map((_, __) => (
-                <img className={styles.stars} src={IMGStar} alt="Star" />
-              ))}
+            {Number.isInteger(stars) &&
+              Array(stars)
+                .fill(0)
+                .map((_, index) => (
+                  <img
+                    key={index}
+                    className={styles.stars}
+                    src={IMGStar}
+                    alt="Star"
+                  />
+                ))}
           </div>
         </div>
         <div className={styles.titleAndCityAndCountry}>

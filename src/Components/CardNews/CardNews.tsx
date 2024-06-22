@@ -29,7 +29,7 @@ const CardNews = ({
   isAdmin,
 }: any) => {
   const dispatch = useAppDispatch();
-
+  
   const description = descriptionCard;
   const [handleOpenModalEdit, setHandleOpenModalEdit] =
     useState<boolean>(false);

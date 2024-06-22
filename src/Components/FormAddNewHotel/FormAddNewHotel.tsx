@@ -174,26 +174,28 @@ const FormAddNewHotel = () => {
 
     const newObjHotel = {
       name: formData.name,
-      star: 4,
-      comment: {
-        author: formData.nameAuthor,
-        comment: formData.comment,
-      },
+
       description: {
         destination: formData.destination,
         accommodation: formData.accommodation,
         activities: formData.activities,
+        comment: {
+          author: formData.nameAuthor,
+          comment: formData.comment,
+        },
       },
-      ratingId: Number(formData.ratingId),
-      sportsIds: selectedSports.map(Number),
-      facilitiesIds: selectedFacilities.map(Number),
-      travelTimesIds: selectedTravelTimes.map(Number),
-      conditionsIds: selectedConditions.map(Number),
+      ratingId: formData.ratingId,
+      sportsIds: selectedSports.map(String),
+      facilitiesIds: selectedFacilities.map(String),
+      travelTimesIds: selectedTravelTimes.map(String),
+      conditionsIds: selectedConditions.map(String),
       cityId: formData.cityId,
       conditionId: formData.conditionId,
       travelTimeId: formData.travelTimeId,
       hotelMovie: formData.hotelMovie,
       card: {
+        title: formData.title,
+        description_big: formData.description_big,
         description1: formData.description1,
         description2: formData.description2,
         description3: formData.description3,
@@ -209,22 +211,23 @@ const FormAddNewHotel = () => {
       JSON.stringify(newObjHotel.description),
     );
 
-    formDataToSend.append('comment', JSON.stringify(newObjHotel.comment));
-    formDataToSend.append('sportsIds', JSON.stringify(newObjHotel.sportsIds));
+    formDataToSend.append('sports', JSON.stringify(newObjHotel.sportsIds));
     formDataToSend.append('card', JSON.stringify(newObjHotel.card));
     formDataToSend.append(
-      'facilitiesIds',
+      'facilities',
       JSON.stringify(newObjHotel.facilitiesIds),
     );
 
     formDataToSend.append(
-      'travelTimeIds',
+      'travelTime',
       JSON.stringify(newObjHotel.travelTimesIds),
     );
+
     formDataToSend.append(
-      'conditionIds',
+      'conditions',
       JSON.stringify(newObjHotel.conditionsIds),
     );
+
     formDataToSend.append('cityId', newObjHotel.cityId);
     formDataToSend.append(
       'promotion',
@@ -232,7 +235,8 @@ const FormAddNewHotel = () => {
     );
 
     formDataToSend.append('ratingId', String(newObjHotel.ratingId));
-    formDataToSend.append('authors', formData.authors[0]);
+
+    formDataToSend.append('author', formData.authors[0]);
     formDataToSend.append('hotelMovie', newObjHotel.hotelMovie[0]);
 
     if (formData.image && formData.image.length > 0) {
@@ -491,6 +495,22 @@ const FormAddNewHotel = () => {
             </div>
 
             <div className={styles.containerFiles}>
+              <Input
+                label="Description Big"
+                type="text"
+                {...register('description_big')}
+                height="120px"
+                width="100%"
+              />
+
+              <Input
+                label="Title Card"
+                type="text"
+                {...register('title')}
+                height="120px"
+                width="100%"
+              />
+
               <Input
                 label="Photos"
                 type="file"
