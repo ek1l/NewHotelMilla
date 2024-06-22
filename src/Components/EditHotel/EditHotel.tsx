@@ -58,46 +58,37 @@ const EditHotel = ({ setHandleEditHotel }: any) => {
 
   const { register, handleSubmit } = useForm<any>({
     values: {
-      name: oneHotelData.length > 0 ? oneHotelData[0]?.name : '',
-      cityId: oneHotelData.length > 0 ? oneHotelData[0].cityId : '',
-      ratingId: oneHotelData.length > 0 ? oneHotelData[0].ratingId : '',
-      destination:
-        oneHotelData.length > 0 ? oneHotelData[0].description.destination : '',
-      accommodation:
-        oneHotelData.length > 0 ? oneHotelData[0].card.description1 : '',
-      description1:
-        oneHotelData.length > 0
-          ? oneHotelData[0].description.accommodation
-          : '',
-      description2:
-        oneHotelData.length > 0 ? oneHotelData[0].card.description2 : '',
+      name: oneHotelData.id ? oneHotelData?.name : '',
+      cityId: oneHotelData.id ? oneHotelData.cityId : '',
+      ratingId: oneHotelData.id ? oneHotelData.ratingId : '',
+      destination: oneHotelData.id ? oneHotelData.description.destination : '',
+      accommodation: oneHotelData.id ? oneHotelData.card.description1 : '',
+      description1: oneHotelData.id
+        ? oneHotelData.description.accommodation
+        : '',
+      description2: oneHotelData.id ? oneHotelData.card.description2 : '',
 
-      description3:
-        oneHotelData.length > 0 ? oneHotelData[0].card.description3 : '',
-      activities:
-        oneHotelData.length > 0 ? oneHotelData[0].description.activities : '',
-      nameAuthor:
-        oneHotelData.length > 0
-          ? oneHotelData[0].description.comment.author
-          : '',
-      comment:
-        oneHotelData.length > 0
-          ? oneHotelData[0].description.comment.comment
-          : '',
-      movie: oneHotelData.length > 0 ? oneHotelData[0].movie : '',
+      description3: oneHotelData.id ? oneHotelData.card.description3 : '',
+      activities: oneHotelData.id ? oneHotelData.description.activities : '',
+      nameAuthor: oneHotelData.id
+        ? oneHotelData.description.comment.author
+        : '',
+      comment: oneHotelData.id ? oneHotelData.description.comment.comment : '',
+      movie: oneHotelData.id ? oneHotelData.movie : '',
+      description_big: oneHotelData.id ? oneHotelData.card.description_big : '',
+      title: oneHotelData.id ? oneHotelData.card.title : '',
     },
   });
-
+  console.log(oneHotelData);
   const [selectedSports, setSelectedSports] = useState<string[]>([]);
   const [selectedConditions, setSelectedConditions] = useState<string[]>([]);
   const [selectedFacilities, setSelectedFacilities] = useState<string[]>([]);
   const [selectedTravelTimes, setSelectedTravelTimes] = useState<string[]>([]);
   const [promotion, setPromotion] = useState(
-    oneHotelData[0]?.promotion ? true : false,
+    oneHotelData?.promotion ? true : false,
   );
   const handlePromotion = () => {
     setPromotion(!promotion);
- 
   };
   const handleSportsChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedSportId = event.target.value;
@@ -207,32 +198,34 @@ const EditHotel = ({ setHandleEditHotel }: any) => {
 
     const newObjHotel = {
       name: formData.name,
-      star: 4,
-      comment: {
-        author: formData.nameAuthor,
-        comment: formData.comment,
-      },
       description: {
         destination: formData.destination,
         accommodation: formData.accommodation,
         activities: formData.activities,
+        comment: {
+          author: formData.nameAuthor,
+          comment: formData.comment,
+        },
       },
-      ratingId: Number(formData.ratingId),
-      sportsIds: selectedSports.map(Number),
-      facilitiesIds: selectedFacilities.map(Number),
-      travelTimesIds: selectedTravelTimes.map(Number),
-      conditionsIds: selectedConditions.map(Number),
+      ratingId: formData.ratingId,
+      sportsIds: selectedSports.map(String),
+      facilitiesIds: selectedFacilities.map(String),
+      travelTimesIds: selectedTravelTimes.map(String),
+      conditionsIds: selectedConditions.map(String),
       cityId: formData.cityId,
       conditionId: formData.conditionId,
       travelTimeId: formData.travelTimeId,
       hotelMovie: formData.hotelMovie,
       card: {
+        title: formData.title,
+        description_big: formData.description_big,
         description1: formData.description1,
         description2: formData.description2,
         description3: formData.description3,
       },
       promotion: promotion,
     };
+
     const formDataToSend = new FormData();
     formDataToSend.append('name', newObjHotel.name);
 
@@ -241,29 +234,34 @@ const EditHotel = ({ setHandleEditHotel }: any) => {
       JSON.stringify(newObjHotel.description),
     );
 
-    formDataToSend.append('comment', JSON.stringify(newObjHotel.comment));
-    formDataToSend.append('sportsIds', JSON.stringify(newObjHotel.sportsIds));
+    formDataToSend.append('sports', JSON.stringify(newObjHotel.sportsIds));
     formDataToSend.append('card', JSON.stringify(newObjHotel.card));
     formDataToSend.append(
-      'facilitiesIds',
+      'facilities',
       JSON.stringify(newObjHotel.facilitiesIds),
     );
+
     formDataToSend.append(
-      'travelTimeIds',
+      'travelTime',
       JSON.stringify(newObjHotel.travelTimesIds),
     );
+
     formDataToSend.append(
-      'conditionIds',
+      'conditions',
       JSON.stringify(newObjHotel.conditionsIds),
     );
-    formDataToSend.append('cityId', newObjHotel.cityId);
 
-    // @ts-ignore
-    formDataToSend.append('ratingId', newObjHotel.ratingId);
-    // @ts-ignore
-    formDataToSend.append('authors', formData.authors[0]);
+    formDataToSend.append('cityId', newObjHotel.cityId);
+    formDataToSend.append(
+      'promotion',
+      String(newObjHotel.promotion === true ? true : false),
+    );
+
+    formDataToSend.append('ratingId', String(newObjHotel.ratingId));
+
+    formDataToSend.append('author', formData.authors[0]);
     formDataToSend.append('hotelMovie', newObjHotel.hotelMovie[0]);
-    formDataToSend.append('promotion', String(promotion));
+
     if (formData.image && formData.image.length > 0) {
       for (let i = 0; i < formData.image.length; i++) {
         formDataToSend.append('hotel', formData.image[i]);
@@ -275,7 +273,7 @@ const EditHotel = ({ setHandleEditHotel }: any) => {
     };
     // @ts-ignore
     const response = await dispatch(editHotel(objToSend));
-   
+
     if (response.type === 'editHotel/fulfilled') {
       notifySuccessEdited();
       dispatch(getAllhotels());
@@ -512,9 +510,9 @@ const EditHotel = ({ setHandleEditHotel }: any) => {
                       Select Travel Time
                     </option>
                     {travelTimeData.length > 0
-                      ? travelTimeData.map((traveltime) => (
+                      ? travelTimeData.map((traveltime: any) => (
                           <option key={traveltime.id} value={traveltime.id}>
-                            {traveltime.travelTime}
+                            {traveltime.travel_time}
                           </option>
                         ))
                       : null}
@@ -606,6 +604,21 @@ const EditHotel = ({ setHandleEditHotel }: any) => {
 
               <div className={styles.containerFiles}>
                 <Input
+                  label="Description Big"
+                  type="text"
+                  {...register('description_big')}
+                  height="120px"
+                  width="100%"
+                />
+                <Input
+                  label="Title Card"
+                  type="text"
+                  {...register('title')}
+                  height="120px"
+                  width="100%"
+                />
+
+                <Input
                   label="Add new photo"
                   type="file"
                   accept="image/*"
@@ -617,8 +630,8 @@ const EditHotel = ({ setHandleEditHotel }: any) => {
                 />
               </div>
               <div className={styles.photosHotelImages}>
-                {oneHotelData.length > 0
-                  ? oneHotelData[0].images.map((hotel: any) => (
+                {oneHotelData.id
+                  ? oneHotelData.images.map((hotel: any) => (
                       <div key={hotel.id} className={styles.imageClosed}>
                         <button
                           onClick={() => handleDeleteImageHotel(hotel.id)}
