@@ -27,7 +27,7 @@ const SectionNewsUnique1 = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [data]);
- 
+
   return (
     <section className={`${styles.section} animationEntrando`}>
       {data.id ? (
@@ -37,7 +37,7 @@ const SectionNewsUnique1 = () => {
             <div className={styles.authorAndDate}>
               <span className={styles.authorAndDateSpan}>{data.author}</span>
               <span className={styles.authorAndDateSpan}>
-                {formatDate(data.createdAt)}
+                {formatDate(data.created_at)}
               </span>
             </div>
           </div>

@@ -246,7 +246,7 @@ const FormAddNewHotel = () => {
     }
 
     const response = await dispatch(createHotel(formDataToSend));
- 
+
     if (response.type === 'createHotel/fulfilled') {
       notifySuccessCreated();
       handleToggleModalAdmin();
@@ -328,7 +328,7 @@ const FormAddNewHotel = () => {
                 <div className={styles.facilitiesSelected}>
                   {selectedSports.map((sportId) => (
                     <div key={sportId} className={styles.selectedFacility}>
-                      <p>{sportId}</p>
+                      <p>{`${sportId.slice(0, 4)}...`}</p>
                       <button
                         className={styles.removeButtonSportArray}
                         onClick={() => removeSport(sportId)}
@@ -359,7 +359,7 @@ const FormAddNewHotel = () => {
                 <div className={styles.facilitiesSelected}>
                   {selectedConditions.map((conditionId) => (
                     <div key={conditionId} className={styles.selectedFacility}>
-                      <p>{conditionId}</p>
+                      <p>{`${conditionId.slice(0, 4)}...`}</p>
                       <button
                         className={styles.removeButtonFacilityArray}
                         onClick={() => removeCondition(conditionId)}
@@ -390,7 +390,7 @@ const FormAddNewHotel = () => {
                 <div className={styles.facilitiesSelected}>
                   {selectedFacilities.map((facilityId) => (
                     <div key={facilityId} className={styles.selectedFacility}>
-                      <p>{facilityId}</p>
+                      <p>{`${facilityId.slice(0, 4)}...`}</p>
                       <button
                         className={styles.removeButtonFacilityArray}
                         onClick={() => removeFacility(facilityId)}
@@ -411,9 +411,9 @@ const FormAddNewHotel = () => {
                 >
                   <option value="Select Travel Time">Select Travel Time</option>
                   {travelTimeData.length > 0
-                    ? travelTimeData.map((traveltime) => (
+                    ? travelTimeData.map((traveltime: any) => (
                         <option key={traveltime.id} value={traveltime.id}>
-                          {traveltime.travelTime}
+                          {traveltime.travel_time}
                         </option>
                       ))
                     : null}
@@ -421,7 +421,7 @@ const FormAddNewHotel = () => {
                 <div className={styles.facilitiesSelected}>
                   {selectedTravelTimes.map((travelTimeId) => (
                     <div key={travelTimeId} className={styles.selectedFacility}>
-                      <p>{travelTimeId}</p>
+                      <p>{`${travelTimeId.slice(0, 4)}...`}</p>
                       <button
                         className={styles.removeButtonFacilityArray}
                         onClick={() => removeTravelTime(travelTimeId)}
@@ -491,7 +491,11 @@ const FormAddNewHotel = () => {
                 height="120px"
                 width="100%"
               />
-              <input type="checkbox" onChange={handlePromotion} />
+
+              <label>
+                <span className={`${styles.promotion}`}>Promotion</span>
+                <input type="checkbox" onChange={handlePromotion} />
+              </label>
             </div>
 
             <div className={styles.containerFiles}>
