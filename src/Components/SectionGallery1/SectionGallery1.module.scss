@@ -74,7 +74,14 @@
 @media (max-width: 600px) {
   .section {
     .sectionContainer {
+      padding: 10px;
+
       width: 500px !important;
+      .containerPhotosAndVideos {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
     }
   }
 }
@@ -83,6 +90,14 @@
   .section {
     .sectionContainer {
       width: 400px !important;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .section {
+    .sectionContainer {
+      width: 350px !important;
     }
   }
 }

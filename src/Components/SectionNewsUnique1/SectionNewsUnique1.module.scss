@@ -5,7 +5,6 @@
   @include flexDefault;
   flex-direction: column;
   margin-bottom: 100px;
-
   .containerSection {
     @include flexDefault;
     flex-direction: column;
@@ -103,6 +102,11 @@
   .section {
     .containerSection {
       width: 500px !important;
+      padding: 10px;
+      .containerNewsAndBanner {
+        flex-direction: column;
+        gap: 20px;
+      }
     }
   }
 }
