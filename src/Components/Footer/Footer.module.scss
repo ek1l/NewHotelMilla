@@ -244,44 +244,44 @@
       .containerInformacoes {
         flex-direction: column;
         display: flex;
-        align-items: center;
-        justify-content: center;
+        align-items: flex-start;
+        justify-content: flex-start;
         gap: 20px;
 
         .logoAndDescription {
-          text-align: center;
           display: flex;
-          align-items: center;
-          justify-content: center;
+          align-items: flex-start;
+          justify-content: flex-start;
+          margin-top: 15px;
         }
         .contact {
           text-align: center;
           display: flex;
-          align-items: center;
-          justify-content: center;
+          align-items: flex-start;
+          justify-content: flex-start;
         }
         .about {
-          text-align: center;
+          text-align: left;
           display: flex;
-          align-items: center;
-          justify-content: center;
+          align-items: flex-start;
+          justify-content: flex-start;
           .ul {
             text-align: center;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            align-items: flex-start;
+            justify-content: flex-start;
           }
         }
         .getUpdatedAndMailSend {
           text-align: center;
           display: flex;
-          align-items: center;
-          justify-content: center;
+          align-items: flex-start;
+          justify-content: flex-start;
           .bolaContainer {
             text-align: center;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            align-items: flex-start;
+            justify-content: flex-start;
           }
         }
       }

@@ -198,7 +198,7 @@ const SectionOffers1 = () => {
     travelTimeData.length,
   ]);
   const { open } = useAppSelector((state) => state.mobileMenuOpenSlice);
-  
+
   const toggleMenuMobile = () => dispatch(toggleMenu());
   return (
     <section className={`${styles.section} animationEntrando`}>

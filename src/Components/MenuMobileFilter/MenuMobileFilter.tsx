@@ -65,7 +65,7 @@ const MenuMobileFilter = () => {
   ]);
   const toggleMenuMobile = () => dispatch(toggleMenu());
   return (
-    <div className={`${styles.filter}`}>
+    <div className={`${styles.filter} animationEntrando `}>
       {' '}
       <div className={styles.containerFilter}>
         <div className={styles.titleFilter}>

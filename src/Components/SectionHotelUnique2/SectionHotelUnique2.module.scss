@@ -263,6 +263,18 @@
   .section {
     .containerSection {
       width: 350px !important;
+      .containerEsquerdo {
+        .commentContainer {
+          .infoComment {
+            width: 100%;
+            .photoAndComment {
+              .comment {
+                font-size: 12px;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
