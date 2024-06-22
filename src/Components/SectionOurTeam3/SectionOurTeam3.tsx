@@ -13,7 +13,7 @@ const SectionOurTeam3 = () => {
     dispatch(getAllPlayers());
   }, [dispatch]);
   return (
-    <section className={styles.section}>
+    <section className={`${styles.section} animationEntrando`}>
       <div className={styles.containerSection}>
         <div className={styles.titleAndDescription}>
           <h1 className={styles.title}>Our team</h1>

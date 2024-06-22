@@ -37,7 +37,7 @@ const SectionHotelUnique1 = () => {
   };
 
   return (
-    <section className={styles.section}>
+    <section className={`${styles.section} animationEntrando`}>
       {data.id ? (
         <div className={styles.containerSection}>
           <div className={styles.offersAndHotelNameAndStarAndCityAndCountry}>

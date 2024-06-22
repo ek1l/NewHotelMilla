@@ -64,7 +64,7 @@ const SectionUniqueGallery = () => {
 
   if (filteredImages.length > 0) {
     return (
-      <section className={styles.section}>
+      <section className={`${styles.section} animationEntrando`}>
         <div className={styles.containerSection}>
           <div className={styles.offersAndHotelNameAndStarAndCityAndCountry}>
             <Link className={styles.link} to="/gallery">

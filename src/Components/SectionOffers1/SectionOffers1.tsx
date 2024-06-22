@@ -201,7 +201,7 @@ const SectionOffers1 = () => {
   
   const toggleMenuMobile = () => dispatch(toggleMenu());
   return (
-    <section className={styles.section}>
+    <section className={`${styles.section} animationEntrando`}>
       <ModalFilter
         openFilterModal={openFilterModal}
         handleSetOpenFilterModal={handleSetOpenFilterModal}

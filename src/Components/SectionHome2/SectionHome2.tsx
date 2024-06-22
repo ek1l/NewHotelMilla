@@ -10,7 +10,7 @@ const SectionHome2 = () => {
   const { data } = useAppSelector((state) => state.getAllhotelsSlice);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
- 
+
   useEffect(() => {
     dispatch(getAllhotels());
   }, [dispatch]);

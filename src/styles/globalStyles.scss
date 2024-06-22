@@ -147,6 +147,18 @@ textarea {
   resize: none;
 }
 
+.animationEntrando {
+  animation: animationEntrando 1s ease 0s 1 normal forwards;
+}
+@keyframes animationEntrando {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
 // MOBILE
 
 @media (max-width: 600px) {

@@ -227,8 +227,21 @@
 }
 @media (max-width: 1150px) {
   .section {
+    padding: 10px;
     .containerSection {
       width: 920px;
+      align-items: center;
+      gap: 20px;
+      flex-direction: column !important;
+      .containerDireito {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 824px;
+
+        max-width: 100%;
+        flex-direction: column;
+      }
     }
   }
 }
@@ -243,6 +256,20 @@
   .section {
     .containerSection {
       width: 400px !important;
+    }
+  }
+}
+@media (max-width: 426px) {
+  .section {
+    .containerSection {
+      width: 350px !important;
+    }
+  }
+}
+@media (max-width: 386px) {
+  .section {
+    .containerSection {
+      width: 330px !important;
     }
   }
 }

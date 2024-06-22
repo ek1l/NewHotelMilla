@@ -73,7 +73,7 @@ const SectionHome1 = () => {
   }, [dispatch]);
 
   return (
-    <section className={styles.containerBackgroundFundo}>
+    <section className={`${styles.containerBackgroundFundo} animationEntrando`}>
       <div className={styles.imgBackground}>
         <div className={styles.containerSearchAndTimes}>
           <div className={styles.times}>

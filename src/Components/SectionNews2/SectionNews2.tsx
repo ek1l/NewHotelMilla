@@ -19,7 +19,7 @@ const SectionNews2 = () => {
   };
 
   return (
-    <section className={styles.section}>
+    <section className={`${styles.section} animationEntrando`}>
       <div className={styles.containerSection}>
         <div className={styles.titleAndDescription}>
           <h1 className={styles.title}>News</h1>

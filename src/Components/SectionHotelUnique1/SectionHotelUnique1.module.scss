@@ -138,21 +138,48 @@
 @media (max-width: 1150px) {
   .section {
     .containerSection {
-      width: 920px;
+      width: 900px;
     }
   }
 }
+@media (max-width: 1000px) {
+  .section {
+    .containerSection {
+      width: 800px;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .section {
+    .containerSection {
+      width: 600px;
+    }
+  }
+}
+
 @media (max-width: 600px) {
   .section {
     .containerSection {
-      width: 500px !important;
+      width: 400px;
+    }
+    .carroussel {
+      .thumbnails {
+        justify-content: center;
+        gap: 10px;
+        .thumbnail {
+          display: none;
+        }
+      }
     }
   }
 }
+
 @media (max-width: 525px) {
   .section {
+    padding: 10px;
     .containerSection {
-      width: 400px !important;
+      width: 100% !important;
     }
   }
 }

@@ -9,7 +9,6 @@ const SectionNews1 = () => {
   const dispatch = useAppDispatch();
   const { data }: any = useAppSelector((state) => state.getAllnewsSlice);
   const [currentIndex, setCurrentIndex] = useState(0);
- 
 
   useEffect(() => {
     dispatch(getAllnews());
@@ -25,7 +24,7 @@ const SectionNews1 = () => {
   }, [filteredHotels.length]);
 
   return (
-    <section className={`${styles.section}`}>
+    <section className={`${styles.section} animationEntrando`}>
       <div className={styles.containerSection2}>
         <div className={`${styles.carrossel}`}>
           {filteredHotels.length > 0 && (

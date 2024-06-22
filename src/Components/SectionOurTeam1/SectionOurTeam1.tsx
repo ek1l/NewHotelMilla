@@ -29,7 +29,7 @@ const SectionOurTeam1 = () => {
   }, [data.length]);
 
   return (
-    <section className={`${styles.containerBackgroundFundo}`}>
+    <section className={`${styles.containerBackgroundFundo} animationEntrando`}>
       <div
         className={`${styles.imgBackground}`}
         style={{
