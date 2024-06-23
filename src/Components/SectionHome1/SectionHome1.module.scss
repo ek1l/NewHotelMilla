@@ -237,3 +237,12 @@
     }
   }
 }
+
+@media (min-height: 800px) {
+  .containerBackgroundFundo {
+    margin-bottom: 300px;
+    .containerSearchAndTimes {
+      top: 156px;
+    }
+  }
+}
