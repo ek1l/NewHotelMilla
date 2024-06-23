@@ -183,7 +183,9 @@
 @media (max-width: 700px) {
   .containerBackgroundFundo {
     .imgBackground {
-      height: 350px !important;
+      height: 425px !important;
+      background-size: 1000px;
+      object-fit: cover;
     }
     .containerSearchAndTimes {
       display: flex;
