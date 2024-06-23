@@ -157,7 +157,8 @@ const SectionHome1 = () => {
                 className={styles.button}
                 onClick={handleSubmit}
               >
-                Search <img src={IMGArrowsearch} alt="Search arrow" />
+                {!selectedCountry || !selectedSportId ? 'Select all' : 'Search'}{' '}
+                <img src={IMGArrowsearch} alt="Search arrow" />
               </button>
             </div>
           </div>

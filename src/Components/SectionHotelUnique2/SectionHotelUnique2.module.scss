@@ -256,6 +256,9 @@
     .containerSection {
       gap: 40px;
       width: 400px !important;
+      .containerDireito {
+        gap: 40px;
+      }
     }
   }
 }

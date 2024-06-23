@@ -114,6 +114,7 @@
             background: $color-text-hover;
           }
           &:disabled {
+            background: $color-text !important;
             cursor: not-allowed;
           }
         }
@@ -182,16 +183,21 @@
 
 @media (max-width: 700px) {
   .containerBackgroundFundo {
+    height: 400px;
+    margin-bottom: 190px;
     .imgBackground {
-      height: 425px !important;
-      background-size: 1000px;
-      object-fit: cover;
+      height: 2000px !important;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
     }
     .containerSearchAndTimes {
       display: flex;
       align-items: center;
       justify-content: center;
       height: 300px !important;
+      top: 202px;
+
       .times {
         display: none;
       }
@@ -219,6 +225,15 @@
           }
         }
       }
+    }
+  }
+}
+
+@media (min-height: 400px) {
+  .containerBackgroundFundo {
+    margin-bottom: 250px;
+    .containerSearchAndTimes {
+      top: 156px;
     }
   }
 }
