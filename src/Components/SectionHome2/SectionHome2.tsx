@@ -76,7 +76,7 @@ const SectionHome2 = () => {
                   description3={hotel.card.description3}
                   city={hotel.city.name}
                   country={hotel.city.country.name}
-                  filtersDay={hotel.travelTime[0]?.travelTime}
+                  filtersDay={hotel.travelTime[0]?.travel_time}
                   filtersCondition={hotel.conditions[0]?.condition}
                   imagem={hotel.images[0]?.path}
                   key={hotel.id}

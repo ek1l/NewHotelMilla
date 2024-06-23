@@ -25,7 +25,7 @@ const CardHotelHome = ({
       ? `${description.substring(0, 51)}...`
       : description;
   };
- 
+
   return (
     <Link
       to={`/offers/${id}`}
