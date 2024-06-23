@@ -137,3 +137,30 @@
     }
   }
 }
+
+// MOBILE
+
+@media (max-width: 1000px) {
+  .containerModalForm {
+    left: 0;
+    .form {
+      .titleContainer {
+        .title {
+          font-size: 40px;
+        }
+      }
+      .nameAndClub {
+        display: flex;
+        align-items: flex-start;
+        width: 100%;
+        flex-direction: column;
+        .label {
+          width: 100%;
+          .input {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

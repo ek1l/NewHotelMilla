@@ -106,3 +106,30 @@
     }
   }
 }
+
+// MOBILE
+
+@media (max-width: 800px) {
+  .containerNotifyEmail {
+    .notifyEmail {
+      .titleAndInput {
+        padding: 10px;
+        .title {
+          font-size: 17px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .containerNotifyEmail {
+    .notifyEmail {
+      .titleAndInput {
+        .title {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
