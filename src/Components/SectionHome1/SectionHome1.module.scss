@@ -229,7 +229,7 @@
   }
 }
 
-@media (min-height: 400px) {
+@media (max-height: 400px) {
   .containerBackgroundFundo {
     margin-bottom: 250px;
     .containerSearchAndTimes {
@@ -238,11 +238,22 @@
   }
 }
 
-@media (min-height: 800px) {
+@media (max-height: 800px) and (max-width: 700px) {
   .containerBackgroundFundo {
     margin-bottom: 300px;
-    .containerSearchAndTimes {
-      top: 156px;
-    }
+  }
+
+  .containerBackgroundFundo .containerSearchAndTimes {
+    top: 202px;
+  }
+}
+
+@media (max-height: 1100px) and (max-width: 700px) {
+  .containerBackgroundFundo {
+    margin-bottom: 350px;
+  }
+
+  .containerBackgroundFundo .containerSearchAndTimes {
+    top: 202px;
   }
 }
