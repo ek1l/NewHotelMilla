@@ -238,7 +238,6 @@
         align-items: flex-start;
         justify-content: flex-start;
         width: 824px;
-
         max-width: 100%;
         flex-direction: column;
       }
@@ -255,6 +254,7 @@
 @media (max-width: 525px) {
   .section {
     .containerSection {
+      gap: 40px;
       width: 400px !important;
     }
   }

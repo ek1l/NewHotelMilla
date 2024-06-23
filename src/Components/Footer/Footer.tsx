@@ -100,7 +100,6 @@ const Footer = () => {
                 placeholder="Enter your email"
                 className={styles.inputEmail}
               />
-
               {loading ? (
                 <button disabled type="submit" className={styles.button}>
                   Loading...
