@@ -31,9 +31,13 @@
       @include flexArround;
       width: 100%;
       padding: 10px;
+
       .img {
         filter: grayscale(100%);
         transition: 0.3s;
+        width: 118px;
+        height: 118px;
+        object-fit: cover;
         &:hover {
           filter: grayscale(0%);
           transform: scale(1.1);

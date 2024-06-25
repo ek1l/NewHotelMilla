@@ -185,6 +185,11 @@
       width: 500px !important;
       .hotelsAndFilters {
         .container {
+          margin: 3px;
+          width: 100%;
+          .containerHoteis {
+            width: 100%;
+          }
           .pagination {
             width: 97%;
           }

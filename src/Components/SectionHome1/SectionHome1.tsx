@@ -1,21 +1,33 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../../redux/store';
+import { getAllCountry } from '../../redux/reducers/getAllCountry';
+import { getAllhotelsParams } from '../../redux/reducers/getAllHotels';
+import { getAllSports } from '../../redux/reducers/getAllSports';
+import { useNavigate } from 'react-router-dom';
 import styles from './SectionHome1.module.scss';
 import IMGCoreanos from '../../assets/img/coreanos.png';
 import IMGExcelsius from '../../assets/img/excelsior.png';
 import IMGDos from '../../assets/img/dos.png';
 import IMGBvv from '../../assets/img/bvv.png';
 import IMGAdo from '../../assets/img/ado.png';
+import IMGNAC from '../../assets/img/NAC.png';
+import IMGLAC from '../../assets/img/LAC.png';
+import IMGRijin from '../../assets/img/Rijn.png';
+import IMGRKC from '../../assets/img/RKC.png';
+import IMGPSV from '../../assets/img/PSV.png';
+import IMGSV from '../../assets/img/SV.png';
+import IMGUSV from '../../assets/img/USV.png';
+import IMGKampong from '../../assets/img/Kampong.png';
+import IMGWKE16 from '../../assets/img/WKE16.png';
+import IMGFC from '../../assets/img/FC.png';
+import IMGJOS from '../../assets/img/JOS.png';
+import IMGCVDEJORDANBOYS from '../../assets/img/CV_de_Jodan_Boys.png';
 import IMGRunning from '../../assets/img/running.png';
 import IMGCountry from '../../assets/img/country.png';
 import IMGCity from '../../assets/img/city.png';
 import IMGArrowsearch from '../../assets/img/arrowSearch.png';
-import { useAppDispatch, useAppSelector } from '../../redux/store';
-import { useEffect, useState } from 'react';
-import { getAllCountry } from '../../redux/reducers/getAllCountry';
-import { useNavigate } from 'react-router-dom';
-import { getAllhotelsParams } from '../../redux/reducers/getAllHotels';
-import { getAllSports } from '../../redux/reducers/getAllSports';
 
 const SectionHome1 = () => {
   const dispatch = useAppDispatch();
@@ -31,6 +43,7 @@ const SectionHome1 = () => {
   const [selectedCityId, setSelectedCityId] = useState('');
   const [selectedSportId, setSelectedSportId] = useState('');
   const [citiesByCountry, setCitiesByCountry] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleCountryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedCountry = e.target.value;
@@ -71,17 +84,50 @@ const SectionHome1 = () => {
     dispatch(getAllSports());
     dispatch(getAllCountry());
   }, [dispatch]);
+  const images = [
+    IMGCoreanos,
+    IMGExcelsius,
+    IMGDos,
+    IMGBvv,
+    IMGAdo,
+    IMGNAC,
+    IMGLAC,
+    IMGRijin,
+    IMGRKC,
+    IMGPSV,
+    IMGSV,
+    IMGUSV,
+    IMGKampong,
+    IMGWKE16,
+    IMGFC,
+    IMGJOS,
+    IMGCVDEJORDANBOYS,
+  ];
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 5) % images.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [currentIndex, images.length]);
+
+  const displayedImages = images
+    .slice(currentIndex, currentIndex + 5)
+    .concat(images.slice(0, Math.max(0, currentIndex + 5 - images.length)));
 
   return (
     <section className={`${styles.containerBackgroundFundo} animationEntrando`}>
       <div className={styles.imgBackground}>
         <div className={styles.containerSearchAndTimes}>
           <div className={styles.times}>
-            <img className={styles.img} src={IMGCoreanos} alt="Coreanos" />
-            <img className={styles.img} src={IMGExcelsius} alt="Excelsius" />
-            <img className={styles.img} src={IMGDos} alt="Dos" />
-            <img className={styles.img} src={IMGBvv} alt="Bvv" />
-            <img className={styles.img} src={IMGAdo} alt="Ado" />
+            {displayedImages.map((image, index) => (
+              <img
+                key={index}
+                className={styles.img}
+                src={image}
+                alt={`Slide ${index}`}
+              />
+            ))}
           </div>
           <div className={styles.searchContainer}>
             <div className={styles.selectsContainer}>

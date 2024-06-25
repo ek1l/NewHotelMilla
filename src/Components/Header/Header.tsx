@@ -6,6 +6,7 @@ import IMGSgrz from '../../assets/img/sgrz.png';
 import { NavLink, useLocation } from 'react-router-dom';
 import IMGIcoMenuMobile from '../../assets/img/iconMenuMobile.svg';
 import { useState } from 'react';
+import IMGCloseSetaVerde from '../../assets/img/img/setaVerde.svg';
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
@@ -76,7 +77,9 @@ const Header = () => {
       {mobileOpen && (
         <div className={styles.menuHamburguer}>
           <div className={styles.closeMobile}>
-            <button onClick={setMobileOpenFunction}>X</button>
+            <button onClick={setMobileOpenFunction}>
+              <img src={IMGCloseSetaVerde} alt="Seta verde" />
+            </button>
           </div>
           <div className={styles.containerMenuHamburguer}>
             <NavLink className={styles.navLinkhamburguer} to="/">
