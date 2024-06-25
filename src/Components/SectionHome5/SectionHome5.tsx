@@ -70,7 +70,8 @@ const SectionHome5 = () => {
                       .replace('Stars', '')
                       .replace('Star', '')
                       .replace('star', '')
-                      .replace('stars', ''),
+                      .replace('stars', '')
+                      .replace('Ster', ''),
                   )}
                   imagem={hotel.images[0].path}
                   key={hotel.id}

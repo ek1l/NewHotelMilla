@@ -70,7 +70,8 @@ const SectionHome2 = () => {
                     .replace('Stars', '')
                     .replace('Star', '')
                     .replace('stars', '')
-                    .replace('star', '')}
+                    .replace('star', '')
+                    .replace('Ster', '')}
                   description1={hotel.card.description1}
                   description2={hotel.card.description2}
                   description3={hotel.card.description3}
