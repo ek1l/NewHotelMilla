@@ -24,6 +24,11 @@ const Filter = ({ data, modalFilter }: any) => {
     string | null
   >(null);
   const { text } = useAppSelector((state) => state.getTextparamsSlice);
+  const [showMoreFacilities, setShowMoreFacilities] = useState(false);
+  const [showMoreSports, setShowMoreSports] = useState(false);
+  const [showMoreConditions, setShowMoreConditions] = useState(false);
+  const [showMoreTravelTimes, setShowMoreTravelTimes] = useState(false);
+  const [showMoreRatings, setShowMoreRatings] = useState(false);
 
   const buildQuery = useCallback(() => {
     let query = '';
@@ -107,6 +112,105 @@ const Filter = ({ data, modalFilter }: any) => {
     }
   };
 
+  const renderFilters = (filterType: string) => {
+    const filteredData = data.filter((filter: any) => filterType in filter);
+    const showMoreState =
+      filterType === 'facility'
+        ? showMoreFacilities
+        : filterType === 'sport'
+        ? showMoreSports
+        : filterType === 'condition'
+        ? showMoreConditions
+        : filterType === 'travel_time'
+        ? showMoreTravelTimes
+        : filterType === 'rating' && showMoreRatings;
+
+    const visibleItems = showMoreState ? filteredData.length : 4;
+
+    return filteredData.slice(0, visibleItems).map((filter: any) => (
+      <div key={filter.id} className={styles.filter}>
+        <label className={styles.label}>
+          <input
+            value={filter[filterType]}
+            style={{
+              width: modalFilter ? '20px' : '15px',
+              height: modalFilter ? '20px' : '15px',
+            }}
+            type="checkbox"
+            checked={
+              (filter.id === selectedFacilityFilter &&
+                filterType === 'facility') ||
+              (filter.id === selectedSportFilter && filterType === 'sport') ||
+              (filter.id === selectedConditionFilter &&
+                filterType === 'condition') ||
+              (filter.id === selectedTravelTimeFilter &&
+                filterType === 'travel_time') ||
+              (filter.id === selectedRatingFilter && filterType === 'rating')
+            }
+            onChange={() => {
+              switch (filterType) {
+                case 'facility':
+                  handleFacilityCheckboxChange(filter.id);
+                  break;
+                case 'sport':
+                  handleSportCheckboxChange(filter.id);
+                  break;
+                case 'condition':
+                  handleConditionCheckboxChange(filter.id);
+                  break;
+                case 'travel_time':
+                  handleTravelTimeCheckboxChange(filter.id);
+                  break;
+                case 'rating':
+                  handleRatingCheckboxChange(filter.id);
+                  break;
+                default:
+                  break;
+              }
+            }}
+          />
+          <span
+            style={{
+              color: modalFilter ? 'white' : '#11072d',
+              fontSize: modalFilter ? '24px' : '14px',
+            }}
+            className={styles.checkbox}
+          ></span>
+          <span
+            style={{
+              color: modalFilter ? 'white' : '#11072d',
+              fontSize: modalFilter ? '24px' : '14px',
+            }}
+          >
+            {filter[filterType]}
+          </span>
+        </label>
+      </div>
+    ));
+  };
+
+  const toggleShowMore = (filterType: string) => {
+    switch (filterType) {
+      case 'facility':
+        setShowMoreFacilities(!showMoreFacilities);
+        break;
+      case 'sport':
+        setShowMoreSports(!showMoreSports);
+        break;
+      case 'condition':
+        setShowMoreConditions(!showMoreConditions);
+        break;
+      case 'travel_time':
+        setShowMoreTravelTimes(!showMoreTravelTimes);
+        break;
+      case 'rating':
+        setShowMoreRatings(!showMoreRatings);
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <div
       style={{
@@ -118,157 +222,57 @@ const Filter = ({ data, modalFilter }: any) => {
       className={styles.card}
     >
       {data.length > 0 ? (
-        data.map((filter: any) => (
-          <div key={filter.id} className={styles.filter}>
-            <label className={styles.label}>
-              {filter.facility && (
-                <>
-                  <input
-                    value={filter.facility}
-                    style={{
-                      width: modalFilter ? '20px' : '15px',
-                      height: modalFilter ? '20px' : '15px',
-                    }}
-                    type="checkbox"
-                    checked={filter.id === selectedFacilityFilter}
-                    onChange={() => handleFacilityCheckboxChange(filter.id)}
-                  />
-                  <span
-                    style={{
-                      color: modalFilter ? 'white' : '#11072d',
-                      fontSize: modalFilter ? '24px' : '14px',
-                    }}
-                    className={styles.checkbox}
-                  ></span>
-                  <span
-                    style={{
-                      color: modalFilter ? 'white' : '#11072d',
-                      fontSize: modalFilter ? '24px' : '14px',
-                    }}
-                  >
-                    {filter.facility}
-                  </span>
-                </>
-              )}
-              {filter.sport && (
-                <>
-                  <input
-                    value={filter.sport}
-                    style={{
-                      width: modalFilter ? '20px' : '15px',
-                      height: modalFilter ? '20px' : '15px',
-                    }}
-                    type="checkbox"
-                    checked={filter.id === selectedSportFilter}
-                    onChange={() => handleSportCheckboxChange(filter.id)}
-                  />
-                  <span
-                    style={{
-                      color: modalFilter ? 'white' : '#11072d',
-                      fontSize: modalFilter ? '24px' : '14px',
-                    }}
-                    className={styles.checkbox}
-                  ></span>
-                  <span
-                    style={{
-                      color: modalFilter ? 'white' : '#11072d',
-                      fontSize: modalFilter ? '24px' : '14px',
-                    }}
-                  >
-                    {filter.sport}
-                  </span>
-                </>
-              )}
-              {filter.condition && (
-                <>
-                  <input
-                    style={{
-                      width: modalFilter ? '20px' : '15px',
-                      height: modalFilter ? '20px' : '15px',
-                    }}
-                    type="checkbox"
-                    value={filter.condition}
-                    checked={filter.id === selectedConditionFilter}
-                    onChange={() => handleConditionCheckboxChange(filter.id)}
-                  />
-                  <span
-                    className={styles.checkbox}
-                    style={{
-                      color: modalFilter ? 'white' : '#11072d',
-                      fontSize: modalFilter ? '24px' : '14px',
-                    }}
-                  ></span>
-                  <span
-                    style={{
-                      color: modalFilter ? 'white' : '#11072d',
-                      fontSize: modalFilter ? '24px' : '14px',
-                    }}
-                  >
-                    {filter.condition}
-                  </span>
-                </>
-              )}
-              {filter.travel_time && (
-                <>
-                  <input
-                    style={{
-                      width: modalFilter ? '20px' : '15px',
-                      height: modalFilter ? '20px' : '15px',
-                    }}
-                    type="checkbox"
-                    value={filter.travel_time}
-                    checked={filter.id === selectedTravelTimeFilter}
-                    onChange={() => handleTravelTimeCheckboxChange(filter.id)}
-                  />
-                  <span
-                    style={{
-                      color: modalFilter ? 'white' : '#11072d',
-                      fontSize: modalFilter ? '24px' : '14px',
-                    }}
-                    className={styles.checkbox}
-                  ></span>
-                  <span
-                    style={{
-                      color: modalFilter ? 'white' : '#11072d',
-                      fontSize: modalFilter ? '24px' : '14px',
-                    }}
-                  >
-                    {filter.travel_time}
-                  </span>
-                </>
-              )}
-              {filter.rating && (
-                <>
-                  <input
-                    style={{
-                      width: modalFilter ? '20px' : '15px',
-                      height: modalFilter ? '20px' : '15px',
-                    }}
-                    type="checkbox"
-                    value={filter.rating}
-                    checked={filter.id === selectedRatingFilter}
-                    onChange={() => handleRatingCheckboxChange(filter.id)}
-                  />
-                  <span
-                    style={{
-                      color: modalFilter ? 'white' : '#11072d',
-                      fontSize: modalFilter ? '24px' : '14px',
-                    }}
-                    className={styles.checkbox}
-                  ></span>
-                  <span
-                    style={{
-                      color: modalFilter ? 'white' : '#11072d',
-                      fontSize: modalFilter ? '24px' : '14px',
-                    }}
-                  >
-                    {filter.rating}
-                  </span>
-                </>
-              )}
-            </label>
-          </div>
-        ))
+        <>
+          {renderFilters('facility')}
+          {data.filter((filter: any) => 'facility' in filter).length > 4 && (
+            <button
+              className={styles.buttonShowMore}
+              onClick={() => toggleShowMore('facility')}
+            >
+              {showMoreFacilities ? 'Show Less' : 'Show More'}
+            </button>
+          )}
+
+          {renderFilters('sport')}
+          {data.filter((filter: any) => 'sport' in filter).length > 4 && (
+            <button
+              className={styles.buttonShowMore}
+              onClick={() => toggleShowMore('sport')}
+            >
+              {showMoreSports ? 'Show Less' : 'Show More'}
+            </button>
+          )}
+
+          {renderFilters('condition')}
+          {data.filter((filter: any) => 'condition' in filter).length > 4 && (
+            <button
+              className={styles.buttonShowMore}
+              onClick={() => toggleShowMore('condition')}
+            >
+              {showMoreConditions ? 'Show Less' : 'Show More'}
+            </button>
+          )}
+
+          {renderFilters('travel_time')}
+          {data.filter((filter: any) => 'travel_time' in filter).length > 4 && (
+            <button
+              className={styles.buttonShowMore}
+              onClick={() => toggleShowMore('travel_time')}
+            >
+              {showMoreTravelTimes ? 'Show Less' : 'Show More'}
+            </button>
+          )}
+
+          {renderFilters('rating')}
+          {data.filter((filter: any) => 'rating' in filter).length > 4 && (
+            <button
+              className={styles.buttonShowMore}
+              onClick={() => toggleShowMore('rating')}
+            >
+              {showMoreRatings ? 'Show Less' : 'Show More'}
+            </button>
+          )}
+        </>
       ) : (
         <h1>Loading...</h1>
       )}

@@ -1,8 +1,5 @@
 .containerFilter {
-  background-color: rgba(5, 26, 63, 0.986);
-  backdrop-filter: blur(8px);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: #0038ff;
   height: 100vh;
   width: 100%;
   position: fixed;
@@ -45,3 +42,4 @@
     }
   }
 }
+

@@ -17,12 +17,14 @@ import {
   getAllhotels,
   getAllhotelsParams,
 } from '../../redux/reducers/getAllHotels';
-import IMGRunning from '../../assets/img/runningGreen.png';
-import IMGCity from '../../assets/img/cityGreen.png';
-import IMGCountry from '../../assets/img/countryGreen.png';
+
+import IMGSearchArrow from '../../assets/img/arrowSearch.png';
+import IMGRunning from '../../assets/img/running.png';
+import IMGCity from '../../assets/img/city.png';
+import IMGCountry from '../../assets/img/country.png';
 import ModalFilter from '../ModalFilter/ModalFilter';
 import { getAllRatings } from '../../redux/reducers/getAllRating';
-import IMGFilterIco from '../../assets/img/filterIMG.svg';
+
 import { toggleMenu } from '../../redux/reducers/menuMobileOpen';
 import MenuMobileFilter from '../MenuMobileFilter/MenuMobileFilter';
 
@@ -290,13 +292,81 @@ const SectionOffers1 = () => {
             </select>
           </label>
         </div>
+
+        <div className={styles.containerInputsFilterSelect2}>
+          {selectedCountryId ? (
+            <label className={styles.label}>
+              <span className={styles.span}>
+                <img src={IMGRunning} alt="running ico" /> Sport
+              </span>
+              <select
+                name="Sport"
+                onChange={handleSportChange}
+                value={selectedSportId}
+                className={styles.select}
+              >
+                <option value="0">Select a sport</option>
+                {sportData.length > 0
+                  ? sportData.map((sport) => (
+                      <option key={sport.id} value={sport.id}>
+                        {sport.sport}
+                      </option>
+                    ))
+                  : null}
+              </select>
+            </label>
+          ) : null}
+
+          <label className={styles.label}>
+            <span className={styles.span}>
+              <img src={IMGCountry} alt="country ico" /> Country
+            </span>
+            <select
+              name="Country"
+              onChange={handleCountryChange}
+              value={selectedCountry}
+              className={styles.select}
+            >
+              <option value="0">Select a country</option>
+              {countryData.length > 0
+                ? countryData.map((country) => (
+                    <option key={country.id} value={country.name}>
+                      {country.name}
+                    </option>
+                  ))
+                : 'No data'}
+            </select>
+          </label>
+          {selectedCountryId ? (
+            <label className={styles.label}>
+              <span className={styles.span}>
+                <img src={IMGCity} alt="city ico" /> City
+              </span>
+              <select
+                name="City"
+                disabled={!selectedCountry}
+                onChange={handleCityChange}
+                value={selectedCityId}
+                className={styles.select}
+              >
+                {citiesByCountry.length > 0 ? (
+                  citiesByCountry.map((city: any) => (
+                    <option key={city.id} value={city.id}>
+                      {city.name}
+                    </option>
+                  ))
+                ) : (
+                  <option value="0">Select a country first</option>
+                )}
+              </select>
+            </label>
+          ) : null}
+        </div>
         <div className={styles.filterHotels}>
           {!open && (
-            <img
-              onClick={toggleMenuMobile}
-              src={IMGFilterIco}
-              alt="Filter Hotels Button"
-            />
+            <button className={styles.buttonFilter} onClick={toggleMenuMobile}>
+              Filter <img src={IMGSearchArrow} alt="Arrow Search" />
+            </button>
           )}
           {open && <MenuMobileFilter />}
         </div>

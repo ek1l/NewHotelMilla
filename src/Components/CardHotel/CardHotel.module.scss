@@ -154,7 +154,7 @@
   .link {
     padding: 5px;
     width: 100%;
-    height: 145px;
+    height: 160px;
     border-radius: 13px;
     .cardHotel {
       gap: 5px;
@@ -169,7 +169,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-
         .nameAndLocal {
           display: flex;
           align-items: flex-start;
@@ -192,8 +191,9 @@
           height: 20px;
           display: flex;
           width: 100%;
-          align-items: center;
+          align-items: flex-start;
           justify-content: space-between;
+          flex-wrap: nowrap;
           .category {
             p {
               font-size: 8px !important;
