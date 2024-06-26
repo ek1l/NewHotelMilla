@@ -161,9 +161,12 @@
 }
 
 .containerInputsFilterSelect2 {
-  @include flexBetween;
+  display: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
-  gap: 20px;
+
   width: 338px;
   max-width: 100%;
   height: 100%;
@@ -175,6 +178,7 @@
     flex-direction: column;
     width: 278px;
     height: 50px;
+    margin: 22px;
     max-width: 100%;
     gap: 10px;
     height: 70%;
@@ -230,6 +234,9 @@
       .containerInputsFilterSelect {
         display: none !important;
         height: 100%;
+      }
+      .containerInputsFilterSelect2 {
+        display: block !important;
       }
       .hotelsAndFilters {
         height: 100%;
