@@ -10,6 +10,7 @@ import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/store';
 import { sendEmailMailChimp } from '../../redux/reducers/sendEmail';
 const Footer = () => {
+  const { dutch } = useAppSelector((state) => state.changeIdiomaSlice);
   const notify = () => toast.success('Email successfully sent!');
   const notifyError = () => toast.error('Email Invalid!');
   const notifyErrorSend = () => toast.error('Email not sent!');
@@ -51,7 +52,6 @@ const Footer = () => {
               src={IMGLogoFooter}
               alt="Logo Footer"
             />
-       
           </div>
           <div className={styles.contact}>
             <h1 className={styles.titleContact}>Contact</h1>
@@ -62,7 +62,9 @@ const Footer = () => {
             </span>
           </div>
           <div className={styles.about}>
-            <h1 className={styles.titleAbout}>About</h1>
+            <h1 className={styles.titleAbout}>
+              {dutch ? 'Over (ons)' : 'About (us)'}
+            </h1>
             <ul className={styles.ul}>
               <li className={styles.li}>
                 <Link className={styles.link} to="/">
@@ -71,28 +73,30 @@ const Footer = () => {
               </li>
               <li className={styles.li}>
                 <Link className={styles.link} to="/our-team">
-                  Our team
+                  {dutch ? 'Over ons' : 'Our team'}
                 </Link>
               </li>
               <li className={styles.li}>
                 <Link className={styles.link} to="/offers">
-                  Offers
+                  {dutch ? 'Aanbod' : 'Offers'}
                 </Link>
               </li>
               <li className={styles.li}>
                 <Link className={styles.link} to="/news">
-                  News
+                  {dutch ? 'Nieuws' : 'News'}
                 </Link>
               </li>
               <li className={styles.li}>
                 <Link className={styles.link} to="/gallery">
-                  Gallery
+                  {dutch ? 'Gallerij' : 'Gallery'}
                 </Link>
               </li>
             </ul>
           </div>
           <div className={styles.getUpdatedAndMailSend}>
-            <h1 className={styles.getUpdatedTitle}>Get updated</h1>
+            <h1 className={styles.getUpdatedTitle}>
+              {dutch ? 'Blijf op de hoogte!' : 'Get updated'}
+            </h1>
             <form className={styles.form} onSubmit={handleSubmit(submit)}>
               <input
                 {...register('email')}

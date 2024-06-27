@@ -22,6 +22,9 @@ import IMGSearchArrow from '../../assets/img/arrowSearch.png';
 import IMGRunning from '../../assets/img/running.png';
 import IMGCity from '../../assets/img/city.png';
 import IMGCountry from '../../assets/img/country.png';
+import IMGRunning2 from '../../assets/img/runningGreen.png';
+import IMGCity2 from '../../assets/img/cityGreen.png';
+import IMGCountry2 from '../../assets/img/countryGreen.png';
 import ModalFilter from '../ModalFilter/ModalFilter';
 import { getAllRatings } from '../../redux/reducers/getAllRating';
 
@@ -229,7 +232,7 @@ const SectionOffers1 = () => {
         <div className={styles.containerInputsFilterSelect}>
           <label className={styles.label}>
             <span className={styles.span}>
-              <img src={IMGRunning} alt="running ico" /> Sport
+              <img src={IMGRunning2} alt="running ico" /> Sport
             </span>
             <select
               name="Sport"
@@ -250,7 +253,8 @@ const SectionOffers1 = () => {
 
           <label className={styles.label}>
             <span className={styles.span}>
-              <img src={IMGCountry} alt="country ico" /> Country
+              <img src={IMGCountry2} alt="country ico" />{' '}
+              {dutch ? 'Bestemming' : 'Country'}
             </span>
             <select
               name="Country"
@@ -258,7 +262,9 @@ const SectionOffers1 = () => {
               value={selectedCountry}
               className={styles.select}
             >
-              <option value="0">Select a country</option>
+              <option value="0">
+                Select a {dutch ? 'Bestemming' : 'Country'}
+              </option>
               {countryData.length > 0
                 ? countryData.map((country) => (
                     <option key={country.id} value={country.name}>
@@ -271,7 +277,7 @@ const SectionOffers1 = () => {
 
           <label className={styles.label}>
             <span className={styles.span}>
-              <img src={IMGCity} alt="city ico" /> City
+              <img src={IMGCity2} alt="city ico" /> {dutch ? 'Stad' : 'City'}
             </span>
             <select
               name="City"
@@ -287,7 +293,9 @@ const SectionOffers1 = () => {
                   </option>
                 ))
               ) : (
-                <option value="0">Select a country first</option>
+                <option value="0">
+                  Select a {dutch ? 'Bestemming' : 'Country'} first
+                </option>
               )}
             </select>
           </label>

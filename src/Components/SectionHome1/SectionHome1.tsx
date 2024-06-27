@@ -37,7 +37,7 @@ const SectionHome1 = () => {
   const { data: countryData } = useAppSelector(
     (state) => state.getAllCountrySlice,
   );
-
+  const { dutch } = useAppSelector((state) => state.changeIdiomaSlice);
   const [selectedCountry, setSelectedCountry] = useState('');
   const [selectedCountryId, setSelectedCountryId] = useState('');
   const [selectedCityId, setSelectedCityId] = useState('');
@@ -154,7 +154,8 @@ const SectionHome1 = () => {
 
               <label className={styles.label}>
                 <span className={styles.span}>
-                  <img src={IMGCountry} alt="country ico" /> Country
+                  <img src={IMGCountry} alt="country ico" />{' '}
+                  {dutch ? 'Bestemming' : 'Country'}
                 </span>
                 <select
                   name="Country"
@@ -162,7 +163,9 @@ const SectionHome1 = () => {
                   value={selectedCountry}
                   className={styles.select}
                 >
-                  <option value="0">Select a country</option>
+                  <option value="0">
+                    Select a {dutch ? 'bestemming' : 'country'}
+                  </option>
                   {countryData.length > 0
                     ? countryData.map((country) => (
                         <option key={country.id} value={country.name}>
@@ -175,7 +178,7 @@ const SectionHome1 = () => {
 
               <label className={styles.label}>
                 <span className={styles.span}>
-                  <img src={IMGCity} alt="city ico" /> City
+                  <img src={IMGCity} alt="city ico" /> {dutch ? 'Stad' : 'City'}
                 </span>
                 <select
                   name="City"
@@ -191,7 +194,9 @@ const SectionHome1 = () => {
                       </option>
                     ))
                   ) : (
-                    <option value="0">Select a country first</option>
+                    <option value="0">
+                      Select a {dutch ? 'bestemming' : 'country'} first
+                    </option>
                   )}
                 </select>
               </label>
@@ -203,7 +208,9 @@ const SectionHome1 = () => {
                 className={styles.button}
                 onClick={handleSubmit}
               >
-                {!selectedCountry || !selectedSportId ? 'Select all' : 'Search'}{' '}
+                {!selectedCountry || !selectedSportId
+                  ? 'Select all'
+                  : `${dutch ? 'Zoeken' : 'Search'}`}{' '}
                 <img src={IMGArrowsearch} alt="Search arrow" />
               </button>
             </div>

@@ -12,7 +12,7 @@ const SectionHome5 = () => {
   const { data } = useAppSelector((state) => state.getAllhotelsSlice);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
+  const { dutch } = useAppSelector((state) => state.changeIdiomaSlice);
   useEffect(() => {
     dispatch(getAllhotels());
 
@@ -46,14 +46,18 @@ const SectionHome5 = () => {
       <div className={styles.containerSection2}>
         <div className={styles.textAndDescription}>
           <div className={styles.titleAndButton}>
-            <h1 className={styles.title}>Best locations</h1>
+            <h1 className={styles.title}>
+              {dutch ? 'Beste locaties' : 'Best locations'}
+            </h1>
             <Link to="/offers" className={styles.button}>
-              Search
+              {dutch ? 'Zoeken' : 'Search'}
               <img src={IMGSetaButton} alt="Arrow button" />
             </Link>
           </div>
           <p className={styles.description}>
-            Our best locations for your training camps
+            {dutch
+              ? 'Onze beste locaties voor jouw trainingskamp'
+              : 'Our best locations for your trainingcamps'}
           </p>
         </div>
         <div className={`${styles.carrossel}`}>

@@ -31,9 +31,15 @@ const Header = () => {
           <div className={styles.imgAndInfo}>
             <img src={IMGLogo} alt="Logo" />
             <span className={styles.info}>
-              MORE THAN 100 LOCATIONS OVER THE WORLD
+              {dutch
+                ? 'Meer dan 100 locaties in binnen- en buitenland'
+                : 'More than 100 locations over the world'}
             </span>
-            <span className={styles.info}>SINCE 2004</span>
+            <span className={styles.info}>
+              {dutch
+                ? 'Sinds 2004 dé kampioen in trainingskampen'
+                : 'Since 2004 the champion of training camps'}
+            </span>
           </div>
           <div className={styles.times}>
             <img className={styles.img} src={IMGAdidas} alt="Adidas" />
@@ -53,16 +59,16 @@ const Header = () => {
                 Home
               </NavLink>
               <NavLink className={styles.navLink} to="/our-team">
-                Our team
+                {dutch ? 'Over ons' : 'About us'}
               </NavLink>
               <NavLink className={styles.navLink} to="/offers">
-                Offers
+                {dutch ? 'Aanbod' : 'Offers'}
               </NavLink>
               <NavLink className={styles.navLink} to="/news">
-                News
+                {dutch ? 'Nieuws' : 'News'}
               </NavLink>
               <NavLink className={styles.navLink} to="/gallery">
-                Gallery
+                {dutch ? 'Gallerij' : 'Gallery'}
               </NavLink>
             </ul>
           </nav>

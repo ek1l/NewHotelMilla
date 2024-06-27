@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useForm } from 'react-hook-form';
 import styles from './ModalForm.module.scss';
-import { useAppDispatch } from '../../redux/store';
+import { useAppDispatch, useAppSelector } from '../../redux/store';
 import { submitFormPost } from '../../redux/reducers/submitForm';
 import { useState } from 'react';
 import { sendEmailMailChimp } from '../../redux/reducers/sendEmail';
@@ -12,7 +12,7 @@ const ModalForm = () => {
   const [sendMailChimp, setSendMailChimp] = useState<boolean>(false);
   const { handleSubmit, register, reset } = useForm();
   const dispatch = useAppDispatch();
-
+  const { dutch } = useAppSelector((state) => state.changeIdiomaSlice);
   const submit = async (formData: any) => {
     reset();
     setTimeout(() => {
@@ -106,7 +106,11 @@ const ModalForm = () => {
             }}
             type="checkbox"
           />
-          <span className={styles.labelSpanCheck}>Newsletter</span>
+          <span className={styles.labelSpanCheck}>
+            {dutch
+              ? 'Schrijf je in voor onze nieuwsbrief en blijf op de hoogte!'
+              : 'Subscribe to our newsletter and stay updated!'}
+          </span>
         </label>
         <button type="submit" className={styles.button}>
           Send

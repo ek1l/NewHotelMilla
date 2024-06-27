@@ -5,7 +5,7 @@ import DescriptionHotelUnique from '../DescriptionHotelUnique/DescriptionHotelUn
 
 const SectionHotelUnique2 = () => {
   const { data }: any = useAppSelector((state) => state.getOneHotelSlice);
- 
+  const { dutch } = useAppSelector((state) => state.changeIdiomaSlice);
   return (
     <section className={styles.section}>
       {data.id ? (
@@ -39,15 +39,15 @@ const SectionHotelUnique2 = () => {
             </div>
             <div className={styles.containerDescriptions}>
               <DescriptionHotelUnique
-                title={'Destination'}
+                title={`${dutch ? 'Bestemming' : 'Destination'}`}
                 description={data.description.destination}
               />
               <DescriptionHotelUnique
-                title={'Accommodation'}
+                title={`${dutch ? 'Accommodatie' : 'Accommodation'}`}
                 description={data.description.accommodation}
               />
               <DescriptionHotelUnique
-                title={'Activities'}
+                title={`${dutch ? 'Activiteiten' : 'Activities'}`}
                 description={data.description.activities}
               />
             </div>
