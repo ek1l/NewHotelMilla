@@ -53,10 +53,10 @@ const SectionHome2 = () => {
     <section className={`${styles.section}`}>
       <div className={styles.containerSection2}>
         <div className={styles.textAndDescription}>
-          <h1 className={styles.title}>Super deals</h1>
+          <h1 className={styles.title}>Superdeals</h1>
           <p className={styles.description}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua
+            Profiteer nu van onze superdeals en ga voor de goedkoopste prijs op
+            trainingskamp!
           </p>
         </div>
         <div className={`${styles.carrossel}`}>

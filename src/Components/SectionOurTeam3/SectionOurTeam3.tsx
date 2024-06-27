@@ -16,10 +16,10 @@ const SectionOurTeam3 = () => {
     <section className={`${styles.section} animationEntrando`}>
       <div className={styles.containerSection}>
         <div className={styles.titleAndDescription}>
-          <h1 className={styles.title}>Our team</h1>
+          <h1 className={styles.title}>Het team</h1>
           <p className={styles.description}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua
+            Deze specialisten zijn de drijvende motor achter Trainingskampen.nl,
+            24/7 bereikbaar om jou van dienst te zijn.
           </p>
         </div>
         <div className={styles.containerTeam}>

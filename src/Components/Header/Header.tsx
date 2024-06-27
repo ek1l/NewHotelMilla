@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import styles from './Header.module.scss';
 import IMGLogo from '../../assets/img/logo.png';
 import IMGAdidas from '../../assets/img/adidas.png';
@@ -7,13 +8,21 @@ import { NavLink, useLocation } from 'react-router-dom';
 import IMGIcoMenuMobile from '../../assets/img/iconMenuMobile.svg';
 import { useState } from 'react';
 import IMGCloseSetaVerde from '../../assets/img/img/setaVerde.svg';
+import { useAppDispatch, useAppSelector } from '../../redux/store';
+import { alternateIdioma } from '../../redux/reducers/idioma';
 const Header = () => {
+  const dispatch = useAppDispatch();
+  const { dutch } = useAppSelector((state) => state.changeIdiomaSlice);
+
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
   if (location.pathname.startsWith('/admin/login')) {
     return;
   }
   const setMobileOpenFunction = () => setMobileOpen(!mobileOpen);
+  const alternateIdiomaFunc = () => {
+    dispatch(alternateIdioma());
+  };
   return (
     <header className={styles.header}>
       <div className={styles.colorOrange}></div>
@@ -68,7 +77,7 @@ const Header = () => {
             </ul>
           </nav>
 
-          <select className={styles.select}>
+          <select onChange={alternateIdiomaFunc} className={styles.select}>
             <option value="en">EN</option>
             <option value="dt">DT</option>
           </select>

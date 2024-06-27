@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -19,7 +20,9 @@ const changeIdiomaSlice = createSlice({
       state.dutch = true;
       localStorage.setItem('language', 'dutch');
     },
-    alternateIdioma: (state) => {
+    alternateIdioma: (state:any) => {
+      console.log(state.english);
+      console.log(state.dutch);
       if (state.english) {
         state.english = false;
         state.dutch = true;
