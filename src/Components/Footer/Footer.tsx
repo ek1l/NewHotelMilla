@@ -125,16 +125,16 @@ const Footer = () => {
         <div className={styles.filtersHotel}>
           <div className={styles.filtersContainer}>
             <Link className={styles.linkFilter} to="/">
-              Football
+              {dutch ? 'Voetbal' : 'Football'}
             </Link>
             <Link className={styles.linkFilter} to="/">
-              Hockey
-            </Link>
-            <Link className={styles.linkFilter} to="/">
-              Athletics
+              {dutch ? 'Hockey' : 'Hockey'}
             </Link>
             <Link className={styles.linkFilter} to="/">
               Padel
+            </Link>
+            <Link className={styles.linkFilter} to="/">
+              {dutch ? 'Atletiek' : 'Athletics'}
             </Link>
           </div>
           <div className={styles.privacyAndTermsAndReserved}>

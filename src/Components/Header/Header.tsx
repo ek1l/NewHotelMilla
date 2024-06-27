@@ -5,24 +5,37 @@ import IMGAdidas from '../../assets/img/adidas.png';
 import IMGUefa from '../../assets/img/uefa.png';
 import IMGSgrz from '../../assets/img/sgrz.png';
 import { NavLink, useLocation } from 'react-router-dom';
-import IMGIcoMenuMobile from '../../assets/img/iconMenuMobile.svg';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import IMGCloseSetaVerde from '../../assets/img/img/setaVerde.svg';
+import IMGIcoMenuMobile from '../../assets/img/iconMenuMobile.svg';
 import { useAppDispatch, useAppSelector } from '../../redux/store';
 import { alternateIdioma } from '../../redux/reducers/idioma';
+
 const Header = () => {
   const dispatch = useAppDispatch();
   const { dutch } = useAppSelector((state) => state.changeIdiomaSlice);
 
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [selectedLanguage, setSelectedLanguage] = useState(dutch ? 'dt' : 'en');
+
   const location = useLocation();
-  if (location.pathname.startsWith('/admin/login')) {
-    return;
-  }
+
+  useEffect(() => {
+    if (location.pathname.startsWith('/admin/login')) {
+      return;
+    }
+    setSelectedLanguage(dutch ? 'dt' : 'en');
+  }, [dutch, location.pathname]);
+
   const setMobileOpenFunction = () => setMobileOpen(!mobileOpen);
   const alternateIdiomaFunc = () => {
     dispatch(alternateIdioma());
   };
+
+  if (location.pathname.startsWith('/admin/login')) {
+    return null;
+  }
+
   return (
     <header className={styles.header}>
       <div className={styles.colorOrange}></div>
@@ -83,9 +96,13 @@ const Header = () => {
             </ul>
           </nav>
 
-          <select onChange={alternateIdiomaFunc} className={styles.select}>
-            <option value="en">EN</option>
+          <select
+            onChange={alternateIdiomaFunc}
+            className={styles.select}
+            value={selectedLanguage}
+          >
             <option value="dt">DT</option>
+            <option value="en">EN</option>
           </select>
         </div>
       </div>

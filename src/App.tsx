@@ -1,13 +1,14 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import Footer from './Components/Footer/Footer';
 import { ToastContainer } from 'react-toastify';
 import NotifyEmail from './Components/NotifyEmail/NotifyEmail';
-import { useAppSelector } from './redux/store';
+import { useAppDispatch, useAppSelector } from './redux/store';
 import Header from './Components/Header/Header';
 import ModalForm from './Components/ModalForm/ModalForm';
 import OpenModal from './Components/OpenModal/OpenModal';
 import FormAddNewHotel from './Components/FormAddNewHotel/FormAddNewHotel';
+import { setDutch, setEnglish } from './redux/reducers/idioma';
 
 const Home = lazy(() => import('./pages/home/Home'));
 const OurTeam = lazy(() => import('./pages/OurTeam/OurTeam'));
@@ -20,11 +21,19 @@ const GalleryUnique = lazy(() => import('./pages/GalleryUnique/GalleryUnique'));
 const AdminPanel = lazy(() => import('./pages/AdminPanel/AdminPanel'));
 const Admin = lazy(() => import('./pages/Admin/Admin'));
 const App = () => {
+  const dispatch = useAppDispatch();
   const { active } = useAppSelector((state) => state.notifyEmailSendSlice);
   const { toggleModal } = useAppSelector((state) => state.toggleModalSlice);
   const { toggleModalAdmin } = useAppSelector(
     (state) => state.toggleModalAdminSlice,
   );
+  useEffect(() => {
+    if (localStorage.getItem('language') === 'dutch') {
+      dispatch(setDutch());
+    } else {
+      dispatch(setEnglish());
+    }
+  }, [dispatch]);
   return (
     <>
       <BrowserRouter>

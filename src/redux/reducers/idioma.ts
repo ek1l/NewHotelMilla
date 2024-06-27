@@ -20,9 +20,7 @@ const changeIdiomaSlice = createSlice({
       state.dutch = true;
       localStorage.setItem('language', 'dutch');
     },
-    alternateIdioma: (state:any) => {
-      console.log(state.english);
-      console.log(state.dutch);
+    alternateIdioma: (state: any) => {
       if (state.english) {
         state.english = false;
         state.dutch = true;
