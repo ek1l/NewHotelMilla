@@ -17,6 +17,7 @@ const NotifyEmail = () => {
   const notify = () => toast.success('Email successfully sent!');
   const notifyError = () => toast.error('Email Invalid!');
   const notifyErrorSend = () => toast.error('Email not sent!');
+  const { dutch } = useAppSelector((state) => state.changeIdiomaSlice);
   const dispatch = useAppDispatch();
   const { loading } = useAppSelector((state) => state.sendEmailMailChimpSlice);
   const {
@@ -85,7 +86,9 @@ const NotifyEmail = () => {
         </div>
         <div className={styles.titleAndInput}>
           <h1 className={styles.title}>
-            Meld je aan voor onze nieuwsbrief en blijf op de hoogte!
+            {dutch
+              ? 'Schrijf je in voor onze nieuwsbrief en blijf op de hoogte!'
+              : 'Subscribe to our newsletter and stay updated!'}
           </h1>
           <form
             onSubmit={handleSubmit(submit)}
