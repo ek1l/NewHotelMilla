@@ -61,7 +61,7 @@ const SectionOffers1 = () => {
       setSelectedCountryId('');
       setCitiesByCountry([]);
     }
-    setSelectedCityId(''); // Reset the city selection when country changes
+    setSelectedCityId('');
   };
 
   const handleCityChange = (e: React.ChangeEvent<HTMLSelectElement>) => {

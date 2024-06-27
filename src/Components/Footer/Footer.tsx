@@ -51,12 +51,7 @@ const Footer = () => {
               src={IMGLogoFooter}
               alt="Logo Footer"
             />
-            <p className={styles.description}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
-            </p>
+       
           </div>
           <div className={styles.contact}>
             <h1 className={styles.titleContact}>Contact</h1>

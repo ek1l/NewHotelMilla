@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { useEffect, useState } from 'react';
 import styles from './CardHotel.module.scss';
 import { Link } from 'react-router-dom';
 import IMGCardHotelArrow from '../../assets/img/arrowCardHotelView.png';
@@ -16,7 +17,19 @@ const CardHotel = ({
   const truncatedName =
     name.length > limitTitle ? `${name.slice(0, limitTitle)}...` : name;
 
-  const isMobile = window.innerWidth < 900;
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 900);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const maxFacilities = isMobile ? 3 : 8;
   const firstFacilities = facilities.slice(0, maxFacilities);
@@ -30,9 +43,16 @@ const CardHotel = ({
       ? `${capitalizeFirstLetter(accomoditation.slice(0, 80))}...`
       : capitalizeFirstLetter(accomoditation);
 
+  const truncateFacility = (facility: string, isMobile: boolean) => {
+    const limit = isMobile ? 10 : 20;
+    return facility.length > limit
+      ? `${facility.slice(0, limit)}...`
+      : facility;
+  };
+
   return (
     <Link className={styles.link} to={`/offers/${id}`}>
-      <div className={`${styles.cardHotel}`}>
+      <div className={styles.cardHotel}>
         <div className={styles.imagem}>
           <img
             className={styles.photoHotelAtt}
@@ -55,13 +75,7 @@ const CardHotel = ({
           <div className={styles.categories}>
             {firstFacilities.map((facility: any) => (
               <div className={styles.category} key={facility.id}>
-                <p>
-                  {window.innerWidth < 900
-                    ? `${facility.facility.slice(0, 10)}...`
-                    : facility.facility.length > 20
-                    ? `${facility.facility.slice(0, 20)}...`
-                    : facility.facility}
-                </p>
+                <p>{truncateFacility(facility.facility, isMobile)}</p>
               </div>
             ))}
           </div>
