@@ -12,6 +12,7 @@ const SectionHotelUnique1 = () => {
   const { data }: { data: any } = useAppSelector(
     (state) => state.getOneHotelSlice,
   );
+  console.log(data);
   const { id } = useParams();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 

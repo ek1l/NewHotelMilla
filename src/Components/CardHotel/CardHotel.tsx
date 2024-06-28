@@ -13,7 +13,7 @@ const CardHotel = ({
   accomoditation,
   image,
 }: any) => {
-  const limitTitle = 20;
+  const limitTitle = 100;
   const truncatedName =
     name.length > limitTitle ? `${name.slice(0, limitTitle)}...` : name;
 

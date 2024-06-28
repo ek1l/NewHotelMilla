@@ -10,6 +10,7 @@ const SectionHome2 = () => {
   const { data } = useAppSelector((state) => state.getAllhotelsSlice);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [indicatorPage, setIndicatorPage] = useState(0);
 
   useEffect(() => {
     dispatch(getAllhotels());
@@ -25,22 +26,6 @@ const SectionHome2 = () => {
 
   const filteredHotels = data.filter((hotel: any) => hotel.promotion === true);
 
-  useEffect(() => {
-    if (filteredHotels.length > 0) {
-      const interval = setInterval(() => {
-        setCurrentIndex(
-          (prevIndex) =>
-            (prevIndex + 1) %
-            Math.ceil(
-              filteredHotels.length /
-                (windowWidth <= 900 ? 1 : windowWidth <= 1175 ? 2 : 3),
-            ),
-        );
-      }, 4000);
-      return () => clearInterval(interval);
-    }
-  }, [filteredHotels.length, windowWidth]);
-
   const groupedHotels = [];
   const cardsPerGroup = windowWidth <= 900 ? 1 : windowWidth <= 1175 ? 2 : 3;
   if (filteredHotels.length > 0) {
@@ -49,6 +34,53 @@ const SectionHome2 = () => {
     }
   }
 
+  const maxIndicators = 5;
+  const totalPages = Math.ceil(groupedHotels.length / maxIndicators);
+
+  useEffect(() => {
+    if (windowWidth <= 900 && groupedHotels.length > maxIndicators) {
+      const indicatorInterval = setInterval(() => {
+        setIndicatorPage((prevPage) => (prevPage + 1) % totalPages);
+      }, 4000);
+      return () => clearInterval(indicatorInterval);
+    }
+  }, [windowWidth, groupedHotels.length, totalPages]);
+
+  const handleIndicatorClick = (index: any) => {
+    setCurrentIndex(index);
+    setIndicatorPage(Math.floor(index / maxIndicators));
+  };
+
+  const renderIndicators = () => {
+    const start = indicatorPage * maxIndicators;
+    const end = Math.min(start + maxIndicators, groupedHotels.length);
+    const indicators = [];
+
+    for (let i = start; i < end; i++) {
+      indicators.push(
+        <span
+          key={i}
+          className={`${styles.indicator} ${
+            currentIndex === i ? styles.active : ''
+          }`}
+          onClick={() => handleIndicatorClick(i)}
+        ></span>,
+      );
+    }
+    return indicators;
+  };
+  useEffect(() => {
+    if (filteredHotels.length > 0) {
+      const interval = setInterval(() => {
+        setCurrentIndex((prevIndex) => {
+          const newIndex = (prevIndex + 1) % groupedHotels.length;
+          setIndicatorPage(Math.floor(newIndex / maxIndicators));
+          return newIndex;
+        });
+      }, 4000);
+      return () => clearInterval(interval);
+    }
+  }, [filteredHotels.length, groupedHotels.length, windowWidth]);
   return (
     <section className={`${styles.section}`}>
       <div className={styles.containerSection2}>
@@ -66,12 +98,8 @@ const SectionHome2 = () => {
                 <CardHotelHome
                   name={hotel.name}
                   stars={hotel.ratings.rating
-                    .replace('Sterren', '')
-                    .replace('Stars', '')
-                    .replace('Star', '')
-                    .replace('stars', '')
-                    .replace('star', '')
-                    .replace('Ster', '')}
+                    .replace(/Ster(ren|s|r|)/i, '')
+                    .trim()}
                   description1={hotel.card.description1}
                   description2={hotel.card.description2}
                   description3={hotel.card.description3}
@@ -87,17 +115,7 @@ const SectionHome2 = () => {
             </div>
           )}
         </div>
-        <div className={styles.carouselIndicators}>
-          {groupedHotels.map((_, index) => (
-            <span
-              key={index}
-              className={`${styles.indicator} ${
-                currentIndex === index ? styles.active : ''
-              }`}
-              onClick={() => setCurrentIndex(index)}
-            ></span>
-          ))}
-        </div>
+        <div className={styles.carouselIndicators}>{renderIndicators()}</div>
       </div>
     </section>
   );
