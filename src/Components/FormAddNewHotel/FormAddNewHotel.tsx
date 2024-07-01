@@ -218,10 +218,7 @@ const FormAddNewHotel = () => {
       JSON.stringify(newObjHotel.description),
     );
 
-    formDataToSend.append(
-      'description_card',
-      JSON.stringify(newObjHotel.description_card),
-    );
+    formDataToSend.append('description_card', newObjHotel.description_card);
 
     formDataToSend.append('sports', JSON.stringify(newObjHotel.sportsIds));
     formDataToSend.append('card', JSON.stringify(newObjHotel.card));
@@ -243,7 +240,7 @@ const FormAddNewHotel = () => {
     formDataToSend.append('cityId', newObjHotel.cityId);
 
     formDataToSend.append('promotion', String(newObjHotel.promotion));
-    console.log('ewqqewqweweq', newObjHotel.promotion);
+
     formDataToSend.append('slider_display', String(newObjHotel.slider_display));
 
     formDataToSend.append('ratingId', String(newObjHotel.ratingId));

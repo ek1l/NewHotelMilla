@@ -160,6 +160,7 @@
 
 @media (max-width: 600px) {
   .section {
+    margin-bottom: 0px;
     .containerSection {
       width: 550px;
     }
@@ -171,6 +172,9 @@
           display: none;
         }
       }
+      .imageContainer {
+        height: 400px !important;
+      }
     }
   }
 }
@@ -178,6 +182,7 @@
 @media (max-width: 525px) {
   .section {
     padding: 10px;
+    width: 100%;
     .containerSection {
       width: 100% !important;
     }
