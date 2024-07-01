@@ -168,14 +168,22 @@
             border-radius: 50%;
             background: $color-text;
             transition: 0.3s;
-            &:hover {
-              box-shadow: rgba(211, 191, 191, 0.25) 0px 54px 55px,
-                rgba(250, 248, 248, 0.12) 0px -12px 30px,
-                rgba(0, 0, 0, 0.12) 0px 4px 6px,
-                rgba(247, 245, 245, 0.17) 0px 12px 13px,
-                rgba(0, 0, 0, 0.09) 0px -3px 5px;
-              background: $color-text-hover;
-            }
+            cursor: pointer;
+          }
+          .bola1 {
+            background-image: url('../../assets/img/facebookIco.png');
+            background-size: 100%;
+            background-repeat: no-repeat;
+          }
+          .bola2 {
+            background-image: url('../../assets/img/instaLogo.webp');
+            background-size: 100%;
+            background-repeat: no-repeat;
+          }
+          .bola3 {
+            background-image: url('../../assets/img/linkedinLogo.png');
+            background-size: 100%;
+            background-repeat: no-repeat;
           }
         }
       }

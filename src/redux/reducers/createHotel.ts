@@ -14,15 +14,12 @@ export const createHotel = createAsyncThunk(
   'createHotel',
   async (formData: any) => {
     try {
-      const { data } = await instanceApiDefault.post(
-        `/hotel`,
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-          },
+      console.log(formData);
+      const { data } = await instanceApiDefault.post(`/hotel`, formData, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
-      );
+      });
 
       return data;
     } catch (error) {

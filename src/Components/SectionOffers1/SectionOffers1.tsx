@@ -118,6 +118,7 @@ const SectionOffers1 = () => {
   const { data: hotelData } = useAppSelector(
     (state: { getAllhotelsSlice: any }) => state.getAllhotelsSlice,
   );
+  console.log(hotelData);
   const { data: ratingsData } = useAppSelector(
     (state) => state.getAllRatingsSlice,
   );
@@ -390,7 +391,7 @@ const SectionOffers1 = () => {
                     country={hotel.city.country.name}
                     cities={hotel.city.name}
                     facilities={hotel.facilities}
-                    accomoditation={hotel.description.accommodation}
+                    accomoditation={hotel.descriptionCard}
                     key={hotel.id}
                   />
                 ))}

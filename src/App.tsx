@@ -20,6 +20,7 @@ const Gallery = lazy(() => import('./pages/Gallery/Gallery'));
 const GalleryUnique = lazy(() => import('./pages/GalleryUnique/GalleryUnique'));
 const AdminPanel = lazy(() => import('./pages/AdminPanel/AdminPanel'));
 const Admin = lazy(() => import('./pages/Admin/Admin'));
+
 const App = () => {
   const dispatch = useAppDispatch();
   const { active } = useAppSelector((state) => state.notifyEmailSendSlice);

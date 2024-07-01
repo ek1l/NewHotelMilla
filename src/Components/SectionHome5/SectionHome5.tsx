@@ -13,6 +13,7 @@ const SectionHome5 = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const { dutch } = useAppSelector((state) => state.changeIdiomaSlice);
+  console.log(data);
   useEffect(() => {
     dispatch(getAllhotels());
 
@@ -27,11 +28,14 @@ const SectionHome5 = () => {
     };
   }, [dispatch]);
 
+  // Filtrar hotéis com sliderDisplay como true
+  const filteredHotels = data.filter((hotel: any) => hotel.sliderDisplay);
+
   const itemsPerPage = windowWidth >= 1175 ? 3 : windowWidth >= 900 ? 2 : 1;
 
   const groupedHotels = [];
-  for (let i = 0; i < data.length; i += itemsPerPage) {
-    groupedHotels.push(data.slice(i, i + itemsPerPage));
+  for (let i = 0; i < filteredHotels.length; i += itemsPerPage) {
+    groupedHotels.push(filteredHotels.slice(i, i + itemsPerPage));
   }
 
   useEffect(() => {
@@ -39,7 +43,7 @@ const SectionHome5 = () => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % groupedHotels.length);
     }, 4000);
     return () => clearInterval(interval);
-  }, [data.length, groupedHotels.length]);
+  }, [filteredHotels.length, groupedHotels.length]);
 
   return (
     <section className={`${styles.section}`}>

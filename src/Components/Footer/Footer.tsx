@@ -115,10 +115,21 @@ const Footer = () => {
               )}
             </form>
             <div className={styles.bolaContainer}>
-              <div className={styles.bola}></div>
-              <div className={styles.bola}></div>
-              <div className={styles.bola}></div>
-              <div className={styles.bola}></div>
+              <Link
+                to={'https://facebook.com/trainingskampen/'}
+                target="_blank"
+                className={`${styles.bola} ${styles.bola1}`}
+              ></Link>
+              <Link
+                to={'https://www.instagram.com/trainingskampen.nl_/'}
+                target="_blank"
+                className={`${styles.bola} ${styles.bola2}`}
+              ></Link>
+              <Link
+                to={'https://linkedin.com/company/trainingskampen.nl'}
+                target="_blank"
+                className={`${styles.bola} ${styles.bola3}`}
+              ></Link>
             </div>
           </div>
         </div>

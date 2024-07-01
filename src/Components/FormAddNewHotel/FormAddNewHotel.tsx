@@ -49,10 +49,15 @@ const FormAddNewHotel = () => {
   const [selectedFacilities, setSelectedFacilities] = useState<string[]>([]);
   const [selectedTravelTimes, setSelectedTravelTimes] = useState<string[]>([]);
   const [selectedConditions, setSelectedConditions] = useState<string[]>([]);
-  const [promotion, setPromotion] = useState<boolean>(false);
+  const [testPromo, setTestPromo] = useState<boolean>(false);
+  const [slider_display, setslider_display] = useState<boolean>(false);
+  console.log(testPromo);
+  const handlePromotion = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTestPromo(event.target.checked);
+  };
 
-  const handlePromotion = () => {
-    setPromotion(!promotion);
+  const handleSliderDisplay = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setslider_display(event.target.checked);
   };
 
   const handleToggleModalAdmin = () => {
@@ -174,7 +179,6 @@ const FormAddNewHotel = () => {
 
     const newObjHotel = {
       name: formData.name,
-
       description: {
         destination: formData.destination,
         accommodation: formData.accommodation,
@@ -184,6 +188,9 @@ const FormAddNewHotel = () => {
           comment: formData.comment,
         },
       },
+      slider_display: slider_display,
+      promotion: testPromo,
+      description_card: formData.description_card,
       ratingId: formData.ratingId,
       sportsIds: selectedSports.map(String),
       facilitiesIds: selectedFacilities.map(String),
@@ -200,15 +207,20 @@ const FormAddNewHotel = () => {
         description2: formData.description2,
         description3: formData.description3,
       },
-      promotion: promotion,
     };
 
     const formDataToSend = new FormData();
+
     formDataToSend.append('name', newObjHotel.name);
 
     formDataToSend.append(
       'description',
       JSON.stringify(newObjHotel.description),
+    );
+
+    formDataToSend.append(
+      'description_card',
+      JSON.stringify(newObjHotel.description_card),
     );
 
     formDataToSend.append('sports', JSON.stringify(newObjHotel.sportsIds));
@@ -229,10 +241,10 @@ const FormAddNewHotel = () => {
     );
 
     formDataToSend.append('cityId', newObjHotel.cityId);
-    formDataToSend.append(
-      'promotion',
-      String(newObjHotel.promotion === true ? true : false),
-    );
+
+    formDataToSend.append('promotion', String(newObjHotel.promotion));
+    console.log('ewqqewqweweq', newObjHotel.promotion);
+    formDataToSend.append('slider_display', String(newObjHotel.slider_display));
 
     formDataToSend.append('ratingId', String(newObjHotel.ratingId));
 
@@ -251,6 +263,7 @@ const FormAddNewHotel = () => {
       notifySuccessCreated();
       handleToggleModalAdmin();
       dispatch(getAllhotels());
+
       return response;
     } else {
       notifyErrorCreated();
@@ -468,6 +481,12 @@ const FormAddNewHotel = () => {
             <div className={styles.textAreaInputsContainer}>
               <InputTextArea {...register('activities')} label="Activities" />
             </div>
+            <div className={styles.textAreaInputsContainer}>
+              <InputTextArea
+                {...register('description_card')}
+                label="Hotel description alone page offers"
+              />
+            </div>
 
             <div className={styles.textAreaInputsContainer}>
               <Input
@@ -491,12 +510,23 @@ const FormAddNewHotel = () => {
                 height="120px"
                 width="100%"
               />
-
-              <label>
-                <span className={`${styles.promotion}`}>Promotion</span>
-                <input type="checkbox" onChange={handlePromotion} />
-              </label>
             </div>
+            <label>
+              <span className={`${styles.promotion}`}>Promotion</span>
+              <input
+                type="checkbox"
+                onChange={handlePromotion}
+                checked={testPromo}
+              />
+            </label>
+            <label>
+              <span className={`${styles.promotion}`}>Best Locations</span>
+              <input
+                type="checkbox"
+                onChange={handleSliderDisplay}
+                checked={slider_display}
+              />
+            </label>
 
             <div className={styles.containerFiles}>
               <Input

@@ -46,6 +46,7 @@ const EditHotel = ({ setHandleEditHotel }: any) => {
   const { data: conditionData } = useAppSelector(
     (state) => state.getAllConditionSlice,
   );
+  
   const { data: ratingsData } = useAppSelector(
     (state) => state.getAllRatingsSlice,
   );
@@ -79,16 +80,20 @@ const EditHotel = ({ setHandleEditHotel }: any) => {
       title: oneHotelData.id ? oneHotelData.card.title : '',
     },
   });
-  console.log(oneHotelData);
+
   const [selectedSports, setSelectedSports] = useState<string[]>([]);
   const [selectedConditions, setSelectedConditions] = useState<string[]>([]);
   const [selectedFacilities, setSelectedFacilities] = useState<string[]>([]);
   const [selectedTravelTimes, setSelectedTravelTimes] = useState<string[]>([]);
+  const [slider_display, setslider_display] = useState<boolean>(false);
   const [promotion, setPromotion] = useState(
     oneHotelData?.promotion ? true : false,
   );
   const handlePromotion = () => {
     setPromotion(!promotion);
+  };
+  const handleSliderDisplay = () => {
+    setslider_display(!slider_display);
   };
   const handleSportsChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedSportId = event.target.value;
@@ -207,6 +212,8 @@ const EditHotel = ({ setHandleEditHotel }: any) => {
           comment: formData.comment,
         },
       },
+      slider_display: slider_display,
+      description_card: formData.description_card,
       ratingId: formData.ratingId,
       sportsIds: selectedSports.map(String),
       facilitiesIds: selectedFacilities.map(String),
@@ -579,12 +586,16 @@ const EditHotel = ({ setHandleEditHotel }: any) => {
                   height="120px"
                   width="100%"
                 />
-                <input
-                  type="checkbox"
-                  onChange={handlePromotion}
-                  value={'false'}
-                />
               </div>
+              <label>
+                <span className={`${styles.promotion}`}>Promotion</span>
+                <input type="checkbox" onChange={handlePromotion} />
+              </label>
+
+              <label>
+                <span className={`${styles.promotion}`}>Best Locations</span>
+                <input type="checkbox" onChange={handleSliderDisplay} />
+              </label>
 
               <div className={styles.textAreaInputsContainer}>
                 <InputTextArea
